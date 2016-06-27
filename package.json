@@ -1,6 +1,6 @@
 {
   "name": "svg-jar-demo",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Small description for svg-jar-demo goes here",
   "private": true,
   "directories": {
@@ -37,8 +37,6 @@
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
-    "ember-welcome-page": "^1.0.1",
-    "eslint": "^2.13.1",
     "eslint-config-airbnb-base": "^3.0.1",
     "eslint-plugin-import": "^1.9.2",
     "loader.js": "^4.0.1"
