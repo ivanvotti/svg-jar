@@ -1,0 +1,12 @@
+/**
+  Text truncate
+
+  Prevent text from wrapping onto multiple lines, and truncate with an
+  ellipsis. It requires inline-block or block for proper styling.
+*/
+
+@mixin text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

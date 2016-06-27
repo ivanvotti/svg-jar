@@ -1,0 +1,11 @@
+/**
+  Wrap object
+*/
+
+$wrap-width: 800px !default;
+
+.o-wrap {
+  display: block;
+  max-width: $wrap-width;
+  margin: 0 auto;
+}

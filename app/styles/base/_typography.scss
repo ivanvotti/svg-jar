@@ -1,0 +1,67 @@
+/**
+  Typography
+*/
+
+html,
+:root {
+  font: 81.25%/1.75 "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  color: $color-gray-dark;
+}
+
+/**
+  Headings
+
+  Only h1-h4 are used/styled. If your DOM heirarchy goes as deep at h5 or h6,
+  you have some rethinking to do.
+*/
+
+h1 {
+  display: block;
+  margin-bottom: $baseline;
+  font-size: 28px;
+  font-weight: 200;
+  line-height: 36px;
+}
+
+h2 {
+  display: block;
+  margin-bottom: $baseline;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+h3 {
+  display: block;
+  margin-bottom: $baseline;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+h4 {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: $baseline;
+}
+
+/**
+  Other type styles
+*/
+
+hr {
+  margin-bottom: $baseline;
+  border: 0;
+  border-top: 1px solid $color-gray-x-dark, 0.1;
+}
+
+a {
+  text-decoration: none;
+  color: $color-blue;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,13 @@
+/**
+  Clearfix
+
+  The micro clearfix: http://cssmojo.com/latest_new_clearfix_so_far/
+*/
+
+@mixin clearfix() {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
