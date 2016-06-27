@@ -1,0 +1,23 @@
+.c-jar-item {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  margin: 10px;
+  margin-right: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-gray-x-light;
+  border: 3px solid transparent;
+  border-radius: 4px;
+  transition: background-color 0.1s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-gray-light;
+  }
+
+  &.is-active {
+    border-color: $color-blue;
+    background-color: $color-gray-light;
+  }
+}
