@@ -27,6 +27,10 @@ html {
   outline: none;
 }
 
+body {
+  overflow: hidden;
+}
+
 svg {
   pointer-events: none;
 }
