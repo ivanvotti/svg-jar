@@ -1,0 +1,28 @@
+.c-details__item {
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.c-details__name {
+  color: #777;
+  font-size: 13px;
+}
+
+.c-details__value {
+  color: #888;
+  text-align: right;
+  font-size: 13px;
+}
+
+.c-details__tag {
+  margin-right: 6px;
+  padding: 0 8px;
+  font-size: 12px;
+  border-radius: 3px;
+  background-color: #eee;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

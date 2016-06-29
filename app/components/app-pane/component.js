@@ -1,5 +1,6 @@
-import Ember from 'ember';
+import Component from 'ember-component';
 
-export default Ember.Component.extend({
-  classNames: ['c-app-pane']
+export default Component.extend({
+  classNames: ['c-app-pane'],
+  currentItem: null
 });

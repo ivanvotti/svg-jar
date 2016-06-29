@@ -1,0 +1,15 @@
+{{app-navbar}}
+
+<div class="c-app-main">
+  {{app-sidebar}}
+
+  <div class="c-app-content">
+    {{jar-list
+      items=items
+      currentItem=currentItem
+      setCurrentItem=(action "setCurrentItem")
+    }}
+  </div>
+
+  {{app-pane currentItem=currentItem}}
+</div>

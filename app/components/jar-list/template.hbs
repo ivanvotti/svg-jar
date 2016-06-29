@@ -1,5 +1,9 @@
 <div class="c-jar-list">
   {{#each items as |item|}}
-    {{jar-item item=item}}
+    {{jar-item
+      item=item
+      currentItem=currentItem
+      setCurrentItem=(action setCurrentItem)
+    }}
   {{/each}}
 </div>

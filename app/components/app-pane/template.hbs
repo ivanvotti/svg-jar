@@ -1,0 +1,67 @@
+{{#if currentItem}}
+  <div class="c-app-pane__section">
+    <div class="c-app-pane__title">
+      Usage
+    </div>
+
+    <pre class="c-app-pane__usage">{{currentItem.usage}}</pre>
+  </div>
+
+  <div class="c-app-pane__section">
+    <div class="c-app-pane__title">
+      Information
+    </div>
+
+    <div class="c-app-pane__details">
+      <div class="c-details__item">
+        <div class="c-details__name">
+          Name
+        </div>
+
+        <div class="c-details__value">
+          {{currentItem.name}}
+        </div>
+      </div>
+
+      {{#if currentItem.tags}}
+        <div class="c-details__item">
+          <div class="c-details__name">
+            Tags
+          </div>
+
+          <div class="c-details__value">
+            {{#each currentItem.tags as |tag|}}
+              <span class="c-details__tag">
+                {{tag}}
+              </span>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+
+      <div class="c-details__item">
+        <div class="c-details__name">
+          Grid size
+        </div>
+
+        <div class="c-details__value">
+          {{currentItem.gridSize}}px
+        </div>
+      </div>
+
+      <div class="c-details__item">
+        <div class="c-details__name">
+          File size
+        </div>
+
+        <div class="c-details__value">
+          {{currentItem.fileSize}} Kb
+        </div>
+      </div>
+    </div>
+  </div>
+{{else}}
+  <div class="c-app-pane__section">
+    No Selection
+  </div>
+{{/if}}
