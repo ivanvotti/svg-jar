@@ -3,11 +3,11 @@ import set from 'ember-metal/set';
 
 export default Component.extend({
   classNames: ['c-app-container'],
-  currentItem: null,
+  currentAsset: null,
 
   actions: {
-    setCurrentItem(item) {
-      set(this, 'currentItem', item);
+    setCurrentAsset(asset) {
+      set(this, 'currentAsset', asset);
     }
   }
 });

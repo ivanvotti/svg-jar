@@ -3,7 +3,7 @@ import Route from 'ember-route';
 export default Route.extend({
   model() {
     return {
-      svgs: [
+      assets: [
         {
           svg: {
             content: '<path d="M7 6V0H6v6H0v1h6v6h1V7h6V6H7z"/>',

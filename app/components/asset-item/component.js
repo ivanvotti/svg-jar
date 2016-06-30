@@ -3,13 +3,13 @@ import computed from 'ember-computed';
 import get from 'ember-metal/get';
 
 export default Component.extend({
-  classNames: ['c-jar-item'],
+  classNames: ['c-asset-item'],
   classNameBindings: ['isActive'],
-  item: null,
-  currentItem: null,
+  asset: null,
+  currentAsset: null,
 
-  isActive: computed('currentItem', function() {
-    return get(this, 'item') === get(this, 'currentItem');
+  isActive: computed('currentAsset', function() {
+    return get(this, 'asset') === get(this, 'currentAsset');
   }),
 
   click() {
@@ -17,6 +17,6 @@ export default Component.extend({
       return;
     }
 
-    this.attrs.setCurrentItem(get(this, 'item'));
+    this.attrs.setCurrentAsset(get(this, 'asset'));
   }
 });

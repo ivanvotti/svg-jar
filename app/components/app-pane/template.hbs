@@ -1,10 +1,10 @@
-{{#if currentItem}}
+{{#if currentAsset}}
   <div class="c-app-pane__section">
     <div class="c-app-pane__title">
       Usage
     </div>
 
-    <pre class="c-app-pane__usage">{{currentItem.usage}}</pre>
+    <pre class="c-app-pane__usage">{{currentAsset.usage}}</pre>
   </div>
 
   <div class="c-app-pane__section">
@@ -13,35 +13,35 @@
     </div>
 
     <div class="c-app-pane__details">
-      <div class="c-details__item">
-        <div class="c-details__name">
+      <div class="c-asset-details__item">
+        <div class="c-asset-details__name">
           Name
         </div>
 
-        <div class="c-details__value">
-          {{currentItem.name}}
+        <div class="c-asset-details__value">
+          {{currentAsset.name}}
         </div>
       </div>
 
-      <div class="c-details__item">
-        <div class="c-details__name">
+      <div class="c-asset-details__item">
+        <div class="c-asset-details__name">
           Grid size
         </div>
 
-        <div class="c-details__value">
-          {{currentItem.svg.width}}x{{currentItem.svg.height}}
+        <div class="c-asset-details__value">
+          {{currentAsset.svg.width}}x{{currentAsset.svg.height}}
         </div>
       </div>
 
-      {{#if currentItem.tags}}
-        <div class="c-details__item">
-          <div class="c-details__name">
+      {{#if currentAsset.tags}}
+        <div class="c-asset-details__item">
+          <div class="c-asset-details__name">
             Tags
           </div>
 
-          <div class="c-details__value">
-            {{#each currentItem.tags as |tag|}}
-              <span class="c-details__tag">
+          <div class="c-asset-details__value">
+            {{#each currentAsset.tags as |tag|}}
+              <span class="c-asset-details__tag">
                 {{tag}}
               </span>
             {{/each}}
@@ -49,13 +49,13 @@
         </div>
       {{/if}}
 
-      {{#each currentItem.details as |detailsItem|}}
-        <div class="c-details__item">
-          <div class="c-details__name">
+      {{#each currentAsset.details as |detailsItem|}}
+        <div class="c-asset-details__item">
+          <div class="c-asset-details__name">
             {{detailsItem.name}}
           </div>
 
-          <div class="c-details__value">
+          <div class="c-asset-details__value">
             {{detailsItem.value}}
           </div>
         </div>

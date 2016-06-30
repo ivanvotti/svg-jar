@@ -1,11 +1,11 @@
 <div class="c-app-main">
   <div class="c-app-content">
-    {{jar-list
-      items=items
-      currentItem=currentItem
-      setCurrentItem=(action "setCurrentItem")
+    {{asset-list
+        assets=assets
+        currentAsset=currentAsset
+        setCurrentAsset=(action "setCurrentAsset")
     }}
   </div>
 
-  {{app-pane currentItem=currentItem}}
+  {{app-pane currentAsset=currentAsset}}
 </div>

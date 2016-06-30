@@ -1,0 +1,7 @@
+{{#each assets as |asset|}}
+  {{asset-item
+      asset=asset
+      currentAsset=currentAsset
+      setCurrentAsset=(action setCurrentAsset)
+  }}
+{{/each}}
