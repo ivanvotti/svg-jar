@@ -9,7 +9,7 @@
 
   <div class="c-app-pane__section">
     <div class="c-app-pane__title">
-      Information
+      Details
     </div>
 
     <div class="c-app-pane__details">
@@ -39,25 +39,17 @@
         </div>
       {{/if}}
 
-      <div class="c-details__item">
-        <div class="c-details__name">
-          Grid size
-        </div>
+      {{#each currentItem.details as |detailsItem|}}
+        <div class="c-details__item">
+          <div class="c-details__name">
+            {{detailsItem.name}}
+          </div>
 
-        <div class="c-details__value">
-          {{currentItem.gridSize}}px
+          <div class="c-details__value">
+            {{detailsItem.value}}
+          </div>
         </div>
-      </div>
-
-      <div class="c-details__item">
-        <div class="c-details__name">
-          File size
-        </div>
-
-        <div class="c-details__value">
-          {{currentItem.fileSize}} Kb
-        </div>
-      </div>
+      {{/each}}
     </div>
   </div>
 {{else}}
