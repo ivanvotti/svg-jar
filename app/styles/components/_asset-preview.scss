@@ -9,4 +9,9 @@
   &:last-child {
     margin-right: 0;
   }
+
+  &--base {
+    max-height: 100px;
+    max-width: 100px;
+  }
 }
