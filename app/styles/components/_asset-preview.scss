@@ -1,0 +1,12 @@
+.c-asset-preview {
+  display: flex;
+  align-items: center;
+}
+
+.c-asset-preview__item {
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
