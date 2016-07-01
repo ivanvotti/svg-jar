@@ -1,10 +1,16 @@
 .c-app-pane {
+  display: flex;
+  flex-direction: column;
   width: 300px;
+  flex-shrink: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: #fafafa;
   border-left: 1px solid #ddd;
 }
 
 .c-app-pane__section {
+  flex-shrink: 0;
   padding: 18px 16px;
   border-bottom: 1px solid #eee;
 
@@ -25,4 +31,13 @@
 .c-app-pane__usage {
   margin: 0;
   padding: 0;
+}
+
+.c-app-pane__placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  font-size: 15px;
+  color: #888;
 }
