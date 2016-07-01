@@ -9,6 +9,7 @@
 /bower_components
 
 # misc
+/public/svg-jar-demo.json
 /.sass-cache
 /connect.lock
 /coverage/*
