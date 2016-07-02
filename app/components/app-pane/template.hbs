@@ -8,7 +8,7 @@
       Usage
     </div>
 
-    <pre class="c-app-pane__usage">{{currentAsset.usage}}</pre>
+    {{asset-usage asset=currentAsset}}
   </div>
 
   <div class="c-app-pane__section">
@@ -16,55 +16,7 @@
       Details
     </div>
 
-    <div class="c-app-pane__details">
-      <div class="c-asset-details__item">
-        <div class="c-asset-details__name">
-          Name
-        </div>
-
-        <div class="c-asset-details__value">
-          {{currentAsset.name}}
-        </div>
-      </div>
-
-      <div class="c-asset-details__item">
-        <div class="c-asset-details__name">
-          Grid size
-        </div>
-
-        <div class="c-asset-details__value">
-          {{currentAsset.svg.width}}x{{currentAsset.svg.height}}
-        </div>
-      </div>
-
-      {{#if currentAsset.tags}}
-        <div class="c-asset-details__item">
-          <div class="c-asset-details__name">
-            Tags
-          </div>
-
-          <div class="c-asset-details__value">
-            {{#each currentAsset.tags as |tag|}}
-              <span class="c-asset-details__tag">
-                {{tag}}
-              </span>
-            {{/each}}
-          </div>
-        </div>
-      {{/if}}
-
-      {{#each currentAsset.details as |detailsItem|}}
-        <div class="c-asset-details__item">
-          <div class="c-asset-details__name">
-            {{detailsItem.name}}
-          </div>
-
-          <div class="c-asset-details__value">
-            {{detailsItem.value}}
-          </div>
-        </div>
-      {{/each}}
-    </div>
+    {{asset-details asset=currentAsset}}
   </div>
 {{else}}
   <div class="c-app-pane__placeholder">

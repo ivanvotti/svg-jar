@@ -4,6 +4,7 @@ import get from 'ember-metal/get';
 
 export default Component.extend({
   classNames: ['c-asset-preview'],
+  asset: null,
 
   isScaleUpNeeded: computed('asset', function() {
     let height = get(this, 'asset.svg.height');

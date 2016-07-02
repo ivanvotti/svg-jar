@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['c-app-pane'],
-  currentAsset: null
+  classNames: ['c-asset-usage'],
+  asset: null
 });
