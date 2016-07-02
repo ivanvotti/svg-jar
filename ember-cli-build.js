@@ -6,6 +6,10 @@ module.exports = function(defaults) {
       // Fixes ember-cli-sass, that includes an outdated node-sass version,
       // that doesn't work with Node.js 6
       nodeSass: require('node-sass')
+    },
+
+    fingerprint: {
+      enabled: false
     }
   });
 
