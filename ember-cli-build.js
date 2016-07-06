@@ -14,6 +14,7 @@ module.exports = function(defaults) {
 
     svgJar: {
       sourceDirs: ['svgs'],
+      embedDemo: false,
       strategy: 'symbol',
       symbolsPrefix: 'icon-'
     }
