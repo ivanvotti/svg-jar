@@ -1,4 +1,4 @@
-import { multiply } from 'svg-jar-demo/helpers/multiply';
+import { multiply } from 'svg-jar/helpers/multiply';
 import { module, test } from 'qunit';
 
 module('Unit | Helper | multiply');

@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'svg-jar-demo',
+    modulePrefix: 'svg-jar',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',

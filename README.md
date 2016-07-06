@@ -1,7 +1,6 @@
-# Svg-jar-demo
+# SVGJar (WIP)
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+An easy way to organize, search and use SVG assets in your project.
 
 ## Prerequisites
 

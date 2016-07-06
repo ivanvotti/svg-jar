@@ -1,7 +1,7 @@
 {
-  "name": "svg-jar-demo",
+  "name": "svg-jar",
   "version": "0.0.1",
-  "description": "Small description for svg-jar-demo goes here",
+  "description": "Visual workflow for SVG assets (WIP)",
   "private": true,
   "directories": {
     "doc": "doc",

@@ -1,4 +1,4 @@
-import copyToClipboard from 'svg-jar-demo/utils/copy-to-clipboard';
+import copyToClipboard from 'svg-jar/utils/copy-to-clipboard';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | copy to clipboard');

@@ -1,4 +1,4 @@
-import selectElemText from 'svg-jar-demo/utils/select-elem-text';
+import selectElemText from 'svg-jar/utils/select-elem-text';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | select elem text');

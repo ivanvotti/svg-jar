@@ -3,7 +3,7 @@ import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 import on from 'ember-evented/on';
 import { EKMixin, EKOnInsertMixin, keyDown } from 'ember-keyboard';
-import copyToClipboard from 'svg-jar-demo/utils/copy-to-clipboard';
+import copyToClipboard from 'svg-jar/utils/copy-to-clipboard';
 
 export default Component.extend(EKMixin, EKOnInsertMixin, {
   classNames: ['c-app-container'],
