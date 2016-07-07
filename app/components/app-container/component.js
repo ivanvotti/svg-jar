@@ -11,7 +11,7 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   currentAsset: null,
 
   onEnter: on(keyDown('Enter'), function(event) {
-    let assetCopypasta = get(this, 'currentAsset.usage');
+    let assetCopypasta = get(this, 'currentAsset.copypasta');
 
     if (assetCopypasta) {
       event.preventDefault();
