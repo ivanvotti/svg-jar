@@ -2,5 +2,6 @@ import Component from 'ember-component';
 
 export default Component.extend({
   classNames: ['c-asset-list'],
-  assets: null
+  assets: null,
+  groupBy: null
 });

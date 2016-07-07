@@ -1,10 +1,35 @@
 <div class="c-app-main">
   <div class="c-app-content">
-    {{asset-list
-        assets=assets
-        currentAsset=currentAsset
-        setCurrentAsset=(action "setCurrentAsset")
-    }}
+    {{#if groupBy}}
+      {{#each-in
+          (group-by groupBy assets)
+          as |groupName groupItems|
+      }}
+        <div class="c-asset-group">
+          <div class="c-asset-group__header">
+            <span class="c-asset-group__title">
+              {{groupName}}
+            </span>
+
+            <span class="c-asset-group__count">
+              {{groupItems.length}} Items
+            </span>
+          </div>
+
+          {{asset-list
+              assets=groupItems
+              currentAsset=currentAsset
+              setCurrentAsset=(action "setCurrentAsset")
+          }}
+        </div>
+      {{/each-in}}
+    {{else}}
+      {{asset-list
+          assets=assets
+          currentAsset=currentAsset
+          setCurrentAsset=(action "setCurrentAsset")
+      }}
+    {{/if}}
   </div>
 
   {{app-pane currentAsset=currentAsset}}

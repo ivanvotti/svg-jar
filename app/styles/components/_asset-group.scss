@@ -1,0 +1,27 @@
+.c-asset-group {
+  border-top: 1px solid #eee;
+
+  &:first-child {
+    border-top: 0;
+  }
+}
+
+.c-asset-group__header {
+  padding: 8px 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.c-asset-group__title {
+  font-size: 12px;
+  color: #777;
+}
+
+.c-asset-group__count {
+  font-size: 11px;
+  color: #999;
+
+  &::before {
+    margin: 0 4px;
+    content: "–";
+  }
+}
