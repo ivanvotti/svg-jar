@@ -1,0 +1,92 @@
+/**
+  Button component
+*/
+
+.c-btn {
+  display: inline-block;
+  padding: $btn-padding-y $btn-padding-x;
+
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  transition: background, opacity 0.2s ease-in-out;
+
+  cursor: pointer;
+
+  &[disabled],
+  &--disabled {
+    opacity: 0.5;
+
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &--small {
+    padding: $btn-small-padding-y $btn-small-padding-x;
+
+    font-size: 12px;
+  }
+
+  &--big {
+    padding: $btn-big-padding-y $btn-big-padding-x;
+  }
+
+  &--full {
+    display: block;
+    width: 100%;
+  }
+
+  &--primary {
+    color: $btn-primary-text;
+    border-color: $btn-primary-border;
+    background: $btn-primary-bg;
+
+    &:hover:not(:disabled) {
+      background: $btn-primary-bg-hover;
+    }
+
+    &:active:not(:disabled) {
+      background: $btn-primary-bg-active;
+    }
+  }
+
+  &--secondary {
+    color: $btn-secondary-text;
+    border-color: $btn-secondary-border;
+    background: $btn-secondary-bg;
+
+    &:hover:not(:disabled) {
+      background: $btn-secondary-bg-hover;
+    }
+
+    &:active:not(:disabled) {
+      background: $btn-secondary-bg-active;
+    }
+  }
+
+  &--tertiary {
+    color: $btn-tertiary-text;
+    border-color: $btn-tertiary-border;
+    background: $btn-tertiary-bg;
+
+    &:hover:not(:disabled) {
+      background: $btn-tertiary-bg-hover;
+    }
+
+    &:active:not(:disabled) {
+      background: $btn-tertiary-bg-active;
+    }
+  }
+}
