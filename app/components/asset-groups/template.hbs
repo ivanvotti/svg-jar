@@ -1,0 +1,19 @@
+{{#each-in (group-by arrangeBy assets) as |groupName groupItems|}}
+  <div class="c-asset-group">
+    <div class="c-asset-group__header">
+      <span class="c-asset-group__title">
+        {{groupName}}
+      </span>
+
+      <span class="c-asset-group__count">
+        {{groupItems.length}} Items
+      </span>
+    </div>
+
+    {{asset-list
+        assets=groupItems
+        currentAsset=currentAsset
+        setCurrentAsset=(action setCurrentAsset)
+    }}
+  </div>
+{{/each-in}}

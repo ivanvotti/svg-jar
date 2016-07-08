@@ -1,0 +1,23 @@
+{{#if dropdownItems}}
+  {{#button-dropdown alignment="right" as |section|}}
+    {{#if section.isButton}}
+      Arrange by
+    {{else if section.isDropdown}}
+      {{#each dropdownItems as |dropdownItem|}}
+        {{link-to dropdownItem.name
+            "index"
+            (query-params arrangeBy=dropdownItem.value)
+            class="c-dropdown__item"
+        }}
+      {{/each}}
+
+      <div class="c-dropdown__divider"></div>
+
+      {{link-to "None"
+          "index"
+          (query-params arrangeBy=null)
+          class="c-dropdown__item"
+      }}
+    {{/if}}
+  {{/button-dropdown}}
+{{/if}}
