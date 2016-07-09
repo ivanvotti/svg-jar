@@ -4,12 +4,12 @@
 <div class="c-app-navbar__section">
   {{query-dropdown
       class="u-mar-right-s"
-      dropdownAlignment="right"
       buttonName="Sort by"
       queryParamName="sortBy"
       dropdownItems=sortDropdownItems
   }}
 
+  {{!-- TODO: Get rid of the dropdownAlignment, when auto alignment is implemented. --}}
   {{query-dropdown
       dropdownAlignment="right"
       buttonName="Arrange by"

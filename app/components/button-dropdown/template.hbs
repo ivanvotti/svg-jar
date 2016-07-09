@@ -1,15 +1,13 @@
 {{#if isDropdownActive}}
-  {{#ember-wormhole to="modals"}}
-    {{#c-dropdown
-        attachment=attachment
-        targetAttachment=targetAttachment
-        target=(concat ".js-dropdown-button-" elementId)
-        clickOutsideToClose=true
-        close=(toggle-action "isDropdownActive" this)
-    }}
-      {{yield (hash isDropdown=true)}}
-    {{/c-dropdown}}
-  {{/ember-wormhole}}
+  {{#c-dropdown
+      attachment=attachment
+      targetAttachment=targetAttachment
+      target=(concat ".js-dropdown-button-" elementId)
+      clickOutsideToClose=true
+      close=(toggle-action "isDropdownActive" this)
+  }}
+    {{yield (hash isDropdown=true)}}
+  {{/c-dropdown}}
 {{/if}}
 
 <button

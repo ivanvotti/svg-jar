@@ -5,7 +5,7 @@
 .c-dropdown {
   position: relative;
   z-index: 9000;
-  width: 200px;
+  max-width: 200px;
   border-radius: 3px;
   box-shadow: 0 0 1px 1px rgba(0,0,0,0.15), 0 2px 12px 0 rgba(0,0,0,0.12);
   background-color: white;
@@ -13,22 +13,12 @@
 }
 
 .c-dropdown__item {
+  @include text-truncate();
   display: block;
-  width: 100%;
   padding: 4px 22px;
   padding-left: 0;
-  font-weight: 400;
   color: #373a3c;
-  text-align: inherit;
-  white-space: nowrap;
   text-decoration: none;
-
-  &:hover,
-  &:active {
-    color: #2b2d2f;
-    text-decoration: none;
-    background-color: #f5f5f5;
-  }
 
   &:first-child {
     border-radius: 3px 3px 0 0;
@@ -36,6 +26,13 @@
 
   &:last-child {
     border-radius: 0 0 3px 3px;
+  }
+
+  &:hover,
+  &:active {
+    color: #2b2d2f;
+    text-decoration: none;
+    background-color: #f5f5f5;
   }
 
   &::before {

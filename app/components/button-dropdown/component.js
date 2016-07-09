@@ -3,6 +3,7 @@ import computed from 'ember-computed';
 import get from 'ember-metal/get';
 
 export default Component.extend({
+  tagName: '',
   alignment: 'left',
 
   attachment: computed('alignment', function() {
