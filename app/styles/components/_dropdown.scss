@@ -15,10 +15,13 @@
 .c-dropdown__item {
   @include text-truncate();
   display: block;
-  padding: 4px 22px;
+  padding: 3px 22px;
   padding-left: 0;
   color: #373a3c;
+  font-size: 12px;
   text-decoration: none;
+  text-transform: capitalize;
+  transition: background-color 0.1s ease-in-out;
 
   &:first-child {
     border-radius: 3px 3px 0 0;

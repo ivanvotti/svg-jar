@@ -1,0 +1,15 @@
+<div class="c-sidebar-filter">
+  {{#link-to "index"
+      (query-pair "filterBy" null)
+      class="c-sidebar-filter__item"
+      activeClass="is-active"
+  }}
+    <span class="c-sidebar-filter__name">
+      All assets
+    </span>
+  {{/link-to}}
+</div>
+
+{{#each sidebarFilters as |sidebarFilter|}}
+  {{sidebar-filter filter=sidebarFilter}}
+{{/each}}

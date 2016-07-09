@@ -5,8 +5,8 @@
   flex-shrink: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  background: #fafafa;
-  border-left: 1px solid #ddd;
+  background: #fdfdfd;
+  border-left: 1px solid #e5e5e5;
 }
 
 .c-app-pane__section {
@@ -21,10 +21,10 @@
 
 .c-app-pane__title {
   margin-bottom: 8px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #555;
 }
 

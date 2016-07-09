@@ -1,0 +1,21 @@
+{{#if filter.items.length}}
+  <div class="c-sidebar-filter__title">
+    by {{filter.name}}
+  </div>
+
+  {{#each filter.items as |item|}}
+    {{#link-to "index"
+        (query-params filterBy=(concat filter.param ":" item.name))
+        class="c-sidebar-filter__item"
+        activeClass="is-active"
+    }}
+      <span class="c-sidebar-filter__name">
+        {{item.name}}
+      </span>
+
+      <span class="c-sidebar-filter__count">
+        {{item.count}}
+      </span>
+    {{/link-to}}
+  {{/each}}
+{{/if}}
