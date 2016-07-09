@@ -1,12 +1,12 @@
 {{#if dropdownItems}}
-  {{#button-dropdown alignment="right" as |section|}}
+  {{#button-dropdown alignment=dropdownAlignment as |section|}}
     {{#if section.isButton}}
-      Arrange by
+      {{buttonName}}
     {{else if section.isDropdown}}
       {{#each dropdownItems as |dropdownItem|}}
         {{link-to dropdownItem.name
             "index"
-            (query-params arrangeBy=dropdownItem.value)
+            (query-pair queryParamName dropdownItem.value)
             class="c-dropdown__item"
         }}
       {{/each}}
@@ -15,7 +15,7 @@
 
       {{link-to "None"
           "index"
-          (query-params arrangeBy=null)
+          (query-pair queryParamName null)
           class="c-dropdown__item"
       }}
     {{/if}}

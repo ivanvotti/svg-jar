@@ -1,19 +1,20 @@
 {{app-navbar
     arrangeDropdownItems=arrangeDropdownItems
+    sortDropdownItems=sortDropdownItems
 }}
 
 <div class="c-app-main">
   <div class="c-app-content">
     {{#if arrangeBy}}
       {{asset-groups
-          assets=assets
+          assets=sortedAssets
           currentAsset=currentAsset
           arrangeBy=arrangeBy
           setCurrentAsset=(action "setCurrentAsset")
       }}
     {{else}}
       {{asset-list
-          assets=assets
+          assets=sortedAssets
           currentAsset=currentAsset
           setCurrentAsset=(action "setCurrentAsset")
       }}

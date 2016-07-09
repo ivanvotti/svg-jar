@@ -2,5 +2,18 @@
 </div>
 
 <div class="c-app-navbar__section">
-  {{arrange-button dropdownItems=arrangeDropdownItems}}
+  {{query-dropdown
+      class="u-mar-right-s"
+      dropdownAlignment="right"
+      buttonName="Sort by"
+      queryParamName="sortBy"
+      dropdownItems=sortDropdownItems
+  }}
+
+  {{query-dropdown
+      dropdownAlignment="right"
+      buttonName="Arrange by"
+      queryParamName="arrangeBy"
+      dropdownItems=arrangeDropdownItems
+  }}
 </div>
