@@ -1,28 +1,22 @@
 .c-asset-details__item {
-  margin-bottom: 2px;
   display: flex;
+  margin-bottom: 2px;
   justify-content: space-between;
 }
 
 .c-asset-details__name {
+  @include text-truncate();
+  margin-right: 6px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  font-size: 12px;
   color: #777;
-  font-size: 13px;
+  text-transform: capitalize;
 }
 
 .c-asset-details__value {
-  color: #888;
+  @include text-truncate();
   text-align: right;
-  font-size: 13px;
-}
-
-.c-asset-details__tag {
-  margin-right: 6px;
-  padding: 0 8px;
   font-size: 12px;
-  border-radius: 3px;
-  background-color: #eee;
-
-  &:last-child {
-    margin-right: 0;
-  }
+  color: #999;
 }

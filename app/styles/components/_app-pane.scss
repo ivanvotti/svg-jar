@@ -36,3 +36,18 @@
   font-size: 15px;
   color: #888;
 }
+
+.c-app-pane__badge {
+  display: inline-block;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  padding: 0 8px;
+  word-wrap: nowrap;
+  font-size: 11px;
+  border-radius: 3px;
+  background-color: #eee;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

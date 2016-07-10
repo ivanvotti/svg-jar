@@ -1,47 +1,11 @@
-<div class="c-asset-details__item">
-  <div class="c-asset-details__name">
-    Name
-  </div>
-
-  <div class="c-asset-details__value">
-    {{asset.name}}
-  </div>
-</div>
-
-<div class="c-asset-details__item">
-  <div class="c-asset-details__name">
-    Grid size
-  </div>
-
-  <div class="c-asset-details__value">
-    {{asset.svg.width}}x{{asset.svg.height}}
-  </div>
-</div>
-
-{{#if asset.tags}}
-  <div class="c-asset-details__item">
-    <div class="c-asset-details__name">
-      Tags
-    </div>
-
-    <div class="c-asset-details__value">
-      {{#each asset.tags as |tag|}}
-        <span class="c-asset-details__tag">
-          {{tag}}
-        </span>
-      {{/each}}
-    </div>
-  </div>
-{{/if}}
-
-{{#each asset.details as |detailsItem|}}
+{{#each detailsItems as |detailsItem|}}
   <div class="c-asset-details__item">
     <div class="c-asset-details__name">
       {{detailsItem.name}}
     </div>
 
     <div class="c-asset-details__value">
-      {{detailsItem.value}}
+      {{get asset detailsItem.key}}
     </div>
   </div>
 {{/each}}
