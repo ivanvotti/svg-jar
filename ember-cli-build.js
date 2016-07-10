@@ -20,6 +20,7 @@ module.exports = function(defaults) {
     }
   });
 
+  app.import(app.bowerDirectory + '/velocity/velocity.js');
   app.import(app.bowerDirectory + '/normalize-css/normalize.css');
 
   return app.toTree();

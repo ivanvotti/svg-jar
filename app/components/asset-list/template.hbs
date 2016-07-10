@@ -1,7 +1,9 @@
 {{#each assets as |asset|}}
-  {{asset-item
-      asset=asset
-      currentAsset=currentAsset
-      setCurrentAsset=(action setCurrentAsset)
-  }}
+  <div class="js-asset-item">
+    {{asset-item
+        asset=asset
+        currentAsset=currentAsset
+        setCurrentAsset=(action setCurrentAsset)
+    }}
+  </div>
 {{/each}}

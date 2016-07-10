@@ -36,6 +36,36 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     }
   }),
 
+  didInsertElement() {
+    this._super(...arguments);
+    this.animateAssetListItems();
+  },
+
+  /**
+    ExpandIn transition for asset list items.
+    It's used for initial application redner only.
+  */
+  animateAssetListItems() {
+    this.$('.js-asset-item').velocity(
+      {
+        opacity: [1, 0],
+        transformOriginX: ['50%', '50%'],
+        transformOriginY: ['50%', '50%'],
+        scaleX: [1, 0.625],
+        scaleY: [1, 0.625],
+        translateZ: 0
+      },
+      {
+        duration: 500,
+
+        // Cleanup Velocity inline styles.
+        complete(targets) {
+          targets.forEach((target) => target.removeAttribute('style'));
+        }
+      }
+    );
+  },
+
   actions: {
     setCurrentAsset(asset) {
       set(this, 'currentAsset', asset);
