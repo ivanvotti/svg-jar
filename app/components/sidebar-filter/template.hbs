@@ -5,7 +5,7 @@
 
   {{#each filter.items as |item|}}
     {{#link-to "index"
-        (query-params filterBy=(concat filter.param ":" item.name))
+        (query-params filterBy=(concat filter.key ":" item.name))
         class="c-sidebar-filter__item"
         activeClass="is-active"
     }}

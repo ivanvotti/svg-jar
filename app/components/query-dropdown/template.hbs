@@ -6,7 +6,7 @@
       {{#each dropdownItems as |dropdownItem|}}
         {{link-to dropdownItem.name
             "index"
-            (query-pair queryParamName dropdownItem.param)
+            (query-pair queryParamName dropdownItem.key)
             class="c-dropdown__item"
         }}
       {{/each}}
