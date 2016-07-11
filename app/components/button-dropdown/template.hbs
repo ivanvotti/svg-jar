@@ -10,8 +10,12 @@
 {{/if}}
 
 <button
-  class="c-btn c-btn--secondary c-btn--small c-dropdown__trigger js-dropdown-trigger-{{elementId}}"
+  class="c-dropdown__trigger js-dropdown-trigger-{{elementId}}"
   onclick={{action "toggleDropdown"}}
 >
-  {{yield (hash isButton=true)}}
+  <span class="c-dropdown__trigger-text">
+    {{yield (hash isButton=true)}}
+  </span>
+
+  <span class="c-dropdown__trigger-arrow"></span>
 </button>
