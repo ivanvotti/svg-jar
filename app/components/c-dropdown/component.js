@@ -5,7 +5,7 @@ import $ from 'jquery';
 
 export default Component.extend({
   tagName: '',
-  target: null,
+  triggerClass: null,
   attachment: 'top left',
   targetAttachment: 'bottom left',
   offset: '-4px 0',
@@ -31,11 +31,16 @@ export default Component.extend({
   initClickOutsideToClose() {
     run.next(() => {
       $(document).on('click.c-dropdown', (event) => {
-        let isInsideClick = $(event.target).closest('.c-dropdown').length;
+        let $target = $(event.target);
+        let triggerClass = get(this, 'triggerClass');
+        let isTriggerClick = $target.hasClass(triggerClass)
+        let isInsideClick = $target.closest('.c-dropdown').length;
 
-        if (!isInsideClick) {
-          this.attrs.close();
+        if (isTriggerClick || isInsideClick) {
+          return;
         }
+
+        this.attrs.close();
       });
     });
   },

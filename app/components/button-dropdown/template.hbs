@@ -1,8 +1,8 @@
 {{#if isDropdownActive}}
   {{#c-dropdown
+      triggerClass=(concat "js-dropdown-button-" elementId)
       attachment=attachment
       targetAttachment=targetAttachment
-      target=(concat ".js-dropdown-button-" elementId)
       clickOutsideToClose=true
       close=(toggle-action "isDropdownActive" this)
   }}
