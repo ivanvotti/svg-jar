@@ -67,3 +67,10 @@
     opacity: 1;
   }
 }
+
+// FIXME: change `ember-tether-enabled` to `is-active`
+.c-dropdown__trigger {
+  &.ember-tether-enabled {
+    opacity: 0.7;
+  }
+}

@@ -1,6 +1,6 @@
 {{#if isOpen}}
   {{#c-dropdown
-      triggerClass=(concat "js-dropdown-button-" elementId)
+      triggerClass=(concat "js-dropdown-trigger-" elementId)
       attachment=attachment
       targetAttachment=targetAttachment
       close=(action "toggleDropdown")
@@ -10,7 +10,7 @@
 {{/if}}
 
 <button
-  class="c-btn c-btn--secondary c-btn--small js-dropdown-button-{{elementId}}"
+  class="c-btn c-btn--secondary c-btn--small c-dropdown__trigger js-dropdown-trigger-{{elementId}}"
   onclick={{action "toggleDropdown"}}
 >
   {{yield (hash isButton=true)}}
