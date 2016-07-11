@@ -4,7 +4,7 @@ import get from 'ember-metal/get';
 
 export default Component.extend({
   classNames: ['c-asset-item'],
-  classNameBindings: ['isActive'],
+  classNameBindings: ['isActive', 'isActive:js-active-asset'],
   asset: null,
   currentAsset: null,
 

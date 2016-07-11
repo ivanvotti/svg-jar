@@ -42,18 +42,26 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     return sortBy ? assets.sortBy(sortBy) : assets;
   }),
 
+  didInsertElement() {
+    this._super(...arguments);
+    this.animateAssetListItems();
+  },
+
   onEnter: on(keyDown('Enter'), function(event) {
     let assetCopypasta = get(this, 'currentAsset.copypasta');
 
     if (assetCopypasta) {
       event.preventDefault();
-      copyToClipboard(assetCopypasta);
+
+      if (copyToClipboard(assetCopypasta)) {
+        this.animateCopiedAsset();
+      }
     }
   }),
 
-  didInsertElement() {
-    this._super(...arguments);
-    this.animateAssetListItems();
+  animateCopiedAsset() {
+    this.$('.js-active-asset')
+      .velocity('callout.pulse', { duration: 300 });
   },
 
   /**
@@ -61,24 +69,14 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     It's used for initial application redner only.
   */
   animateAssetListItems() {
-    this.$('.js-asset-item').velocity(
-      {
-        opacity: [1, 0],
-        transformOriginX: ['50%', '50%'],
-        transformOriginY: ['50%', '50%'],
-        scaleX: [1, 0.625],
-        scaleY: [1, 0.625],
-        translateZ: 0
-      },
-      {
-        duration: 500,
+    this.$('.js-asset-item').velocity('transition.expandIn', {
+      duration: 500,
 
-        // Cleanup Velocity inline styles.
-        complete(targets) {
-          targets.forEach((target) => target.removeAttribute('style'));
-        }
+      // Cleanup Velocity inline styles.
+      complete(targets) {
+        targets.forEach((target) => target.removeAttribute('style'));
       }
-    );
+    });
   },
 
   actions: {

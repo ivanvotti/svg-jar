@@ -2,8 +2,7 @@ import selectElemText from './select-elem-text';
 
 function copySelectedText() {
   try {
-    document.execCommand('copy');
-    return true;
+    return document.execCommand('copy');
   } catch (err) {
     return false;
   }
