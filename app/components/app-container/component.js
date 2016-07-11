@@ -11,6 +11,7 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   model: null,
   sortBy: null,
   filterBy: null,
+  searchQuery: null,
   currentAsset: null,
 
   filteredAssets: computed('filterBy', function() {
@@ -20,8 +21,22 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     return filterBy ? assets.filterBy(...filterBy.split(':')) : assets;
   }),
 
-  assets: computed('filteredAssets', 'sortBy', function() {
+  foundAssets: computed('filteredAssets', 'searchQuery', function() {
     let assets = get(this, 'filteredAssets');
+    let query = get(this, 'searchQuery');
+    let keys = get(this, 'model.searchKeys');
+
+    if (query && keys) {
+      assets = assets.filter((asset) => (
+        keys.some((key) => asset[key] && asset[key].includes(query))
+      ));
+    }
+
+    return assets;
+  }),
+
+  assets: computed('foundAssets', 'sortBy', function() {
+    let assets = get(this, 'foundAssets');
     let sortBy = get(this, 'sortBy');
 
     return sortBy ? assets.sortBy(sortBy) : assets;

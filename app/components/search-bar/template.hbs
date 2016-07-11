@@ -1,0 +1,19 @@
+{{svg-jar "search" class="c-search-bar__icon"}}
+
+{{one-way-input searchQuery
+    class="c-search-bar__input"
+    placeholder="Search assets..."
+    keyEvents=(hash
+      27=(action "resetQuery")
+    )
+    update=(action setSearchQuery)
+}}
+
+{{#if searchQuery}}
+  <button
+    class="c-search-bar__reset"
+    {{action "resetQuery"}}
+  >
+    ✕
+  </button>
+{{/if}}

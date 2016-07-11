@@ -7,7 +7,7 @@ export default Route.extend({
 
   model() {
     return this.get('ajax').request('/svg-jar.json')
-      .catch(function(error) {
+      .catch((error) => {
         if (isNotFoundError(error)) {
           return { assets: [] };
         }
