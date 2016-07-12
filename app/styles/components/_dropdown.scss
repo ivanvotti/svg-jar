@@ -71,20 +71,17 @@
 // FIXME: change `ember-tether-enabled` to `is-active`
 .c-dropdown__trigger {
   display: inline-block;
-  height: 26px;
-  padding: 0 8px;
-  align-items: center;
-  border: 1px solid #aaa;
-  border-radius: 3px;
-  color: #777;
+  padding: 2px 8px;
+  border: 0;
   background: none;
+  color: #777;
   cursor: pointer;
   transition: color 0.1s ease-in;
   outline: none;
 
+  &:hover,
   &.ember-tether-enabled {
     color: $color-blue;
-    border-color: $color-blue;
   }
 }
 
@@ -104,6 +101,7 @@
   color: #777;
   transition: color 0.1s ease-in;
 
+  .c-dropdown__trigger:hover &,
   .ember-tether-enabled & {
     color: $color-blue;
   }

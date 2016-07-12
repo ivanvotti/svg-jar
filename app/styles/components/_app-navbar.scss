@@ -1,21 +1,33 @@
 .c-app-navbar {
   display: flex;
-  min-height: 48px;
-  padding: 0 14px;
+  min-height: 50px;
   flex-shrink: 0;
   align-items: center;
-  justify-content: space-between;
-  background: white;
-  border-bottom: 1px solid #ddd;
+  background: #fafafa;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .c-app-navbar__section {
   display: flex;
   align-items: center;
+
+  &--left {
+    width: 200px;
+    justify-content: center;
+  }
+
+  &--center {
+    flex-grow: 1;
+    justify-content: center;
+  }
+
+  &--right {
+    width: 300px;
+    padding: 0 14px;
+    justify-content: flex-end;
+  }
 }
 
 .c-app-navbar__logo {
-  font-size: 20px;
-  font-weight: 500;
-  color: #888;
+  height: 26px;
 }
