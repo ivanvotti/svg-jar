@@ -1,0 +1,51 @@
+.c-drawer {
+  max-height: 260px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+  text-align: center;
+  background: #fafafa;
+  border-top: 1px solid #e5e5e5;
+
+  // Prevent Chrome on Windows from adding a focus outline. For details, see
+  // https://github.com/twbs/bootstrap/pull/10951.
+  -webkit-overflow-scrolling: touch;
+}
+
+.c-drawer__body {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 12px 0;
+  text-align: left;
+}
+
+.c-drawer__title {
+  margin-bottom: 8px;
+  font-weight: 300;
+  font-size: 18px;
+  text-align: center;
+}
+
+.c-drawer__close {
+  margin: 0;
+  padding: 6px 24px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 26px;
+  font-weight: 300;
+  border: 0;
+  background: none;
+  color: #aaa;
+  transition: color 0.2s ease-out;
+  cursor: pointer;
+
+  &:hover {
+    color: #777;
+  }
+}

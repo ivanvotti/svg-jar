@@ -77,6 +77,11 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     event.preventDefault();
   }),
 
+  _toggleShortcutsBar: on(keyDown('shift+Slash'), function(event) {
+    this.attrs.toggleShortcutsBar();
+    event.preventDefault();
+  }),
+
   actions: {
     setCurrentAsset(asset) {
       set(this, 'currentAsset', asset);

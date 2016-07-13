@@ -5,4 +5,52 @@
     filterBy=filterBy
     searchQuery=query
     setSearchQuery=(action "setSearchQuery")
+    toggleShortcutsBar=(action "toggleShortcutsBar")
 }}
+
+{{#if isShortcutsShown}}
+  <div class="c-drawer">
+    <div class="c-drawer__body">
+      <div class="c-drawer__title">
+        Keyboard shortcuts
+      </div>
+
+      <button class="c-drawer__close" {{action "toggleShortcutsBar"}}>
+        ×
+      </button>
+
+      <div class="c-shortcuts-bar">
+        <table class="c-shortcuts-bar__section">
+          <tbody>
+            <tr>
+              <td class="c-shortcuts-bar__keys">
+                <kbd class="c-shortcuts-bar__key">Enter</kbd>
+              </td>
+              <td class="c-shortcuts-bar__info">
+                Copy selected asset to clipboard
+              </td>
+            </tr>
+
+            <tr>
+              <td class="c-shortcuts-bar__keys">
+                <kbd class="c-shortcuts-bar__key">/</kbd>
+              </td>
+              <td class="c-shortcuts-bar__info">
+                Focus search bar
+              </td>
+            </tr>
+
+            <tr>
+              <td class="c-shortcuts-bar__keys">
+                <kbd class="c-shortcuts-bar__key">?</kbd>
+              </td>
+              <td class="c-shortcuts-bar__info">
+                Show shortcuts
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{{/if}}
