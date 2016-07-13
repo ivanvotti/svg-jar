@@ -7,6 +7,7 @@ export default Component.extend({
   tagName: '',
   alignment: 'left',
   isOpen: false,
+  hasArrow: true,
 
   attachment: computed('alignment', function() {
     return `top ${get(this, 'alignment')}`;

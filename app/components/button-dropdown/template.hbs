@@ -13,9 +13,10 @@
   class="c-dropdown__trigger js-dropdown-trigger-{{elementId}}"
   onclick={{action "toggleDropdown"}}
 >
-  <span class="c-dropdown__trigger-text">
+  <div class="c-dropdown__trigger-inner">
     {{yield (hash isButton=true)}}
-  </span>
-
-  <span class="c-dropdown__trigger-arrow"></span>
+    {{#if hasArrow}}
+      {{svg-jar "arrow-down" class="c-icon c-icon--16px"}}
+    {{/if}}
+  </div>
 </button>

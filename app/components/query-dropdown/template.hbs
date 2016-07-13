@@ -1,7 +1,9 @@
 {{#if dropdownItems}}
   {{#button-dropdown alignment=dropdownAlignment as |section|}}
     {{#if section.isButton}}
-      {{buttonName}}
+      <span class="c-dropdown__trigger-text">
+        {{buttonName}}
+      </span>
     {{else if section.isDropdown}}
       {{#each dropdownItems as |dropdownItem|}}
         {{link-to dropdownItem.name

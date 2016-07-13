@@ -22,6 +22,7 @@
   text-decoration: none;
   text-transform: capitalize;
   transition: background-color 0.1s ease-in-out;
+  cursor: pointer;
 
   &:first-child {
     border-radius: 3px 3px 0 0;
@@ -85,24 +86,12 @@
   }
 }
 
-.c-dropdown__trigger-text {
-  margin-right: 4px;
+.c-dropdown__trigger-inner {
+  display: flex;
+  align-items: center;
 }
 
-.c-dropdown__trigger-arrow {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%) rotate(45deg);
-  border-right: 1px solid currentColor;
-  border-bottom: 1px solid currentColor;
-  color: #777;
-  transition: color 0.1s ease-in;
-
-  .c-dropdown__trigger:hover &,
-  .ember-tether-enabled & {
-    color: $color-blue;
-  }
+.c-dropdown__trigger-text {
+  font-size: 13px;
+  margin-right: 2px;
 }
