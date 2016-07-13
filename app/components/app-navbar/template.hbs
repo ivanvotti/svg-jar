@@ -27,7 +27,7 @@
 
   {{#button-dropdown alignment="right" hasArrow=false as |section|}}
     {{#if section.isButton}}
-      {{svg-jar "more" class="c-icon c-icon--24px"}}
+      {{svg-jar "more" class="c-icon c-icon--24px c-dropdown__trigger-icon"}}
     {{else if section.isDropdown}}
       <div class="c-dropdown__item" {{action showShortcutsBar}}>
         Show shortcuts
