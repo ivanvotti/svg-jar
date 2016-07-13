@@ -47,27 +47,6 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     this.animateAssetListItems();
   },
 
-  onEnter: on(keyDown('Enter'), function(event) {
-    let assetCopypasta = get(this, 'currentAsset.copypasta');
-
-    if (assetCopypasta) {
-      event.preventDefault();
-
-      if (copyToClipboard(assetCopypasta)) {
-        this.animateCopiedAsset();
-      }
-    }
-  }),
-
-  animateCopiedAsset() {
-    this.$('.js-active-asset')
-      .velocity('callout.pulse', { duration: 300 });
-  },
-
-  /**
-    ExpandIn transition for asset list items.
-    It's used for initial application redner only.
-  */
   animateAssetListItems() {
     this.$('.js-asset-item').velocity('transition.expandIn', {
       duration: 500,
@@ -78,6 +57,25 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
       }
     });
   },
+
+  animateCopiedAsset() {
+    this.$('.js-active-asset')
+      .velocity('callout.pulse', { duration: 300 });
+  },
+
+  copyCurrentAsset: on(keyDown('Enter'), function(event) {
+    let assetCopypasta = get(this, 'currentAsset.copypasta');
+
+    if (assetCopypasta && copyToClipboard(assetCopypasta)) {
+      this.animateCopiedAsset();
+      event.preventDefault();
+    }
+  }),
+
+  focusSearchBar: on(keyDown('Slash'), function(event) {
+    this.$('.js-search-bar-input').focus();
+    event.preventDefault();
+  }),
 
   actions: {
     setCurrentAsset(asset) {
