@@ -14,6 +14,11 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   searchQuery: null,
   currentAsset: null,
 
+  filterName: computed('filterBy', function() {
+    let filter = get(this, 'filterBy');
+    return filter && filter.split(':')[1];
+  }),
+
   filteredAssets: computed('filterBy', function() {
     let assets = get(this, 'model.assets');
     let filterBy = get(this, 'filterBy');

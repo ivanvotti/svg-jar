@@ -12,7 +12,33 @@
   {{/if}}
 
   <div class="c-app-content">
-    {{#if arrangeBy}}
+    {{#if (not assets.length)}}
+      <div class="c-placeholder">
+        {{#if searchQuery}}
+          <div class="c-placeholder__image">
+            {{svg-jar "search" class="c-icon c-icon--40x40px"}}
+          </div>
+        {{/if}}
+
+        <div class="c-placeholder__title">
+          {{#if searchQuery}}
+            We couldn’t find any assets matching
+            <span class="c-placeholder__code">
+              {{searchQuery}}
+            </span>
+          {{else}}
+            No assets found
+          {{/if}}
+
+          {{#if filterName}}
+            in
+            <span class="c-placeholder__code">
+              {{filterName}}
+            </span>
+          {{/if}}
+        </div>
+      </div>
+    {{else if arrangeBy}}
       {{asset-groups
           assets=assets
           currentAsset=currentAsset

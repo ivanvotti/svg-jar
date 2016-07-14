@@ -1,13 +1,19 @@
 .c-icon {
   fill: currentColor;
 
-  &--16 {
+  &--16px {
     height: 16px;
     line-height: 16px;
   }
 
-  &--24 {
+  &--24px {
     height: 24px;
     line-height: 24px;
+  }
+
+  &--40x40px {
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
   }
 }

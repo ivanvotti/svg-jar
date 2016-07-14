@@ -1,4 +1,6 @@
 .c-app-content {
+  display: flex;
+  flex-direction: column;
   overflow-x: hidden;
   overflow-y: auto;
   flex-grow: 1;
