@@ -26,7 +26,7 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     let query = get(this, 'searchQuery');
     let keys = get(this, 'model.searchKeys');
 
-    if (query && keys) {
+    if (query && query.length > 1 && keys) {
       assets = assets.filter((asset) => (
         keys.some((key) => asset[key] && asset[key].includes(query))
       ));
