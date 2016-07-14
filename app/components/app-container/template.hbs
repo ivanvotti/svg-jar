@@ -11,7 +11,7 @@
     {{app-sidebar sidebarFilters=model.filters}}
   {{/if}}
 
-  <div class="c-app-content">
+  <div class="c-app-content {{if (not assets.length) 'c-app-content--empty'}}">
     {{#if (not assets.length)}}
       <div class="c-placeholder">
         {{#if searchQuery}}
