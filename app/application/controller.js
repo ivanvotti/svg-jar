@@ -8,7 +8,7 @@ export default Controller.extend({
   sortBy: null,
   filterBy: null,
   query: '',
-  isShortcutsBarShown: false,
+  isShortcutsBarOpen: false,
 
   actions: {
     setSearchQuery(query) {
@@ -16,12 +16,12 @@ export default Controller.extend({
     },
 
     showShortcutsBar() {
-      set(this, 'isShortcutsBarShown', true);
+      set(this, 'isShortcutsBarOpen', true);
     },
 
     toggleShortcutsBar() {
-      let isShortcutsBarShown = get(this, 'isShortcutsBarShown');
-      set(this, 'isShortcutsBarShown', !isShortcutsBarShown);
+      let isShortcutsBarOpen = get(this, 'isShortcutsBarOpen');
+      set(this, 'isShortcutsBarOpen', !isShortcutsBarOpen);
     }
   }
 });
