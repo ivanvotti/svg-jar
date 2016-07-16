@@ -1,17 +1,17 @@
-{{app-navbar
-    arrangeDropdownItems=model.arrangeBy
-    sortDropdownItems=model.sortBy
-    searchQuery=searchQuery
-    setSearchQuery=(action setSearchQuery)
-    showShortcutsBar=(action showShortcutsBar)
-}}
+{{#if model.filters}}
+  {{app-sidebar sidebarFilters=model.filters}}
+{{/if}}
 
 <div class="c-app-main">
-  {{#if model.filters}}
-    {{app-sidebar sidebarFilters=model.filters}}
-  {{/if}}
+  {{content-header
+      arrangeDropdownItems=model.arrangeBy
+      sortDropdownItems=model.sortBy
+      searchQuery=searchQuery
+      setSearchQuery=(action setSearchQuery)
+      showShortcutsBar=(action showShortcutsBar)
+  }}
 
-  <div class="c-app-content {{if (not assets.length) 'c-app-content--empty'}}">
+  <div class="c-content {{if (not assets.length) 'c-content--empty'}}">
     {{#if (not assets.length)}}
       <div class="c-placeholder">
         {{#if searchQuery}}
@@ -53,9 +53,9 @@
       }}
     {{/if}}
   </div>
-
-  {{app-pane
-      currentAsset=currentAsset
-      detailsItems=model.details
-  }}
 </div>
+
+{{app-pane
+    currentAsset=currentAsset
+    detailsItems=model.details
+}}

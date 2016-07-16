@@ -6,3 +6,14 @@
   background: #fdfdfd;
   border-right: 1px solid #e5e5e5;
 }
+
+.c-app-sidebar__logo-wrap {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-app-sidebar__logo {
+  height: 26px;
+}

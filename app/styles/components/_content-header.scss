@@ -1,0 +1,16 @@
+.c-content-header {
+  display: flex;
+  min-height: 50px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.c-content-header__section {
+  display: flex;
+  padding: 0 18px;
+  align-items: center;
+}
+

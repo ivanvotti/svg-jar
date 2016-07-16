@@ -1,15 +1,11 @@
-<div class="c-app-navbar__section c-app-navbar__section--left">
-  {{svg-jar "logo" class="c-app-navbar__logo"}}
-</div>
-
-<div class="c-app-navbar__section c-app-navbar__section--center">
+<div class="c-content-header__section">
   {{search-bar
       searchQuery=searchQuery
       setSearchQuery=(action setSearchQuery)
   }}
 </div>
 
-<div class="c-app-navbar__section c-app-navbar__section--right">
+<div class="c-content-header__section">
   {{query-dropdown
       class="u-mar-right-s"
       buttonName="Sort by"
