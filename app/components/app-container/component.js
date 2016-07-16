@@ -2,6 +2,7 @@ import Component from 'ember-component';
 import computed from 'ember-computed';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
+import run from 'ember-runloop';
 import on from 'ember-evented/on';
 import { EKMixin, EKOnInsertMixin, keyDown } from 'ember-keyboard';
 import copyToClipboard from 'svg-jar/utils/copy-to-clipboard';
@@ -16,11 +17,13 @@ function doesMatch(target, query) {
 
 export default Component.extend(EKMixin, EKOnInsertMixin, {
   classNames: ['c-app-container'],
+  classNameBindings: ['isContentScrolled'],
   model: null,
   sortBy: null,
   filterBy: null,
   searchQuery: null,
   currentAsset: null,
+  isContentScrolled: false,
 
   filterName: computed('filterBy', function() {
     let filter = get(this, 'filterBy');
@@ -58,6 +61,29 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   didInsertElement() {
     this._super(...arguments);
     this.animateAssetListItems();
+    this.bindContentScrolling();
+  },
+
+  willDestroyElement() {
+    this._super(...arguments);
+    this.unbindContentScrolling();
+  },
+
+  bindContentScrolling() {
+    let scrollingTimeout = 10;
+
+    this.$('.js-content').on('scroll.scrolling', () => (
+      run.debounce(this, this.onContentScrolled, scrollingTimeout)
+    ));
+  },
+
+  unbindContentScrolling() {
+    this.$('.js-content').off('.scrolling');
+  },
+
+  onContentScrolled() {
+    let isContentScrolled = this.$('.js-content').scrollTop() !== 0;
+    set(this, 'isContentScrolled', isContentScrolled);
   },
 
   animateAssetListItems() {

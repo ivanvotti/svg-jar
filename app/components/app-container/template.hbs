@@ -13,7 +13,7 @@
       setSearchQuery=(action setSearchQuery)
   }}
 
-  <div class="c-content {{if (not assets.length) 'c-content--empty'}}">
+  <div class="c-content js-content {{if (not assets.length) 'c-content--empty'}}">
     {{#if (not assets.length)}}
       <div class="c-placeholder">
         {{#if searchQuery}}
