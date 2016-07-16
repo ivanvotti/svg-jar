@@ -1,5 +1,8 @@
 {{#if model.filters}}
-  {{app-sidebar sidebarFilters=model.filters}}
+  {{app-sidebar
+      sidebarFilters=model.filters
+      showShortcutsBar=(action showShortcutsBar)
+  }}
 {{/if}}
 
 <div class="c-app-main">
@@ -8,7 +11,6 @@
       sortDropdownItems=model.sortBy
       searchQuery=searchQuery
       setSearchQuery=(action setSearchQuery)
-      showShortcutsBar=(action showShortcutsBar)
   }}
 
   <div class="c-content {{if (not assets.length) 'c-content--empty'}}">
@@ -16,7 +18,7 @@
       <div class="c-placeholder">
         {{#if searchQuery}}
           <div class="c-placeholder__image">
-            {{svg-jar "search" class="c-icon c-icon--40x40px"}}
+            {{svg-jar "search-big"  class="c-icon c-icon--48x48px"}}
           </div>
         {{/if}}
 

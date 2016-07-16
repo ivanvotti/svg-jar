@@ -1,9 +1,10 @@
 .c-dropdown {
+  padding: 3px 0;
   position: relative;
   z-index: 9000;
   max-width: 200px;
   border-radius: 3px;
-  box-shadow: 0 0 1px 1px rgba(0,0,0,0.15), 0 2px 12px 0 rgba(0,0,0,0.12);
+  box-shadow: 0 0 1px 0 rgba(0,0,0,0.25), 0 2px 9px 0 rgba(0,0,0,0.2);
   background-color: white;
   animation: dropdownFadeIn 60ms linear;
 }
@@ -19,14 +20,6 @@
   text-transform: capitalize;
   transition: background-color 0.1s ease-in-out;
   cursor: pointer;
-
-  &:first-child {
-    border-radius: 3px 3px 0 0;
-  }
-
-  &:last-child {
-    border-radius: 0 0 3px 3px;
-  }
 
   &:hover,
   &:active {
@@ -50,7 +43,7 @@
 
 .c-dropdown__divider {
   height: 1px;
-  margin: 2px 0;
+  margin: 3px 0;
   overflow: hidden;
   background-color: #e5e5e5;
 }
@@ -71,7 +64,7 @@
   padding: 2px 8px;
   border: 0;
   background: none;
-  color: #777;
+  color: #999;
   cursor: pointer;
   transition: color 0.1s ease-in;
   outline: none;

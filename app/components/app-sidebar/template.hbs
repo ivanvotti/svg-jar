@@ -1,5 +1,13 @@
 <div class="c-app-sidebar__logo-wrap">
-  {{svg-jar "logo" class="c-app-sidebar__logo"}}
+  {{#button-dropdown as |section|}}
+    {{#if section.isButton}}
+      {{svg-jar "logo" class="c-app-sidebar__logo"}}
+    {{else if section.isDropdown}}
+      <div class="c-dropdown__item" {{action showShortcutsBar}}>
+        Show shortcuts
+      </div>
+    {{/if}}
+  {{/button-dropdown}}
 </div>
 
 <div class="c-sidebar-filter">
