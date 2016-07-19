@@ -4,7 +4,8 @@
     class="c-search-bar__input js-search-bar-input"
     placeholder="Search assets..."
     keyEvents=(hash
-      27=(action "resetQuery")
+      13=(action "onEnter")
+      27=(action "onEscape")
     )
     update=(action setSearchQuery)
 }}
