@@ -25,6 +25,8 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   currentAsset: null,
   isContentScrolled: false,
 
+  assets: computed.alias('sortedAssets'),
+
   filterName: computed('filterBy', function() {
     let filter = get(this, 'filterBy');
     return filter && filter.split(':')[1];
@@ -51,7 +53,7 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     return assets;
   }),
 
-  assets: computed('foundAssets', 'sortBy', function() {
+  sortedAssets: computed('foundAssets', 'sortBy', function() {
     let assets = get(this, 'foundAssets');
     let sortBy = get(this, 'sortBy');
 
