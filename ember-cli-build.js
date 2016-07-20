@@ -14,7 +14,10 @@ module.exports = function(defaults) {
 
     svgJar: {
       sourceDirs: ['svgs'],
-      embedDemo: false
+
+      viewer: {
+        embed: false
+      }
     }
   });
 
