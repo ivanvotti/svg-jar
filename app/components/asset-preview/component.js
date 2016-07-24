@@ -9,7 +9,8 @@ export default Component.extend({
   isScaleUpNeeded: computed('asset', function() {
     let height = get(this, 'asset.svg.height');
     let width = get(this, 'asset.svg.width');
+    let hasViewBox = !!get(this, 'asset.svg.viewBox');
 
-    return Math.max(height, width) <= 50;
+    return Math.max(height, width) <= 50 && hasViewBox;
   })
 });

@@ -35,6 +35,16 @@
         detailsItems=detailsItems
     }}
   </div>
+
+  {{#if (not currentAsset.svg.viewBox)}}
+    <div class="c-app-pane__section">
+      <div class="c-app-pane__title">
+        Errors
+      </div>
+
+      The viewBox is not set. This SVG is not scalable!
+    </div>
+  {{/if}}
 {{else}}
   <div class="c-placeholder">
     <div class="c-placeholder__title">
