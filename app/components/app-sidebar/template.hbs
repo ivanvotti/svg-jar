@@ -4,8 +4,22 @@
       {{svg-jar "logo" class="c-app-sidebar__logo"}}
     {{else if section.isDropdown}}
       <div class="c-dropdown__item" {{action showShortcutsBar}}>
-        Show shortcuts
+        Shortcuts
       </div>
+
+      <a href="https://github.com/ivanvotti/ember-svg-jar"
+        class="c-dropdown__item"
+        target="blank"
+      >
+        Contribute
+      </a>
+
+      <a href="https://github.com/ivanvotti/ember-svg-jar/blob/master/README.md"
+        class="c-dropdown__item"
+        target="blank"
+      >
+        About
+      </a>
     {{/if}}
   {{/button-dropdown}}
 </div>
