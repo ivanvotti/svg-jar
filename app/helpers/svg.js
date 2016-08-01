@@ -1,25 +1,20 @@
 import Ember from 'ember';
+import { helper } from 'ember-helper';
+import { htmlSafe } from 'ember-string';
+import { isNone } from 'ember-utils';
 
-const { copy, merge, isNone } = Ember;
-const { htmlSafe } = Ember.String;
+const { copy, merge } = Ember;
 
-export function svg([svgData], helperHash) {
-  let svgContent = svgData.content;
-  let svgAttrsHash = copy(svgData);
-
-  delete svgAttrsHash.content;
-  svgAttrsHash = merge(svgAttrsHash, helperHash);
-
-  let svgAttrs = [];
-  Object.keys(svgAttrsHash).forEach((attrName) => {
-    let attrValue = svgAttrsHash[attrName];
-
-    if (!isNone(attrValue)) {
-      svgAttrs.push(`${attrName}="${attrValue}"`);
-    }
-  });
-
-  return htmlSafe(`<svg ${svgAttrs.join(' ')}>${svgContent}</svg>`);
+export function formatAttrs(attrs) {
+  return Object.keys(attrs)
+    .map((key) => !isNone(attrs[key]) && `${key}="${attrs[key]}"`)
+    .filter((attr) => attr)
+    .join(' ');
 }
 
-export default Ember.Helper.helper(svg);
+export function svg([svgData], helperAttrs) {
+  let svgAttrs = merge(copy(svgData.attrs), helperAttrs);
+  return htmlSafe(`<svg ${formatAttrs(svgAttrs)}>${svgData.content}</svg>`);
+}
+
+export default helper(svg);

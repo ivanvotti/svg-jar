@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper } from 'ember-helper';
 
 export function queryPair([paramName, paramValue]) {
   return {
@@ -7,4 +7,4 @@ export function queryPair([paramName, paramValue]) {
   };
 }
 
-export default Ember.Helper.helper(queryPair);
+export default helper(queryPair);

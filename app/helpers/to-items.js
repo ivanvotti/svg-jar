@@ -1,16 +1,8 @@
-import Ember from 'ember';
+import { helper } from 'ember-helper';
 
-export function otItems([obj], { keyName = 'key', valueName = 'value' }) {
-  let items = [];
-
-  Object.keys(obj).forEach((key) => {
-    items.push({
-      [keyName]: key,
-      [valueName]: obj[key]
-    });
-  });
-
-  return items;
+export function toItems([obj], { keyName = 'key', valueName = 'value' }) {
+  return Object.keys(obj)
+    .map((key) => ({ [keyName]: key, [valueName]: obj[key] }));
 }
 
-export default Ember.Helper.helper(otItems);
+export default helper(toItems);
