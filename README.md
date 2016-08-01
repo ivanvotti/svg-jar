@@ -1,32 +1,32 @@
-# SVGJar (WIP)
+# SVGJar [![Build Status](https://travis-ci.org/ivanvotti/svg-jar.svg?branch=master)](https://travis-ci.org/ivanvotti/svg-jar)
 
 An easy way to organize, search and use SVG assets in your project.
 
-## Prerequisites
+It exclusively supports Ember.js at the moment.
+
+## Development setup
+
+### Prerequisites
 
 You will need the following things properly installed on your computer.
 
 * [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM)
+* [Node.js](http://nodejs.org/)
 * [Bower](http://bower.io/)
 * [Ember CLI](http://ember-cli.com/)
 * [PhantomJS](http://phantomjs.org/)
 
-## Installation
+### Installation
 
-* `git clone <repository-url>` this repository
-* change into the new directory
+* `git clone git@github.com:ivanvotti/svg-jar.git`
+* `cd svg-jar`
 * `npm install`
 * `bower install`
 
-## Running / Development
+### Running
 
 * `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
+* Visit the app at [http://localhost:4200](http://localhost:4200).
 
 ### Running Tests
 
@@ -38,15 +38,11 @@ Make use of the many generators for code, try `ember help generate` for more det
 * `ember build` (development)
 * `ember build --environment production` (production)
 
-### Deploying
+## License
 
-Specify what it takes to deploy your app.
+This project is distributed under the MIT license.
 
-## Further Reading / Useful Links
+---
 
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
+GitHub [@ivanvotti](https://github.com/ivanvotti) &nbsp;&middot;&nbsp;
+Twitter [@ivanvotti](https://twitter.com/ivanvotti)
