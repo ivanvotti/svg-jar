@@ -17,8 +17,8 @@ export default Component.extend({
   clickToClose: computed.or('clickOutsideToClose', 'clickInsideToClose'),
 
   clickEventName: computed(function() {
-    let elementId = get(this, 'elementId');
-    return `click.${elementId}`;
+    let triggerClass = get(this, 'triggerClass');
+    return `click.${triggerClass}`;
   }),
 
   didInsertElement() {

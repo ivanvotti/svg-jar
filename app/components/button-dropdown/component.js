@@ -4,7 +4,6 @@ import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 
 export default Component.extend({
-  tagName: '',
   alignment: 'left',
   isOpen: false,
   hasArrow: true,
