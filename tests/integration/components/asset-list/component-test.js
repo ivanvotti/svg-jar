@@ -6,19 +6,19 @@ moduleForComponent('asset-list', 'Integration | Component | asset list', {
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.setProperties({
+    assets: [],
+    currentAsset: null,
+    setCurrentAsset: () => null,
+  });
 
-  this.render(hbs`{{asset-list}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
   this.render(hbs`
-    {{#asset-list}}
-      template block text
-    {{/asset-list}}
+    {{asset-list
+        assets=group.items
+        currentAsset=currentAsset
+        setCurrentAsset=(action setCurrentAsset)
+    }}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), '');
 });

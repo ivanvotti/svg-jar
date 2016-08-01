@@ -6,19 +6,15 @@ moduleForComponent('button-dropdown', 'Integration | Component | button dropdown
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{button-dropdown}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
   this.render(hbs`
-    {{#button-dropdown}}
-      template block text
+    {{#button-dropdown as |section|}}
+      {{#if section.isButton}}
+        Dropdown
+      {{else if section.isDropdown}}
+        Item
+      {{/if}}
     {{/button-dropdown}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().text().trim());
 });

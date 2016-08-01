@@ -6,19 +6,17 @@ moduleForComponent('asset-details', 'Integration | Component | asset details', {
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.setProperties({
+    asset: { size: '42px' },
+    detailsItems: [{ name: 'Size', key: 'size' }]
+  });
 
-  this.render(hbs`{{asset-details}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
   this.render(hbs`
-    {{#asset-details}}
-      template block text
-    {{/asset-details}}
+    {{asset-details
+        asset=currentAsset
+        detailsItems=detailsItems
+    }}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().text().trim());
 });

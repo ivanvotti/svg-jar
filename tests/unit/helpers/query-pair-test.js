@@ -3,8 +3,14 @@ import { module, test } from 'qunit';
 
 module('Unit | Helper | query pair');
 
-// Replace this with your real tests.
 test('it works', function(assert) {
-  let result = queryPair([42]);
-  assert.ok(result);
+  let result = queryPair(['paramName', 'paramValue']);
+
+  assert.deepEqual(result, {
+    isQueryParams: true,
+
+    values: {
+      paramName: 'paramValue'
+    }
+  });
 });

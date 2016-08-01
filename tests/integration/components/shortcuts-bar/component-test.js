@@ -6,19 +6,17 @@ moduleForComponent('shortcuts-bar', 'Integration | Component | shortcuts bar', {
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.setProperties({
+    isOpen: false,
+    toggleShortcutsBar: () => null
+  });
 
-  this.render(hbs`{{shortcuts-bar}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
   this.render(hbs`
-    {{#shortcuts-bar}}
-      template block text
-    {{/shortcuts-bar}}
+    {{shortcuts-bar
+        isOpen=isShortcutsBarOpen
+        close=(action toggleShortcutsBar)
+    }}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().text().trim());
 });

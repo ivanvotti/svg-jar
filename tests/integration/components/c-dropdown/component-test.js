@@ -6,19 +6,20 @@ moduleForComponent('c-dropdown', 'Integration | Component | c dropdown', {
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.setProperties({
+    toggleDropdown: () => null
+  });
 
-  this.render(hbs`{{c-dropdown}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
   this.render(hbs`
-    {{#c-dropdown}}
-      template block text
+    <div class="js-dropdown-trigger"></div>
+    {{#c-dropdown
+        triggerClass="js-dropdown-trigger"
+        targetAttachment=targetAttachment
+        close=(action toggleDropdown)
+    }}
+      Dropdown
     {{/c-dropdown}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), '');
 });

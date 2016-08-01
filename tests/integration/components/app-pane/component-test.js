@@ -6,19 +6,12 @@ moduleForComponent('app-pane', 'Integration | Component | app pane', {
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{app-pane}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
   this.render(hbs`
-    {{#app-pane}}
-      template block text
-    {{/app-pane}}
+    {{app-pane
+        currentAsset=currentAsset
+        detailsItems=model.details
+    }}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().text().trim());
 });

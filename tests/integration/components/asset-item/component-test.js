@@ -6,19 +6,19 @@ moduleForComponent('asset-item', 'Integration | Component | asset item', {
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.setProperties({
+    asset: { svg: { attrs: {} } },
+    currentAsset: null,
+    setCurrentAsset: () => null,
+  });
 
-  this.render(hbs`{{asset-item}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
   this.render(hbs`
-    {{#asset-item}}
-      template block text
-    {{/asset-item}}
+    {{asset-item
+        asset=asset
+        currentAsset=currentAsset
+        setCurrentAsset=(action setCurrentAsset)
+    }}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().text().trim());
 });

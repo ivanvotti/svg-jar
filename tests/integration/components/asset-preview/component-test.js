@@ -6,19 +6,11 @@ moduleForComponent('asset-preview', 'Integration | Component | asset preview', {
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.setProperties({
+    currentAsset: { svg: { attrs: {} } }
+  });
 
-  this.render(hbs`{{asset-preview}}`);
+  this.render(hbs`{{asset-preview asset=currentAsset}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#asset-preview}}
-      template block text
-    {{/asset-preview}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().text().trim());
 });

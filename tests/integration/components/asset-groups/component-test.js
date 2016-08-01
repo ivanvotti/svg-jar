@@ -6,19 +6,21 @@ moduleForComponent('asset-groups', 'Integration | Component | asset groups', {
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.setProperties({
+    assets: [],
+    currentAsset: null,
+    arrangeBy: 'size',
+    setCurrentAsset: () => null
+  });
 
-  this.render(hbs`{{asset-groups}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
   this.render(hbs`
-    {{#asset-groups}}
-      template block text
-    {{/asset-groups}}
+    {{asset-groups
+        assets=assets
+        currentAsset=currentAsset
+        arrangeBy=arrangeBy
+        setCurrentAsset=(action setCurrentAsset)
+    }}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), '');
 });

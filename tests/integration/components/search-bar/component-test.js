@@ -6,19 +6,17 @@ moduleForComponent('search-bar', 'Integration | Component | search bar', {
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.setProperties({
+    searchQuery: null,
+    setSearchQuery: () => null
+  });
 
-  this.render(hbs`{{search-bar}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
   this.render(hbs`
-    {{#search-bar}}
-      template block text
-    {{/search-bar}}
+    {{search-bar
+        searchQuery=searchQuery
+        setSearchQuery=(action setSearchQuery)
+    }}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), '');
 });

@@ -6,19 +6,21 @@ moduleForComponent('content-header', 'Integration | Component | content header',
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.setProperties({
+    arrangeDropdownItems: null,
+    sortDropdownItems: null,
+    searchQuery: null,
+    setSearchQuery: () => null
+  });
 
-  this.render(hbs`{{content-header}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
   this.render(hbs`
-    {{#content-header}}
-      template block text
-    {{/content-header}}
+    {{content-header
+        arrangeDropdownItems=model.arrangeBy
+        sortDropdownItems=model.sortBy
+        searchQuery=searchQuery
+        setSearchQuery=(action setSearchQuery)
+    }}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), '');
 });

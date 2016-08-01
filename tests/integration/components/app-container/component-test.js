@@ -6,19 +6,29 @@ moduleForComponent('app-container', 'Integration | Component | app container', {
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.setProperties({
+    model: {},
+    arrangeBy: null,
+    sortBy: null,
+    filterBy: null,
+    searchQuery: null,
+    setSearchQuery: () => null,
+    showShortcutsBar: () => null,
+    toggleShortcutsBar: () => null
+  });
 
-  this.render(hbs`{{app-container}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
   this.render(hbs`
-    {{#app-container}}
-      template block text
-    {{/app-container}}
+    {{app-container
+        model=model
+        arrangeBy=arrangeBy
+        sortBy=sortBy
+        filterBy=filterBy
+        searchQuery=query
+        setSearchQuery=(action setSearchQuery)
+        showShortcutsBar=(action showShortcutsBar)
+        toggleShortcutsBar=(action toggleShortcutsBar)
+    }}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().text().trim());
 });

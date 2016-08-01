@@ -3,8 +3,7 @@ import { module, test } from 'qunit';
 
 module('Unit | Helper | multiply');
 
-// Replace this with your real tests.
 test('it works', function(assert) {
-  let result = multiply([42]);
-  assert.ok(result);
+  assert.equal(multiply([2, 3]), 6);
+  assert.equal(multiply([2, 2, 2]), 8);
 });
