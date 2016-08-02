@@ -100,7 +100,7 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     });
   },
 
-  animateCopiedAsset() {
+  animateShortcutedAsset() {
     this.$('.js-active-asset')
       .velocity('callout.pulse', { duration: 300 });
   },
@@ -109,15 +109,6 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     let svgFile = new Blob([makeSvg(asset.svg)], { type: 'image/svg+xml' });
     window.saveAs(svgFile, asset.fileName);
   },
-
-  shortcutCopyCurrentAsset: on(keyDown('Enter'), function(event) {
-    let assetCopypasta = get(this, 'currentAsset.copypasta');
-
-    if (assetCopypasta && copyToClipboard(assetCopypasta)) {
-      this.animateCopiedAsset();
-      event.preventDefault();
-    }
-  }),
 
   shortcutFocusSearchBar: on(keyDown('Slash'), function(event) {
     this.$('.js-search-bar-input').focus();
@@ -129,11 +120,30 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     event.preventDefault();
   }),
 
-  shortcutDownloadCurrentAsset: on(keyDown('KeyD'), function(event) {
+  shortcutCopyCurrentCopypasta: on(keyDown('Enter'), function(event) {
+    let currentAsset = get(this, 'currentAsset');
+
+    if (currentAsset && copyToClipboard(currentAsset.copypasta)) {
+      this.animateShortcutedAsset();
+      event.preventDefault();
+    }
+  }),
+
+  shortcutDownloadCurrent: on(keyDown('KeyD'), function(event) {
     let currentAsset = get(this, 'currentAsset');
 
     if (currentAsset) {
       this.downloadAsset(currentAsset);
+      this.animateShortcutedAsset();
+      event.preventDefault();
+    }
+  }),
+
+  shortcutCopyCurrentSource: on(keyDown('KeyS'), function(event) {
+    let currentAsset = get(this, 'currentAsset');
+
+    if (currentAsset && copyToClipboard(makeSvg(currentAsset.svg))) {
+      this.animateShortcutedAsset();
       event.preventDefault();
     }
   }),

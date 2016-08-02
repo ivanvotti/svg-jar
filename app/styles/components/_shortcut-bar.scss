@@ -4,8 +4,14 @@
   justify-content: center;
 }
 
+.c-shortcut-bar__title {
+  text-align: center;
+  font-weight: 400;
+  font-size: 13px;
+}
+
 .c-shortcut-bar__section {
-  margin-right: 10px;
+  margin-right: 30px;
   margin-bottom: 10px;
 
   &:last-child {
