@@ -141,6 +141,14 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   actions: {
     setCurrentAsset(asset) {
       set(this, 'currentAsset', asset);
+    },
+
+    downloadCurrentAsset() {
+      let currentAsset = get(this, 'currentAsset');
+
+      if (currentAsset) {
+        this.downloadAsset(currentAsset);
+      }
     }
   }
 });

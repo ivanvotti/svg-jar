@@ -45,6 +45,15 @@
       The viewBox is not set. This SVG is not scalable!
     </div>
   {{/if}}
+
+  <div class="c-app-pane__section">
+    <button
+      class="c-btn c-btn--tertiary c-btn--full"
+      {{action downloadCurrentAsset}}
+    >
+      Download
+    </button>
+  </div>
 {{else}}
   <div class="c-placeholder">
     <div class="c-placeholder__title">
