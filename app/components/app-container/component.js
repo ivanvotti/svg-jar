@@ -6,6 +6,7 @@ import run from 'ember-runloop';
 import on from 'ember-evented/on';
 import { EKMixin, EKOnInsertMixin, keyDown } from 'ember-keyboard';
 import copyToClipboard from 'svg-jar/utils/copy-to-clipboard';
+import makeSvg from 'svg-jar/utils/make-svg';
 
 function doesMatch(target, query) {
   if (!target) {
@@ -104,7 +105,12 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
       .velocity('callout.pulse', { duration: 300 });
   },
 
-  copyCurrentAsset: on(keyDown('Enter'), function(event) {
+  downloadAsset(asset) {
+    let svgFile = new Blob([makeSvg(asset.svg)], { type: 'image/svg+xml' });
+    window.saveAs(svgFile, asset.fileName);
+  },
+
+  shortcutCopyCurrentAsset: on(keyDown('Enter'), function(event) {
     let assetCopypasta = get(this, 'currentAsset.copypasta');
 
     if (assetCopypasta && copyToClipboard(assetCopypasta)) {
@@ -113,14 +119,23 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     }
   }),
 
-  focusSearchBar: on(keyDown('Slash'), function(event) {
+  shortcutFocusSearchBar: on(keyDown('Slash'), function(event) {
     this.$('.js-search-bar-input').focus();
     event.preventDefault();
   }),
 
-  _toggleShortcutsBar: on(keyDown('shift+Slash'), function(event) {
-    this.attrs.toggleShortcutsBar();
+  shortcutToggleShortcutBar: on(keyDown('shift+Slash'), function(event) {
+    this.attrs.toggleShortcutBar();
     event.preventDefault();
+  }),
+
+  shortcutDownloadCurrentAsset: on(keyDown('KeyD'), function(event) {
+    let currentAsset = get(this, 'currentAsset');
+
+    if (currentAsset) {
+      this.downloadAsset(currentAsset);
+      event.preventDefault();
+    }
   }),
 
   actions: {

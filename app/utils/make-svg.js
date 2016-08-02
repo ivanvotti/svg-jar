@@ -10,7 +10,7 @@ export function formatAttrs(attrs) {
     .join(' ');
 }
 
-export default function makeSVG(svg, customAttrs = {}) {
+export default function makeSvg(svg, customAttrs = {}) {
   let svgAttrs = merge(copy(svg.attrs), customAttrs);
   return `<svg ${formatAttrs(svgAttrs)}>${svg.content}</svg>`;
 }

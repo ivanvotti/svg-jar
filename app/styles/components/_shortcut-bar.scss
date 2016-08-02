@@ -1,10 +1,10 @@
-.c-shortcuts-bar {
+.c-shortcut-bar {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.c-shortcuts-bar__section {
+.c-shortcut-bar__section {
   margin-right: 10px;
   margin-bottom: 10px;
 
@@ -13,12 +13,12 @@
   }
 }
 
-.c-shortcuts-bar__keys {
+.c-shortcut-bar__keys {
   padding: 4px 10px;
   padding-left: 0;
 }
 
-.c-shortcuts-bar__key {
+.c-shortcut-bar__key {
   display: inline-block;
   min-width: 10px;
   padding: 0 10px;
@@ -30,7 +30,7 @@
   color: #666;
 }
 
-.c-shortcuts-bar__info {
+.c-shortcut-bar__info {
   font-size: 12px;
   color: #555;
 }

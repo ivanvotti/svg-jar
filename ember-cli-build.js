@@ -21,9 +21,10 @@ module.exports = function(defaults) {
     }
   });
 
+  app.import(app.bowerDirectory + '/normalize-css/normalize.css');
   app.import(app.bowerDirectory + '/velocity/velocity.js');
   app.import(app.bowerDirectory + '/velocity/velocity.ui.js');
-  app.import(app.bowerDirectory + '/normalize-css/normalize.css');
+  app.import(app.bowerDirectory + '/file-saver/FileSaver.js');
 
   return app.toTree();
 };

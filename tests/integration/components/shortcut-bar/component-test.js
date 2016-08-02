@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('shortcuts-bar', 'Integration | Component | shortcuts bar', {
+moduleForComponent('shortcut-bar', 'Integration | Component | shortcut bar', {
   integration: true
 });
 
@@ -12,7 +12,7 @@ test('it renders', function(assert) {
   });
 
   this.render(hbs`
-    {{shortcuts-bar
+    {{shortcut-bar
         isOpen=isShortcutsBarOpen
         close=(action toggleShortcutsBar)
     }}
