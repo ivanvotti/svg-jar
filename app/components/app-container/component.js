@@ -6,6 +6,7 @@ import run from 'ember-runloop';
 import on from 'ember-evented/on';
 import { EKMixin, EKOnInsertMixin, keyDown } from 'ember-keyboard';
 import copyToClipboard from 'svg-jar/utils/copy-to-clipboard';
+import makeSvg from 'svg-jar/utils/make-svg';
 
 function doesMatch(target, query) {
   if (!target) {
@@ -141,7 +142,7 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   shortcutCopyCurrentSource: on(keyDown('KeyS'), function(event) {
     let currentAsset = get(this, 'currentAsset');
 
-    if (currentAsset && copyToClipboard(currentAsset.originalSvg)) {
+    if (currentAsset && copyToClipboard(makeSvg(currentAsset.svg))) {
       this.animateShortcutedAsset();
       event.preventDefault();
     }
