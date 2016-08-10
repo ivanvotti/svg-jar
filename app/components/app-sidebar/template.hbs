@@ -1,7 +1,7 @@
-<div class="c-app-sidebar__logo-wrap">
-  {{#button-dropdown as |section|}}
+<div class="c-app-sidebar__logo">
+  {{#button-dropdown alignment="right" as |section|}}
     {{#if section.isButton}}
-      {{svg-jar "logo" class="c-app-sidebar__logo"}}
+      {{svg-jar "logo"}}
     {{else if section.isDropdown}}
       <div class="c-dropdown__item" {{action showShortcutBar}}>
         Shortcuts

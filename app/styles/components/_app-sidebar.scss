@@ -1,5 +1,5 @@
 .c-app-sidebar {
-  width: 200px;
+  width: 220px;
   flex-shrink: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -8,13 +8,9 @@
   border-right: 1px solid #e8e8e8;
 }
 
-.c-app-sidebar__logo-wrap {
+.c-app-sidebar__logo {
   display: flex;
   height: 60px;
   align-items: center;
   justify-content: center;
-}
-
-.c-app-sidebar__logo {
-  height: 26px;
 }
