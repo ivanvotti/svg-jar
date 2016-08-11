@@ -110,6 +110,14 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     window.saveAs(svgFile, asset.fileName);
   },
 
+  showClipboardError() {
+    // eslint-disable-next-line no-alert
+    window.alert(
+      "Your browser doesn't support copy to clipboard feature.\n" +
+      'Use the asset viewer with a modern browser, such as Chrome or Firefox.'
+    );
+  },
+
   shortcutFocusSearchBar: on(keyDown('Slash'), function(event) {
     this.$('.js-search-bar-input').focus();
     event.preventDefault();
@@ -123,29 +131,43 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   shortcutCopyCurrentCopypasta: on(keyDown('Enter'), function(event) {
     let currentAsset = get(this, 'currentAsset');
 
-    if (currentAsset && copyToClipboard(currentAsset.copypasta)) {
-      this.animateShortcutedAsset();
-      event.preventDefault();
+    if (!currentAsset) {
+      return;
     }
-  }),
 
-  shortcutDownloadCurrent: on(keyDown('KeyD'), function(event) {
-    let currentAsset = get(this, 'currentAsset');
-
-    if (currentAsset) {
-      this.downloadAsset(currentAsset);
+    if (copyToClipboard(currentAsset.copypasta)) {
       this.animateShortcutedAsset();
       event.preventDefault();
+    } else {
+      this.showClipboardError();
     }
   }),
 
   shortcutCopyCurrentSource: on(keyDown('KeyS'), function(event) {
     let currentAsset = get(this, 'currentAsset');
 
-    if (currentAsset && copyToClipboard(makeSvg(currentAsset.svg))) {
+    if (!currentAsset) {
+      return;
+    }
+
+    if (copyToClipboard(makeSvg(currentAsset.svg))) {
       this.animateShortcutedAsset();
       event.preventDefault();
+    } else {
+      this.showClipboardError();
     }
+  }),
+
+  shortcutDownloadCurrent: on(keyDown('KeyD'), function(event) {
+    let currentAsset = get(this, 'currentAsset');
+
+    if (!currentAsset) {
+      return;
+    }
+
+    this.downloadAsset(currentAsset);
+    this.animateShortcutedAsset();
+    event.preventDefault();
   }),
 
   actions: {
