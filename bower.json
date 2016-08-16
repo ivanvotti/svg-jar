@@ -1,7 +1,7 @@
 {
   "name": "svg-jar",
   "dependencies": {
-    "ember": "~2.7.0",
+    "ember": "alpha",
     "ember-cli-shims": "~0.1.1",
     "ember-qunit-notifications": "0.1.0",
     "normalize-css": "^4.1.1",
