@@ -1,6 +1,5 @@
 module.exports = {
-  extends: 'airbnb-base',
-  parser: 'babel-eslint',
+  root: true,
 
   parserOptions: {
     ecmaVersion: 6,
