@@ -1,6 +1,5 @@
-import Controller from 'ember-controller';
-import get from 'ember-metal/get';
-import set from 'ember-metal/set';
+import Controller from '@ember/controller';
+import { get, set } from '@ember/object';
 
 export default Controller.extend({
   queryParams: ['arrangeBy', 'sortBy', 'filterBy', 'query'],

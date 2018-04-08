@@ -1,7 +1,6 @@
-import Ember from 'ember';
-import { isNone } from 'ember-utils';
-
-const { copy, merge } = Ember;
+import { copy } from '@ember/object/internals';
+import { merge } from '@ember/polyfills';
+import { isNone } from '@ember/utils';
 
 export function formatAttrs(attrs) {
   return Object.keys(attrs)

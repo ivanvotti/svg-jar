@@ -1,4 +1,4 @@
-import { helper } from 'ember-helper';
+import { helper } from '@ember/component/helper';
 
 export function multiply(params) {
   return params.reduce((acc, value) => value * acc, 1);

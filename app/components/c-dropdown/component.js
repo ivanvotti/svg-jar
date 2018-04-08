@@ -1,7 +1,6 @@
-import Component from 'ember-component';
-import computed from 'ember-computed';
-import get from 'ember-metal/get';
-import run from 'ember-runloop';
+import Component from '@ember/component';
+import { computed, get } from '@ember/object';
+import { run } from '@ember/runloop';
 import $ from 'jquery';
 
 export default Component.extend({

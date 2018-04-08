@@ -1,4 +1,7 @@
-import { EKMixin, EKFirstResponderOnFocusMixin } from 'ember-keyboard';
+import {
+  EKMixin,
+  EKFirstResponderOnFocusMixin
+} from 'ember-keyboard';
 import OneWayInput from 'ember-one-way-controls/components/one-way-input';
 
 export function initialize() {

@@ -1,9 +1,7 @@
-import Component from 'ember-component';
-import computed from 'ember-computed';
-import get from 'ember-metal/get';
-import set from 'ember-metal/set';
-import run from 'ember-runloop';
-import on from 'ember-evented/on';
+import Component from '@ember/component';
+import { get, set, computed } from '@ember/object';
+import { run } from '@ember/runloop';
+import { on } from '@ember/object/evented';
 import { EKMixin, EKOnInsertMixin, keyDown } from 'ember-keyboard';
 import copyToClipboard from 'svg-jar/utils/copy-to-clipboard';
 import makeSvg from 'svg-jar/utils/make-svg';
@@ -112,10 +110,8 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
 
   showClipboardError() {
     // eslint-disable-next-line no-alert
-    window.alert(
-      "Your browser doesn't support copy to clipboard feature.\n" +
-      'Use the asset viewer with a modern browser, such as Chrome or Firefox.'
-    );
+    window.alert("Your browser doesn't support copy to clipboard feature.\n" +
+      'Use the asset viewer with a modern browser, such as Chrome or Firefox.');
   },
 
   shortcutFocusSearchBar: on(keyDown('Slash'), function(event) {

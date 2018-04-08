@@ -1,14 +1,23 @@
 module.exports = {
   root: true,
-  extends: "airbnb-base",
 
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module'
-  },
+  plugins: [
+    'ember'
+  ],
+
+  extends: [
+    'airbnb-base',
+    'plugin:ember/recommended'
+  ],
 
   env: {
-    browser: true
+    browser: true,
+    node: false
+  },
+
+  parserOptions: {
+    ecmaVersion: 2017,
+    sourceType: 'module'
   },
 
   rules: {
@@ -33,5 +42,27 @@ module.exports = {
       'before': false,
       'after': true
     }]
-  }
+  },
+
+  overrides: [
+    // for Ember node files
+    {
+      files: [
+        'testem.js',
+        'ember-cli-build.js',
+        'config/**/*.js',
+        'lib/*/index.js'
+      ],
+
+      parserOptions: {
+        sourceType: 'script',
+        ecmaVersion: 2015
+      },
+
+      env: {
+        browser: false,
+        node: true
+      }
+    }
+  ]
 };
