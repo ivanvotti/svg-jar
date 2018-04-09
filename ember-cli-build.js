@@ -8,10 +8,10 @@ module.exports = function(defaults) {
     sourcemaps: { enabled: false }
   });
 
-  app.import(`${app.bowerDirectory}/normalize-css/normalize.css`);
-  app.import(`${app.bowerDirectory}/velocity/velocity.js`);
-  app.import(`${app.bowerDirectory}/velocity/velocity.ui.js`);
-  app.import(`${app.bowerDirectory}/file-saver/FileSaver.js`);
+  app.import('node_modules/normalize.css/normalize.css');
+  app.import('node_modules/velocity-animate/velocity.js');
+  app.import('node_modules/velocity-animate/velocity.ui.js');
+  app.import('node_modules/file-saver/FileSaver.js');
 
   return app.toTree();
 };
