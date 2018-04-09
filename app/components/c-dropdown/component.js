@@ -11,6 +11,8 @@ export default Component.extend({
   offset: '-4px 0',
   clickOutsideToClose: true,
   clickInsideToClose: true,
+
+  // eslint-disable-next-line ember/avoid-leaking-state-in-ember-objects
   constraints: [{ to: 'window', attachment: 'target' }],
 
   clickToClose: computed.or('clickOutsideToClose', 'clickInsideToClose'),
@@ -54,7 +56,7 @@ export default Component.extend({
                           (!isInsideClick && clickOutsideToClose);
 
         if (needToClose) {
-          this.attrs.close();
+          get(this, 'close')();
         }
       });
     });

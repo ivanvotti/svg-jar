@@ -1,3 +1,5 @@
+/* eslint-disable ember/no-on-calls-in-components */
+
 import Component from '@ember/component';
 import { get, set, computed } from '@ember/object';
 import { run } from '@ember/runloop';
@@ -120,7 +122,7 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   }),
 
   shortcutToggleShortcutBar: on(keyDown('shift+Slash'), function(event) {
-    this.attrs.toggleShortcutBar();
+    get(this, 'toggleShortcutBar')();
     event.preventDefault();
   }),
 

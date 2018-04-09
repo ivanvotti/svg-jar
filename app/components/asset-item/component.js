@@ -16,6 +16,7 @@ export default Component.extend({
       return;
     }
 
-    this.attrs.setCurrentAsset(get(this, 'asset'));
+    let asset = get(this, 'asset');
+    get(this, 'setCurrentAsset')(asset);
   }
 });
