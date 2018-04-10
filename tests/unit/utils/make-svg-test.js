@@ -24,7 +24,7 @@ module('Unit | Utility | make-svg', function() {
   });
 
   test('it rewrites original attrs with custom ones', function(assert) {
-    let customAttrs = { height: '30', width: '36' }
+    let customAttrs = { height: '30', width: '36' };
 
     assert.equal(
       makeSvg(ORIGINAL_SVG_DATA, customAttrs),
