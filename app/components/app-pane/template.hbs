@@ -8,22 +8,10 @@
       Copypasta
     </div>
 
-    <code class="c-app-pane__copypasta">{{currentAsset.copypasta}}</code>
+    <code class="c-app-pane__copypasta">
+      {{currentAsset.copypasta}}
+    </code>
   </div>
-
-  {{#if currentAsset.tags}}
-    <div class="c-app-pane__section">
-      <div class="c-app-pane__title">
-        Tags
-      </div>
-
-      {{#each currentAsset.tags as |tag|}}
-        <span class="c-app-pane__badge">
-          {{tag}}
-        </span>
-      {{/each}}
-    </div>
-  {{/if}}
 
   <div class="c-app-pane__section">
     <div class="c-app-pane__title">

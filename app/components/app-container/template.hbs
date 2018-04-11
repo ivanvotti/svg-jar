@@ -44,16 +44,10 @@
     {{else if arrangeBy}}
       {{asset-groups
           assets=assets
-          currentAsset=currentAsset
           arrangeBy=arrangeBy
-          setCurrentAsset=(action "setCurrentAsset")
       }}
     {{else}}
-      {{asset-list
-          assets=assets
-          currentAsset=currentAsset
-          setCurrentAsset=(action "setCurrentAsset")
-      }}
+      {{asset-list assets=assets}}
     {{/if}}
   </div>
 </div>

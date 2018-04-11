@@ -4,6 +4,7 @@ import Component from '@ember/component';
 import { get, set, computed } from '@ember/object';
 import { run } from '@ember/runloop';
 import { on } from '@ember/object/evented';
+import { inject as service } from '@ember/service';
 import { EKMixin, EKOnInsertMixin, keyDown } from 'ember-keyboard';
 import copyToClipboard from 'svg-jar/utils/copy-to-clipboard';
 import makeSvg from 'svg-jar/utils/make-svg';
@@ -20,13 +21,14 @@ function doesMatch(target, query) {
 export default Component.extend(EKMixin, EKOnInsertMixin, {
   classNames: ['c-app-container'],
   classNameBindings: ['isContentScrolled'],
+  assetSelector: service('asset-selector'),
   model: null,
   sortBy: null,
   filterBy: null,
   searchQuery: null,
-  currentAsset: null,
   isContentScrolled: false,
 
+  currentAsset: computed.alias('assetSelector.currentAsset'),
   assets: computed.alias('sortedAssets'),
 
   filterName: computed('filterBy', function() {
@@ -94,9 +96,9 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   },
 
   animateAssetListItems() {
-    let assetItemsEl = this.element.querySelectorAll('.js-asset-item');
+    let assetItemEls = this.element.querySelectorAll('.js-asset-item');
 
-    Velocity(assetItemsEl, 'transition.expandIn', {
+    Velocity(assetItemEls, 'transition.expandIn', {
       duration: 500,
 
       // Cleanup Velocity inline styles.
@@ -108,7 +110,10 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
 
   animateShortcutedAsset() {
     let activeAssetEl = this.element.querySelector('.js-active-asset');
-    Velocity(activeAssetEl, 'callout.pulse', { duration: 300 });
+
+    if (activeAssetEl) {
+      Velocity(activeAssetEl, 'callout.pulse', { duration: 300 });
+    }
   },
 
   downloadAsset(asset) {
@@ -176,10 +181,6 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   }),
 
   actions: {
-    setCurrentAsset(asset) {
-      set(this, 'currentAsset', asset);
-    },
-
     downloadCurrentAsset() {
       let currentAsset = get(this, 'currentAsset');
 
