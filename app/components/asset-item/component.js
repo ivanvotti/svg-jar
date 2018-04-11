@@ -18,6 +18,7 @@ export default Component.extend({
     }
 
     let asset = get(this, 'asset');
-    get(this, 'assetSelector').setCurrentAsset(asset);
+    let assetSelector = get(this, 'assetSelector');
+    assetSelector.setCurrentAsset(asset);
   }
 });
