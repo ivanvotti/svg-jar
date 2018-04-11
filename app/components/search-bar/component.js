@@ -6,7 +6,7 @@ export default Component.extend({
   searchQuery: null,
 
   _blurInput() {
-    this.$('.js-search-bar-input').blur();
+    this.element.querySelector('.js-search-bar-input').blur();
   },
 
   _resetQuery() {

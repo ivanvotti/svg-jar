@@ -7,6 +7,7 @@ import { on } from '@ember/object/evented';
 import { EKMixin, EKOnInsertMixin, keyDown } from 'ember-keyboard';
 import copyToClipboard from 'svg-jar/utils/copy-to-clipboard';
 import makeSvg from 'svg-jar/utils/make-svg';
+import Velocity from 'velocity';
 
 function doesMatch(target, query) {
   if (!target) {
@@ -74,23 +75,28 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
 
   bindContentScrolling() {
     let scrollingTimeout = 10;
+    let scrollingEl = this.element.querySelector('.js-content');
 
-    this.$('.js-content').on('scroll.scrolling', () => (
+    scrollingEl.addEventListener('scroll', () => (
       run.debounce(this, this.onContentScrolled, scrollingTimeout)
     ));
   },
 
   unbindContentScrolling() {
-    this.$('.js-content').off('.scrolling');
+    let scrollingEl = this.element.querySelector('.js-content');
+    scrollingEl.removeEventListener('scroll');
   },
 
   onContentScrolled() {
-    let isContentScrolled = this.$('.js-content').scrollTop() !== 0;
+    let scrollingEl = this.element.querySelector('.js-content');
+    let isContentScrolled = scrollingEl.scrollTop !== 0;
     set(this, 'isContentScrolled', isContentScrolled);
   },
 
   animateAssetListItems() {
-    this.$('.js-asset-item').velocity('transition.expandIn', {
+    let assetItemsEl = this.element.querySelectorAll('.js-asset-item');
+
+    Velocity(assetItemsEl, 'transition.expandIn', {
       duration: 500,
 
       // Cleanup Velocity inline styles.
@@ -101,8 +107,8 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   },
 
   animateShortcutedAsset() {
-    this.$('.js-active-asset')
-      .velocity('callout.pulse', { duration: 300 });
+    let activeAssetEl = this.element.querySelector('.js-active-asset');
+    Velocity(activeAssetEl, 'callout.pulse', { duration: 300 });
   },
 
   downloadAsset(asset) {
@@ -117,7 +123,8 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   },
 
   shortcutFocusSearchBar: on(keyDown('Slash'), function(event) {
-    this.$('.js-search-bar-input').focus();
+    let searchInputEl = this.element.querySelector('.js-search-bar-input');
+    searchInputEl.focus();
     event.preventDefault();
   }),
 
