@@ -23,4 +23,4 @@ before_install:
 
 script:
   - npm run lint:js
-  - npm test
+  - ember test
