@@ -21,24 +21,38 @@ module.exports = {
   },
 
   rules: {
-    'import/no-unresolved': 0,
-    'import/no-extraneous-dependencies': 0,
-    'import/extensions': 0,
+    'import/no-unresolved': 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'import/extensions': 'off',
     'arrow-parens': ['error', 'always'],
-    'prefer-const': 0,
-    'comma-dangle': 0,
-    'prefer-arrow-callback': 0,
-    'func-names': 0,
-    'prefer-rest-params': 0,
-    'no-underscore-dangle': 0,
-    'array-callback-return': 0,
+    'prefer-const': 'off',
+    'comma-dangle': 'off',
+    'prefer-arrow-callback': 'off',
+    'func-names': 'off',
+    'prefer-rest-params': 'off',
+    'no-underscore-dangle': 'off',
+    'array-callback-return': 'off',
 
-    'space-before-function-paren': [2, {
+    // Optional ember rules
+    'ember/alias-model-in-controller': 'off',
+    'ember/named-functions-in-promises': 'off',
+    'ember/use-ember-get-and-set': 'off',
+    'ember/avoid-leaking-state-in-components': 'off',
+    'ember/local-modules': 'error',
+    'ember/no-empty-attrs': 'error',
+    'ember/no-jquery': 'error',
+    'ember/no-observers': 'error',
+    'ember/order-in-components': 'error',
+    'ember/order-in-controllers': 'error',
+    'ember/order-in-models': 'error',
+    'ember/order-in-routes': 'error',
+
+    'space-before-function-paren': ['error', {
       'anonymous': 'never',
       'named': 'never'
     }],
 
-    'generator-star-spacing': [2, {
+    'generator-star-spacing': ['error', {
       'before': false,
       'after': true
     }]

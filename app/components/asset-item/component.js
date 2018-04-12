@@ -3,9 +3,9 @@ import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default Component.extend({
+  assetSelector: service('asset-selector'),
   classNames: ['c-asset-item'],
   classNameBindings: ['isActive', 'isActive:js-active-asset'],
-  assetSelector: service('asset-selector'),
   asset: null,
 
   isActive: computed('assetSelector.currentAsset', function() {

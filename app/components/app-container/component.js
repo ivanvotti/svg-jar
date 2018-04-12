@@ -21,9 +21,9 @@ function doesMatch(target, query) {
 }
 
 export default Component.extend(EKMixin, EKOnInsertMixin, {
+  assetSelector: service('asset-selector'),
   classNames: ['c-app-container'],
   classNameBindings: ['isContentScrolled'],
-  assetSelector: service('asset-selector'),
   model: null,
   sortBy: null,
   filterBy: null,
@@ -66,69 +66,6 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
       : this.foundAssets;
   }),
 
-  didInsertElement() {
-    this._super(...arguments);
-    this.animateAssetListItems();
-    this.bindContentScrolling();
-  },
-
-  willDestroyElement() {
-    this._super(...arguments);
-    this.unbindContentScrolling();
-  },
-
-  bindContentScrolling() {
-    let scrollingTimeout = 10;
-    let scrollingEl = this.element.querySelector('.js-content');
-
-    scrollingEl.addEventListener('scroll', () => (
-      run.debounce(this, this.onContentScrolled, scrollingTimeout)
-    ));
-  },
-
-  unbindContentScrolling() {
-    let scrollingEl = this.element.querySelector('.js-content');
-    scrollingEl.removeEventListener('scroll');
-  },
-
-  onContentScrolled() {
-    let scrollingEl = this.element.querySelector('.js-content');
-    let isContentScrolled = scrollingEl.scrollTop !== 0;
-    set(this, 'isContentScrolled', isContentScrolled);
-  },
-
-  animateAssetListItems() {
-    let assetItemEls = this.element.querySelectorAll('.js-asset-item');
-
-    Velocity(assetItemEls, 'transition.expandIn', {
-      duration: 500,
-
-      // Cleanup Velocity inline styles.
-      complete(targets) {
-        targets.forEach((target) => target.removeAttribute('style'));
-      }
-    });
-  },
-
-  animateShortcutedAsset() {
-    let activeAssetEl = this.element.querySelector('.js-active-asset');
-
-    if (activeAssetEl) {
-      Velocity(activeAssetEl, 'callout.pulse', { duration: 300 });
-    }
-  },
-
-  downloadAsset(asset) {
-    let svgFile = new Blob([asset.originalSvg], { type: 'image/svg+xml' });
-    window.saveAs(svgFile, asset.fileName);
-  },
-
-  showClipboardError() {
-    // eslint-disable-next-line no-alert
-    window.alert("Your browser doesn't support copy to clipboard feature.\n" +
-      'Use the asset viewer with a modern browser, such as Chrome or Firefox.');
-  },
-
   shortcutFocusSearchBar: on(keyDown('Slash'), function(event) {
     let searchInputEl = this.element.querySelector('.js-search-bar-input');
     searchInputEl.focus();
@@ -146,10 +83,10 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     }
 
     if (copyToClipboard(this.currentAsset.copypasta)) {
-      this.animateShortcutedAsset();
+      this._animateShortcutedAsset();
       event.preventDefault();
     } else {
-      this.showClipboardError();
+      this._showClipboardError();
     }
   }),
 
@@ -159,10 +96,10 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     }
 
     if (copyToClipboard(makeSvg(this.currentAsset.svg))) {
-      this.animateShortcutedAsset();
+      this._animateShortcutedAsset();
       event.preventDefault();
     } else {
-      this.showClipboardError();
+      this._showClipboardError();
     }
   }),
 
@@ -171,16 +108,79 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
       return;
     }
 
-    this.downloadAsset(this.currentAsset);
-    this.animateShortcutedAsset();
+    this._downloadAsset(this.currentAsset);
+    this._animateShortcutedAsset();
     event.preventDefault();
   }),
+
+  didInsertElement() {
+    this._super(...arguments);
+    this._animateAssetListItems();
+    this._bindContentScrolling();
+  },
+
+  willDestroyElement() {
+    this._super(...arguments);
+    this._unbindContentScrolling();
+  },
 
   actions: {
     downloadCurrentAsset() {
       if (this.currentAsset) {
-        this.downloadAsset(this.currentAsset);
+        this._downloadAsset(this.currentAsset);
       }
     }
+  },
+
+  _bindContentScrolling() {
+    let scrollingTimeout = 10;
+    let scrollingEl = this.element.querySelector('.js-content');
+
+    scrollingEl.addEventListener('scroll', () => (
+      run.debounce(this, this._onContentScrolled, scrollingTimeout)
+    ));
+  },
+
+  _unbindContentScrolling() {
+    let scrollingEl = this.element.querySelector('.js-content');
+    scrollingEl.removeEventListener('scroll');
+  },
+
+  _onContentScrolled() {
+    let scrollingEl = this.element.querySelector('.js-content');
+    let isContentScrolled = scrollingEl.scrollTop !== 0;
+    set(this, 'isContentScrolled', isContentScrolled);
+  },
+
+  _animateAssetListItems() {
+    let assetItemEls = this.element.querySelectorAll('.js-asset-item');
+
+    Velocity(assetItemEls, 'transition.expandIn', {
+      duration: 500,
+
+      // Cleanup Velocity inline styles.
+      complete(targets) {
+        targets.forEach((target) => target.removeAttribute('style'));
+      }
+    });
+  },
+
+  _animateShortcutedAsset() {
+    let activeAssetEl = this.element.querySelector('.js-active-asset');
+
+    if (activeAssetEl) {
+      Velocity(activeAssetEl, 'callout.pulse', { duration: 300 });
+    }
+  },
+
+  _downloadAsset(asset) {
+    let svgFile = new Blob([asset.originalSvg], { type: 'image/svg+xml' });
+    window.saveAs(svgFile, asset.fileName);
+  },
+
+  _showClipboardError() {
+    // eslint-disable-next-line no-alert
+    window.alert("Your browser doesn't support copy to clipboard feature.\n" +
+      'Use the asset viewer with a modern browser, such as Chrome or Firefox.');
   }
 });
