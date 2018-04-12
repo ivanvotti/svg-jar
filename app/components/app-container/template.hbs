@@ -1,59 +1,59 @@
-{{#if model.filters}}
+{{#if @model.filters}}
   {{app-sidebar
-      sidebarFilters=model.filters
-      externalLinks=model.links
-      showShortcutBar=(action showShortcutBar)
+      sidebarFilters=@model.filters
+      externalLinks=@model.links
+      showShortcutBar=(action @showShortcutBar)
   }}
 {{/if}}
 
 <div class="c-app-main">
   {{content-header
-      arrangeDropdownItems=model.arrangeBy
-      sortDropdownItems=model.sortBy
-      searchQuery=searchQuery
-      setSearchQuery=(action setSearchQuery)
+      arrangeDropdownItems=@model.arrangeBy
+      sortDropdownItems=@model.sortBy
+      searchQuery=@searchQuery
+      setSearchQuery=(action @setSearchQuery)
   }}
 
-  <div class="c-content js-content {{if (not assets.length) 'c-content--empty'}}">
-    {{#if (not assets.length)}}
+  <div class="c-content js-content {{if (not this.assets.length) 'c-content--empty'}}">
+    {{#if (not this.assets.length)}}
       <div class="c-placeholder">
-        {{#if searchQuery}}
+        {{#if @searchQuery}}
           <div class="c-placeholder__image">
             {{svg-jar "search-big"  class="c-icon c-icon--48x48px"}}
           </div>
         {{/if}}
 
         <div class="c-placeholder__title">
-          {{#if searchQuery}}
+          {{#if @searchQuery}}
             We couldn’t find any assets matching
             <span class="c-placeholder__code">
-              {{searchQuery}}
+              {{@searchQuery}}
             </span>
           {{else}}
             No assets found
           {{/if}}
 
-          {{#if filterName}}
+          {{#if this.filterName}}
             in
             <span class="c-placeholder__code">
-              {{filterName}}
+              {{this.filterName}}
             </span>
           {{/if}}
         </div>
       </div>
-    {{else if arrangeBy}}
+    {{else if @arrangeBy}}
       {{asset-groups
-          assets=assets
-          arrangeBy=arrangeBy
+          assets=this.assets
+          arrangeBy=@arrangeBy
       }}
     {{else}}
-      {{asset-list assets=assets}}
+      {{asset-list assets=this.assets}}
     {{/if}}
   </div>
 </div>
 
 {{app-pane
-    currentAsset=currentAsset
-    detailsItems=model.details
+    currentAsset=this.currentAsset
+    detailsItems=@model.details
     downloadCurrentAsset=(action "downloadCurrentAsset")
 }}
