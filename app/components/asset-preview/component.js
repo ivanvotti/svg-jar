@@ -8,9 +8,9 @@ export default Component.extend({
   asset: null,
 
   isScaleUpNeeded: computed('asset', function() {
-    let { width, height } = this.asset;
-    let isAssetSmall = Math.max(width, height) <= MAX_ASSET_SIZE;
-    let isAssetScalable = !!get(this, 'asset.svg.attrs.viewBox');
+    const { width, height } = this.asset;
+    const isAssetSmall = Math.max(width, height) <= MAX_ASSET_SIZE;
+    const isAssetScalable = !!get(this, 'asset.svg.attrs.viewBox');
     return isAssetSmall && isAssetScalable;
   })
 });

@@ -11,8 +11,8 @@ export default function selectElemText(elem) {
       elem.focus();
     }
 
-    let selection = window.getSelection();
-    let range = document.createRange();
+    const selection = window.getSelection();
+    const range = document.createRange();
 
     range.selectNodeContents(elem);
     selection.removeAllRanges();

@@ -9,7 +9,7 @@ function copySelectedText() {
 }
 
 export default function copyToClipboard(text) {
-  let fakeElem = document.createElement('textarea');
+  const fakeElem = document.createElement('textarea');
   fakeElem.value = text;
   fakeElem.setAttribute('readonly', '');
   fakeElem.style.border = '0';
@@ -17,7 +17,7 @@ export default function copyToClipboard(text) {
   fakeElem.style.margin = '0';
 
   // Move fakeElem out of screen
-  let isRightToLeft = document.documentElement.getAttribute('dir') === 'rtl';
+  const isRightToLeft = document.documentElement.getAttribute('dir') === 'rtl';
   fakeElem.style.position = 'absolute';
   fakeElem.style[isRightToLeft ? 'right' : 'left'] = '-9999px';
   fakeElem.style.top =
@@ -25,7 +25,7 @@ export default function copyToClipboard(text) {
 
   document.body.appendChild(fakeElem);
   selectElemText(fakeElem);
-  let isSucceeded = copySelectedText();
+  const isSucceeded = copySelectedText();
   document.body.removeChild(fakeElem);
 
   return isSucceeded;

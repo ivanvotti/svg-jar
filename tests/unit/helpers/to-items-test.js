@@ -6,7 +6,7 @@ module('Unit | Helper | to-items', function(hooks) {
   setupTest(hooks);
 
   test('it works', function(assert) {
-    let groups = {
+    const groups = {
       odd: [1, 3, 5],
       even: [2, 4]
     };

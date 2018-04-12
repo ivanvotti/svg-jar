@@ -25,7 +25,6 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'import/extensions': 'off',
     'arrow-parens': ['error', 'always'],
-    'prefer-const': 'off',
     'comma-dangle': 'off',
     'prefer-arrow-callback': 'off',
     'func-names': 'off',

@@ -34,12 +34,12 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   assets: alias('sortedAssets'),
 
   filterName: computed('filterBy', function() {
-    let filter = this.filterBy;
+    const filter = this.filterBy;
     return filter && filter.split(':')[1];
   }),
 
   filteredAssets: computed('filterBy', function() {
-    let assets = get(this, 'model.assets');
+    const assets = get(this, 'model.assets');
 
     return this.filterBy
       ? assets.filterBy(...this.filterBy.split(':'))
@@ -48,8 +48,8 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
 
   foundAssets: computed('filteredAssets', 'searchQuery', function() {
     let assets = this.filteredAssets;
-    let query = this.searchQuery;
-    let searchKeys = get(this, 'model.searchKeys');
+    const query = this.searchQuery;
+    const searchKeys = get(this, 'model.searchKeys');
 
     if (query && query.length > 1 && searchKeys) {
       assets = assets.filter((asset) => (
@@ -67,7 +67,7 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   }),
 
   shortcutFocusSearchBar: on(keyDown('Slash'), function(event) {
-    let searchInputEl = this.element.querySelector('.js-search-bar-input');
+    const searchInputEl = this.element.querySelector('.js-search-bar-input');
     searchInputEl.focus();
     event.preventDefault();
   }),
@@ -133,8 +133,8 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   },
 
   _bindContentScrolling() {
-    let scrollingTimeout = 10;
-    let scrollingEl = this.element.querySelector('.js-content');
+    const scrollingTimeout = 10;
+    const scrollingEl = this.element.querySelector('.js-content');
 
     scrollingEl.addEventListener('scroll', () => (
       run.debounce(this, this._onContentScrolled, scrollingTimeout)
@@ -142,18 +142,18 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   },
 
   _unbindContentScrolling() {
-    let scrollingEl = this.element.querySelector('.js-content');
+    const scrollingEl = this.element.querySelector('.js-content');
     scrollingEl.removeEventListener('scroll');
   },
 
   _onContentScrolled() {
-    let scrollingEl = this.element.querySelector('.js-content');
-    let isContentScrolled = scrollingEl.scrollTop !== 0;
+    const scrollingEl = this.element.querySelector('.js-content');
+    const isContentScrolled = scrollingEl.scrollTop !== 0;
     set(this, 'isContentScrolled', isContentScrolled);
   },
 
   _animateAssetListItems() {
-    let assetItemEls = this.element.querySelectorAll('.js-asset-item');
+    const assetItemEls = this.element.querySelectorAll('.js-asset-item');
 
     Velocity(assetItemEls, 'transition.expandIn', {
       duration: 500,
@@ -166,7 +166,7 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   },
 
   _animateShortcutedAsset() {
-    let activeAssetEl = this.element.querySelector('.js-active-asset');
+    const activeAssetEl = this.element.querySelector('.js-active-asset');
 
     if (activeAssetEl) {
       Velocity(activeAssetEl, 'callout.pulse', { duration: 300 });
@@ -174,7 +174,7 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   },
 
   _downloadAsset(asset) {
-    let svgFile = new Blob([asset.originalSvg], { type: 'image/svg+xml' });
+    const svgFile = new Blob([asset.originalSvg], { type: 'image/svg+xml' });
     window.saveAs(svgFile, asset.fileName);
   },
 
