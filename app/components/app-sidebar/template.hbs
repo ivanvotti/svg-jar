@@ -1,35 +1,37 @@
-<div class="c-app-sidebar__logo">
-  {{#button-dropdown alignment="right" as |section|}}
-    {{#if section.isButton}}
-      {{svg-jar "logo"}}
-    {{else if section.isDropdown}}
-      <div class="c-dropdown__item" {{action showShortcutBar}}>
-        Shortcuts
-      </div>
-      {{#each externalLinks as |link|}}
-        <a href={{link.url}}
-          class="c-dropdown__item"
-          target="blank"
-        >
-          {{link.text}}
-        </a>
-      {{/each}}
-    {{/if}}
-  {{/button-dropdown}}
-</div>
+<div class="c-app-sidebar">
+  <div class="c-app-sidebar__logo">
+    {{#button-dropdown alignment="right" as |section|}}
+      {{#if section.isButton}}
+        {{svg-jar "logo"}}
+      {{else if section.isDropdown}}
+        <div class="c-dropdown__item" {{action @showShortcutBar}}>
+          Shortcuts
+        </div>
+        {{#each @externalLinks as |link|}}
+          <a href={{link.url}}
+            class="c-dropdown__item"
+            target="blank"
+          >
+            {{link.text}}
+          </a>
+        {{/each}}
+      {{/if}}
+    {{/button-dropdown}}
+  </div>
 
-<div class="c-sidebar-filter">
-  {{#link-to "index"
-      (query-pair "filterBy" null)
-      class="c-sidebar-filter__item"
-      activeClass="is-active"
-  }}
-    <span class="c-sidebar-filter__name">
-      All assets
-    </span>
-  {{/link-to}}
-</div>
+  <div class="c-sidebar-filter">
+    {{#link-to "index"
+        (query-pair "filterBy" null)
+        class="c-sidebar-filter__item"
+        activeClass="is-active"
+    }}
+      <span class="c-sidebar-filter__name">
+        All assets
+      </span>
+    {{/link-to}}
+  </div>
 
-{{#each sidebarFilters as |sidebarFilter|}}
-  {{sidebar-filter filter=sidebarFilter}}
-{{/each}}
+  {{#each @sidebarFilters as |sidebarFilter|}}
+    {{sidebar-filter filter=sidebarFilter}}
+  {{/each}}
+</div>

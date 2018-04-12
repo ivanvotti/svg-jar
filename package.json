@@ -17,6 +17,7 @@
     "test": "npm run lint:js && COVERAGE=true ember test"
   },
   "devDependencies": {
+    "@ember/optional-features": "^0.5.2",
     "broccoli-asset-rev": "^2.4.5",
     "ember-cli": "~3.1.1",
     "ember-cli-app-version": "^3.0.0",

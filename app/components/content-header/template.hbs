@@ -1,23 +1,22 @@
-<div class="c-content-header__section">
-  {{search-bar
-      searchQuery=searchQuery
-      setSearchQuery=(action setSearchQuery)
-  }}
-</div>
+<div class="c-content-header">
+  <div class="c-content-header__section">
+    {{search-bar
+        searchQuery=@searchQuery
+        setSearchQuery=(action @setSearchQuery)
+    }}
+  </div>
 
-<div class="c-content-header__section">
-  {{query-dropdown
-      class="u-mar-right-s"
-      buttonName="Sort by"
-      queryParamName="sortBy"
-      dropdownItems=sortDropdownItems
-  }}
+  <div class="c-content-header__section">
+    {{query-dropdown
+        buttonName="Sort by"
+        queryParamName="sortBy"
+        dropdownItems=@sortDropdownItems
+    }}
 
-  {{!-- TODO: Get rid of the dropdownAlignment, when auto alignment is implemented. --}}
-  {{query-dropdown
-      dropdownAlignment="right"
-      buttonName="Arrange by"
-      queryParamName="arrangeBy"
-      dropdownItems=arrangeDropdownItems
-  }}
+    {{query-dropdown
+        buttonName="Arrange by"
+        queryParamName="arrangeBy"
+        dropdownItems=@arrangeDropdownItems
+    }}
+  </div>
 </div>

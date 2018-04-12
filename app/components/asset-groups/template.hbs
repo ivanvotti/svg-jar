@@ -1,6 +1,6 @@
 {{#each
     (sort-by "name"
-      (to-items (group-by arrangeBy assets)
+      (to-items (group-by @arrangeBy @assets)
         keyName="name"
         valueName="items"
       )

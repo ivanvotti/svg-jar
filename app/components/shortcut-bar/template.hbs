@@ -1,64 +1,66 @@
-<div class="c-drawer__body">
-  <div class="c-drawer__title">
-    Keyboard shortcuts
-  </div>
+<div class="c-drawer {{if @isOpen "is-open"}}">
+  <div class="c-drawer__body">
+    <div class="c-drawer__title">
+      Keyboard shortcuts
+    </div>
 
-  <button class="c-drawer__close" {{action close}}>
-    ×
-  </button>
+    <button class="c-drawer__close" {{action @close}}>
+      ×
+    </button>
 
-  <div class="c-shortcut-bar">
-    <table class="c-shortcut-bar__section">
-      <tbody>
-        <tr>
-          <td class="c-shortcut-bar__keys">
-            <kbd class="c-shortcut-bar__key">Enter</kbd>
-          </td>
-          <td class="c-shortcut-bar__info">
-            Copy copypasta to clipboard
-          </td>
-        </tr>
+    <div class="c-shortcut-bar">
+      <table class="c-shortcut-bar__section">
+        <tbody>
+          <tr>
+            <td class="c-shortcut-bar__keys">
+              <kbd class="c-shortcut-bar__key">Enter</kbd>
+            </td>
+            <td class="c-shortcut-bar__info">
+              Copy copypasta to clipboard
+            </td>
+          </tr>
 
-        <tr>
-          <td class="c-shortcut-bar__keys">
-            <kbd class="c-shortcut-bar__key">D</kbd>
-          </td>
-          <td class="c-shortcut-bar__info">
-            Download original asset
-          </td>
-        </tr>
+          <tr>
+            <td class="c-shortcut-bar__keys">
+              <kbd class="c-shortcut-bar__key">D</kbd>
+            </td>
+            <td class="c-shortcut-bar__info">
+              Download original asset
+            </td>
+          </tr>
 
-        <tr>
-          <td class="c-shortcut-bar__keys">
-            <kbd class="c-shortcut-bar__key">S</kbd>
-          </td>
-          <td class="c-shortcut-bar__info">
-            Copy optimized code to clipboard
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          <tr>
+            <td class="c-shortcut-bar__keys">
+              <kbd class="c-shortcut-bar__key">S</kbd>
+            </td>
+            <td class="c-shortcut-bar__info">
+              Copy optimized code to clipboard
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-    <table class="c-shortcut-bar__section">
-      <tbody>
-        <tr>
-          <td class="c-shortcut-bar__keys">
-            <kbd class="c-shortcut-bar__key">/</kbd>
-          </td>
-          <td class="c-shortcut-bar__info">
-            Focus search bar
-          </td>
-        </tr>
+      <table class="c-shortcut-bar__section">
+        <tbody>
+          <tr>
+            <td class="c-shortcut-bar__keys">
+              <kbd class="c-shortcut-bar__key">/</kbd>
+            </td>
+            <td class="c-shortcut-bar__info">
+              Focus search bar
+            </td>
+          </tr>
 
-        <tr>
-          <td class="c-shortcut-bar__keys">
-            <kbd class="c-shortcut-bar__key">?</kbd>
-          </td>
-          <td class="c-shortcut-bar__info">
-            Show shortcuts
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          <tr>
+            <td class="c-shortcut-bar__keys">
+              <kbd class="c-shortcut-bar__key">?</kbd>
+            </td>
+            <td class="c-shortcut-bar__info">
+              Show shortcuts
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

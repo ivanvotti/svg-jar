@@ -1,51 +1,53 @@
-{{#if currentAsset}}
-  <div class="c-app-pane__section">
-    {{asset-preview asset=currentAsset}}
-  </div>
-
-  <div class="c-app-pane__section">
-    <div class="c-app-pane__title">
-      Copypasta
+<div class="c-app-pane">
+  {{#if @currentAsset}}
+    <div class="c-app-pane__section">
+      {{asset-preview asset=@currentAsset}}
     </div>
 
-    <code class="c-app-pane__copypasta">
-      {{currentAsset.copypasta}}
-    </code>
-  </div>
-
-  <div class="c-app-pane__section">
-    <div class="c-app-pane__title">
-      Details
-    </div>
-
-    {{asset-details
-        asset=currentAsset
-        detailsItems=detailsItems
-    }}
-  </div>
-
-  {{#if (not currentAsset.svg.attrs.viewBox)}}
     <div class="c-app-pane__section">
       <div class="c-app-pane__title">
-        Errors
+        Copypasta
       </div>
 
-      The viewBox is not set. This SVG is not scalable!
+      <code class="c-app-pane__copypasta">
+        {{@currentAsset.copypasta}}
+      </code>
+    </div>
+
+    <div class="c-app-pane__section">
+      <div class="c-app-pane__title">
+        Details
+      </div>
+
+      {{asset-details
+          asset=@currentAsset
+          detailsItems=@detailsItems
+      }}
+    </div>
+
+    {{#if (not @currentAsset.svg.attrs.viewBox)}}
+      <div class="c-app-pane__section">
+        <div class="c-app-pane__title">
+          Errors
+        </div>
+
+        The viewBox is not set. This SVG is not scalable!
+      </div>
+    {{/if}}
+
+    <div class="c-app-pane__section">
+      <button
+        class="c-btn c-btn--tertiary c-btn--full"
+        {{action @downloadCurrentAsset}}
+      >
+        Download
+      </button>
+    </div>
+  {{else}}
+    <div class="c-placeholder">
+      <div class="c-placeholder__title">
+        No Selection
+      </div>
     </div>
   {{/if}}
-
-  <div class="c-app-pane__section">
-    <button
-      class="c-btn c-btn--tertiary c-btn--full"
-      {{action downloadCurrentAsset}}
-    >
-      Download
-    </button>
-  </div>
-{{else}}
-  <div class="c-placeholder">
-    <div class="c-placeholder__title">
-      No Selection
-    </div>
-  </div>
-{{/if}}
+</div>

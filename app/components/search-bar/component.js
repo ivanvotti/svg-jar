@@ -4,14 +4,6 @@ export default Component.extend({
   classNames: ['c-search-bar'],
   searchQuery: null,
 
-  _blurInput() {
-    this.element.querySelector('.js-search-bar-input').blur();
-  },
-
-  _resetQuery() {
-    this.setSearchQuery('');
-  },
-
   actions: {
     onEnter() {
       this._blurInput();
@@ -29,5 +21,13 @@ export default Component.extend({
     resetQuery() {
       this._resetQuery();
     }
+  },
+
+  _blurInput() {
+    this.element.querySelector('.js-search-bar-input').blur();
+  },
+
+  _resetQuery() {
+    this.setSearchQuery('');
   }
 });
