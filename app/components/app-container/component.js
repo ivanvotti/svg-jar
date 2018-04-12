@@ -1,5 +1,7 @@
 /* eslint-disable ember/no-on-calls-in-components */
 
+import { alias } from '@ember/object/computed';
+
 import Component from '@ember/component';
 import { get, set, computed } from '@ember/object';
 import { run } from '@ember/runloop';
@@ -28,24 +30,25 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   searchQuery: null,
   isContentScrolled: false,
 
-  currentAsset: computed.alias('assetSelector.currentAsset'),
-  assets: computed.alias('sortedAssets'),
+  currentAsset: alias('assetSelector.currentAsset'),
+  assets: alias('sortedAssets'),
 
   filterName: computed('filterBy', function() {
-    let filter = get(this, 'filterBy');
+    let filter = this.filterBy;
     return filter && filter.split(':')[1];
   }),
 
   filteredAssets: computed('filterBy', function() {
     let assets = get(this, 'model.assets');
-    let filterBy = get(this, 'filterBy');
 
-    return filterBy ? assets.filterBy(...filterBy.split(':')) : assets;
+    return this.filterBy
+      ? assets.filterBy(...this.filterBy.split(':'))
+      : assets;
   }),
 
   foundAssets: computed('filteredAssets', 'searchQuery', function() {
-    let assets = get(this, 'filteredAssets');
-    let query = get(this, 'searchQuery');
+    let assets = this.filteredAssets;
+    let query = this.searchQuery;
     let searchKeys = get(this, 'model.searchKeys');
 
     if (query && query.length > 1 && searchKeys) {
@@ -58,10 +61,9 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   }),
 
   sortedAssets: computed('foundAssets', 'sortBy', function() {
-    let assets = get(this, 'foundAssets');
-    let sortBy = get(this, 'sortBy');
-
-    return sortBy ? assets.sortBy(sortBy) : assets;
+    return this.sortBy
+      ? this.foundAssets.sortBy(this.sortBy)
+      : this.foundAssets;
   }),
 
   didInsertElement() {
@@ -134,18 +136,16 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   }),
 
   shortcutToggleShortcutBar: on(keyDown('shift+Slash'), function(event) {
-    get(this, 'toggleShortcutBar')();
+    this.toggleShortcutBar();
     event.preventDefault();
   }),
 
   shortcutCopyCurrentCopypasta: on(keyDown('Enter'), function(event) {
-    let currentAsset = get(this, 'currentAsset');
-
-    if (!currentAsset) {
+    if (!this.currentAsset) {
       return;
     }
 
-    if (copyToClipboard(currentAsset.copypasta)) {
+    if (copyToClipboard(this.currentAsset.copypasta)) {
       this.animateShortcutedAsset();
       event.preventDefault();
     } else {
@@ -154,13 +154,11 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   }),
 
   shortcutCopyCurrentSource: on(keyDown('KeyS'), function(event) {
-    let currentAsset = get(this, 'currentAsset');
-
-    if (!currentAsset) {
+    if (!this.currentAsset) {
       return;
     }
 
-    if (copyToClipboard(makeSvg(currentAsset.svg))) {
+    if (copyToClipboard(makeSvg(this.currentAsset.svg))) {
       this.animateShortcutedAsset();
       event.preventDefault();
     } else {
@@ -169,23 +167,19 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   }),
 
   shortcutDownloadCurrent: on(keyDown('KeyD'), function(event) {
-    let currentAsset = get(this, 'currentAsset');
-
-    if (!currentAsset) {
+    if (!this.currentAsset) {
       return;
     }
 
-    this.downloadAsset(currentAsset);
+    this.downloadAsset(this.currentAsset);
     this.animateShortcutedAsset();
     event.preventDefault();
   }),
 
   actions: {
     downloadCurrentAsset() {
-      let currentAsset = get(this, 'currentAsset');
-
-      if (currentAsset) {
-        this.downloadAsset(currentAsset);
+      if (this.currentAsset) {
+        this.downloadAsset(this.currentAsset);
       }
     }
   }

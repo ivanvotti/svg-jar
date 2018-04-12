@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { computed, get } from '@ember/object';
+import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default Component.extend({
@@ -9,16 +9,12 @@ export default Component.extend({
   asset: null,
 
   isActive: computed('assetSelector.currentAsset', function() {
-    return get(this, 'asset') === get(this, 'assetSelector.currentAsset');
+    return this.assetSelector.isCurrent(this.asset);
   }),
 
   click() {
-    if (get(this, 'isActive')) {
-      return;
+    if (!this.isActive) {
+      this.assetSelector.setCurrentAsset(this.asset);
     }
-
-    let asset = get(this, 'asset');
-    let assetSelector = get(this, 'assetSelector');
-    assetSelector.setCurrentAsset(asset);
   }
 });

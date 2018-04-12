@@ -6,5 +6,9 @@ export default Service.extend({
 
   setCurrentAsset(asset) {
     set(this, 'currentAsset', asset);
+  },
+
+  isCurrent(asset) {
+    return asset === this.currentAsset;
   }
 });

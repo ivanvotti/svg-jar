@@ -1,5 +1,4 @@
 import Component from '@ember/component';
-import { get } from '@ember/object';
 import { run } from '@ember/runloop';
 
 export default Component.extend({
@@ -14,22 +13,22 @@ export default Component.extend({
 
   didInsertElement() {
     this._super(...arguments);
-    this.initClickToClose();
+    this._bindClickToClose();
   },
 
   willDestroyElement() {
     this._super(...arguments);
-    this.offClickToClose();
+    this._unbindClickToClose();
   },
 
-  initClickToClose() {
+  _bindClickToClose() {
     run.next(() => {
-      this._onDocumentClick = () => get(this, 'close')();
+      this._onDocumentClick = () => this.close();
       document.addEventListener('click', this._onDocumentClick);
     });
   },
 
-  offClickToClose() {
+  _unbindClickToClose() {
     document.removeEventListener('click', this._onDocumentClick);
   }
 });

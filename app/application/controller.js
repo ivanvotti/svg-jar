@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { get, set } from '@ember/object';
+import { set } from '@ember/object';
 
 export default Controller.extend({
   queryParams: ['arrangeBy', 'sortBy', 'filterBy', 'query'],
@@ -19,8 +19,7 @@ export default Controller.extend({
     },
 
     toggleShortcutBar() {
-      let isShortcutBarOpen = get(this, 'isShortcutBarOpen');
-      set(this, 'isShortcutBarOpen', !isShortcutBarOpen);
+      set(this, 'isShortcutBarOpen', !this.isShortcutBarOpen);
     }
   }
 });

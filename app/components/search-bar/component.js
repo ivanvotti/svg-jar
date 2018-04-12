@@ -1,5 +1,4 @@
 import Component from '@ember/component';
-import { get } from '@ember/object';
 
 export default Component.extend({
   classNames: ['c-search-bar'],
@@ -10,7 +9,7 @@ export default Component.extend({
   },
 
   _resetQuery() {
-    get(this, 'setSearchQuery')('');
+    this.setSearchQuery('');
   },
 
   actions: {
@@ -20,7 +19,7 @@ export default Component.extend({
 
     onEscape() {
       // Reset search query or blur if it's already empty.
-      if (!get(this, 'searchQuery')) {
+      if (!this.searchQuery) {
         this._blurInput();
       }
 

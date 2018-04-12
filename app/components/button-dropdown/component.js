@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { computed, get, set } from '@ember/object';
+import { computed, set } from '@ember/object';
 
 export default Component.extend({
   alignment: 'left',
@@ -7,17 +7,16 @@ export default Component.extend({
   hasArrow: true,
 
   attachment: computed('alignment', function() {
-    return `top ${get(this, 'alignment')}`;
+    return `top ${this.alignment}`;
   }),
 
   targetAttachment: computed('alignment', function() {
-    return `bottom ${get(this, 'alignment')}`;
+    return `bottom ${this.alignment}`;
   }),
 
   actions: {
     toggleDropdown() {
-      let isOpen = get(this, 'isOpen');
-      set(this, 'isOpen', !isOpen);
+      set(this, 'isOpen', !this.isOpen);
     }
   }
 });
