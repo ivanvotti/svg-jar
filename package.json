@@ -19,6 +19,7 @@
   "devDependencies": {
     "@ember/optional-features": "^0.5.2",
     "broccoli-asset-rev": "^2.4.5",
+    "ember-basic-dropdown": "^1.0.0-beta.4",
     "ember-cli": "~3.1.1",
     "ember-cli-app-version": "^3.0.0",
     "ember-cli-babel": "^6.7.1",
@@ -46,7 +47,6 @@
     "ember-source": "~3.1.0",
     "ember-svg-jar": "^1.1.1",
     "ember-test-selectors": "^0.3.9",
-    "ember-tether": "^0.4.1",
     "ember-truth-helpers": "^2.0.0",
     "eslint-config-airbnb-base": "12.1.0",
     "eslint-plugin-ember": "^5.0.0",

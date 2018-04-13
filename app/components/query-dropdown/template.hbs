@@ -1,23 +1,32 @@
 {{#if @dropdownItems}}
-  {{#button-dropdown as |section|}}
-    {{#if section.isButton}}
-      <span>{{@buttonName}}</span>
-    {{else if section.isDropdown}}
-      {{#each @dropdownItems as |dropdownItem|}}
-        {{link-to dropdownItem.name
+  {{#basic-dropdown as |dropdown|}}
+    {{#dropdown.trigger}}
+      <button class="c-dropdown__trigger">
+        <div class="c-dropdown__trigger-inner">
+          <span>{{@buttonName}}</span>
+          {{svg-jar "arrow-down" class="c-icon c-icon--16px c-dropdown__trigger-arrow"}}
+        </div>
+      </button>
+    {{/dropdown.trigger}}
+    {{#dropdown.content}}
+      <div {{action dropdown.actions.close}}>
+        {{#each @dropdownItems as |dropdownItem|}}
+          {{link-to dropdownItem.name
+              "index"
+              (query-pair @queryParamName dropdownItem.key)
+              class="c-dropdown__item"
+          }}
+        {{/each}}
+
+        <div class="c-dropdown__divider"></div>
+
+        {{link-to "None"
             "index"
-            (query-pair @queryParamName dropdownItem.key)
+            (query-pair @queryParamName null)
             class="c-dropdown__item"
         }}
-      {{/each}}
-
-      <div class="c-dropdown__divider"></div>
-
-      {{link-to "None"
-          "index"
-          (query-pair @queryParamName null)
-          class="c-dropdown__item"
-      }}
-    {{/if}}
-  {{/button-dropdown}}
+      </div>
+    {{/dropdown.content}}
+  {{/basic-dropdown}}
 {{/if}}
+
