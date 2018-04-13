@@ -1,13 +1,11 @@
 {{svg-jar "search" class="c-search-bar__icon"}}
 
-{{one-way-input @searchQuery
-    class="c-search-bar__input js-search-bar-input"
-    placeholder="Search assets..."
-    keyEvents=(hash
-      13=(action "onEnter")
-      27=(action "onEscape")
-    )
-    update=(action @setSearchQuery)
+{{input
+  class="c-search-bar__input js-search-bar-input"
+  placeholder="Search assets..."
+  value=@searchQuery
+  enter=(action "onEnter")
+  escape-press=(action "onEscape")
 }}
 
 {{#if @searchQuery}}
