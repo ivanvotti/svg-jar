@@ -1,7 +1,7 @@
 <div class="c-app-pane">
   {{#if @currentAsset}}
     <div class="c-app-pane__section">
-      {{asset-preview asset=@currentAsset}}
+      {{pane-preview asset=@currentAsset}}
     </div>
 
     <div class="c-app-pane__section">
@@ -19,7 +19,7 @@
         Details
       </div>
 
-      {{asset-details
+      {{pane-details
           asset=@currentAsset
           detailsItems=@detailsItems
       }}

@@ -4,7 +4,7 @@ import { computed, get } from '@ember/object';
 const MAX_ASSET_SIZE = 50;
 
 export default Component.extend({
-  classNames: ['c-asset-preview'],
+  classNames: ['c-pane-preview'],
   asset: null,
 
   isScaleUpNeeded: computed('asset', function() {

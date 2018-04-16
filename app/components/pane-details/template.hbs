@@ -1,11 +1,11 @@
-<div class="c-asset-details">
+<div class="c-pane-details">
   {{#each @detailsItems as |detailsItem|}}
-    <div class="c-asset-details__item">
-      <div class="c-asset-details__name">
+    <div class="c-pane-details__item">
+      <div class="c-pane-details__name">
         {{detailsItem.name}}
       </div>
 
-      <div class="c-asset-details__value">
+      <div class="c-pane-details__value">
         {{get @asset detailsItem.key}}
       </div>
     </div>

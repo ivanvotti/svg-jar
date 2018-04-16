@@ -1,13 +1,13 @@
 {{#if this.isScaleUpNeeded}}
   {{svg @asset.svg
-      class="c-asset-preview__item"
+      class="c-pane-preview__item"
       width=(multiply @asset.width 2)
       height=(multiply @asset.height 2)
   }}
 {{/if}}
 
 {{svg @asset.svg
-    class="c-asset-preview__item c-asset-preview__item--base"
+    class="c-pane-preview__item c-pane-preview__item--base"
     width=asset.width
     height=asset.height
 }}
