@@ -1,30 +1,9 @@
 <div class="c-app-sidebar">
   <div class="c-app-sidebar__logo">
-    {{#basic-dropdown as |dropdown|}}
-      {{#dropdown.trigger}}
-        <button class="c-dropdown__trigger">
-          <div class="c-dropdown__trigger-inner">
-            {{svg-jar "logo"}}
-            {{svg-jar "arrow-down" class="c-icon c-icon--16px c-dropdown__trigger-arrow"}}
-          </div>
-        </button>
-      {{/dropdown.trigger}}
-      {{#dropdown.content}}
-        <div {{action dropdown.actions.close}}>
-          <div class="c-dropdown__item" {{action @showShortcutBar}}>
-            Shortcuts
-          </div>
-          {{#each @externalLinks as |link|}}
-            <a href={{link.url}}
-              class="c-dropdown__item"
-              target="blank"
-            >
-              {{link.text}}
-            </a>
-          {{/each}}
-        </div>
-      {{/dropdown.content}}
-    {{/basic-dropdown}}
+    {{logo-dropdown
+        externalLinks=@externalLinks
+        showShortcutBar=@showShortcutBar
+    }}
   </div>
 
   <div class="c-sidebar-filter">

@@ -1,0 +1,24 @@
+{{#basic-dropdown as |dropdown|}}
+  {{#dropdown.trigger}}
+    <button class="c-dropdown__trigger">
+      <div class="c-dropdown__trigger-inner">
+        {{svg-jar "logo"}}
+        {{svg-jar "arrow-down" class="c-icon c-icon--16px c-dropdown__trigger-arrow"}}
+      </div>
+    </button>
+  {{/dropdown.trigger}}
+  {{#dropdown.content}}
+    <div class="c-dropdown__item" {{action (queue @showShortcutBar dropdown.actions.close)}}>
+      Shortcuts
+    </div>
+
+    {{#each @externalLinks as |link|}}
+      <a href={{link.url}}
+        class="c-dropdown__item"
+        target="blank"
+      >
+        {{link.text}}
+      </a>
+    {{/each}}
+  {{/dropdown.content}}
+{{/basic-dropdown}}
