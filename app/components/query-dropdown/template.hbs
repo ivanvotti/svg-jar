@@ -1,5 +1,5 @@
 {{#if @dropdownItems}}
-  {{#basic-dropdown as |dropdown|}}
+  {{#basic-dropdown renderInPlace=true as |dropdown|}}
     {{#dropdown.trigger}}
       <button class="c-dropdown__trigger">
         <div class="c-dropdown__trigger-inner">
@@ -8,7 +8,7 @@
         </div>
       </button>
     {{/dropdown.trigger}}
-    {{#dropdown.content}}
+    {{#dropdown.content class="c-dropdown__content"}}
       <div {{action dropdown.actions.close}}>
         {{#each @dropdownItems as |dropdownItem|}}
           {{link-to dropdownItem.name
