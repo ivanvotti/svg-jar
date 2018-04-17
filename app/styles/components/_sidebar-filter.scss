@@ -38,6 +38,7 @@
 
 .c-sidebar-filter__name {
   @include text-truncate();
+
   flex-grow: 1;
 }
 

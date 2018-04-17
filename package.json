@@ -34,6 +34,7 @@
     "ember-cli-sass": "^7.1.7",
     "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.0",
+    "ember-cli-stylelint": "^2.1.0",
     "ember-cli-template-lint": "^0.7.5",
     "ember-cli-uglify": "^2.0.0",
     "ember-composable-helpers": "^2.0.0",
@@ -55,6 +56,7 @@
     "loader.js": "^4.2.3",
     "normalize.css": "^8.0.0",
     "qunit-dom": "^0.6.2",
+    "stylelint-config-standard": "^18.2.0",
     "velocity-animate": "^1.5.1"
   },
   "engines": {

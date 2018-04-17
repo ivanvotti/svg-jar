@@ -14,7 +14,7 @@ html,
 
 html {
   // Changes the default tap highlight to be completely transparent in iOS.
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 *,
@@ -42,7 +42,6 @@ img {
   // Note: `<img>`s are deliberately not made responsive by default.
   // For the rationale behind this, see the comments on the `.img-fluid` class.
 }
-
 
 // iOS "clickable elements" fix for role="button"
 //

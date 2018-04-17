@@ -39,7 +39,6 @@ $btn-tertiary-bg-active: linear-gradient($color-blue-x-light, lighten($color-blu
   transition-timing-function: ease-in;
   transition-duration: 100ms;
   transition-property: background, border-color, color;
-
   cursor: pointer;
 
   &[disabled],
