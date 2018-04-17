@@ -17,10 +17,11 @@ module('Integration | Component | logo-dropdown', function(hooks) {
 
   test('it only renders dropdown triger & logo initially', async function(assert) {
     await render(hbs`
-    {{logo-dropdown
-      externalLinks=externalLinks
-      showShortcutBar=showShortcutBar
-    }}`);
+      {{logo-dropdown
+        externalLinks=externalLinks
+        showShortcutBar=showShortcutBar
+      }}
+    `);
 
     assert.dom('.c-dropdown__trigger').exists();
     assert.dom('.c-dropdown__trigger [data-test-logo]').exists();
@@ -29,10 +30,11 @@ module('Integration | Component | logo-dropdown', function(hooks) {
 
   test('it shows dropdown on click', async function(assert) {
     await render(hbs`
-    {{logo-dropdown
-      externalLinks=externalLinks
-      showShortcutBar=showShortcutBar
-    }}`);
+      {{logo-dropdown
+        externalLinks=externalLinks
+        showShortcutBar=showShortcutBar
+      }}
+    `);
 
     assert.dom('.c-dropdown__item').doesNotExist('dropdown is hidden before click');
 
@@ -42,10 +44,11 @@ module('Integration | Component | logo-dropdown', function(hooks) {
 
   test('it renders dropdown items properly', async function(assert) {
     await render(hbs`
-    {{logo-dropdown
-      externalLinks=externalLinks
-      showShortcutBar=showShortcutBar
-    }}`);
+      {{logo-dropdown
+        externalLinks=externalLinks
+        showShortcutBar=showShortcutBar
+      }}
+    `);
 
     await click('.c-dropdown__trigger');
     const shortcutsToggle = this.element.querySelector('[data-test-shortcuts-toggle].c-dropdown__item');
@@ -66,10 +69,11 @@ module('Integration | Component | logo-dropdown', function(hooks) {
     this.showShortcutBar = () => assert.ok(true, 'showShortcutBar is called');
 
     await render(hbs`
-    {{logo-dropdown
-      externalLinks=externalLinks
-      showShortcutBar=showShortcutBar
-    }}`);
+      {{logo-dropdown
+        externalLinks=externalLinks
+        showShortcutBar=showShortcutBar
+      }}
+    `);
 
     await click('.c-dropdown__trigger');
     await click('[data-test-shortcuts-toggle]');
@@ -77,10 +81,11 @@ module('Integration | Component | logo-dropdown', function(hooks) {
 
   test('it closes dropdown on shortcuts toggle click', async function(assert) {
     await render(hbs`
-    {{logo-dropdown
-      externalLinks=externalLinks
-      showShortcutBar=showShortcutBar
-    }}`);
+      {{logo-dropdown
+        externalLinks=externalLinks
+        showShortcutBar=showShortcutBar
+      }}
+    `);
 
     await click('.c-dropdown__trigger');
     assert.dom('.c-dropdown__item').exists('dropdown is shown');
@@ -91,10 +96,11 @@ module('Integration | Component | logo-dropdown', function(hooks) {
 
   test('it closes dropdown on the second dropdown trigger click', async function(assert) {
     await render(hbs`
-    {{logo-dropdown
-      externalLinks=externalLinks
-      showShortcutBar=showShortcutBar
-    }}`);
+      {{logo-dropdown
+        externalLinks=externalLinks
+        showShortcutBar=showShortcutBar
+      }}
+    `);
 
     await click('.c-dropdown__trigger');
     assert.dom('.c-dropdown__item').exists('dropdown is shown');
@@ -105,10 +111,11 @@ module('Integration | Component | logo-dropdown', function(hooks) {
 
   test('it closes dropdown on document click', async function(assert) {
     await render(hbs`
-    {{logo-dropdown
-      externalLinks=externalLinks
-      showShortcutBar=showShortcutBar
-    }}`);
+      {{logo-dropdown
+        externalLinks=externalLinks
+        showShortcutBar=showShortcutBar
+      }}
+    `);
 
     await click('.c-dropdown__trigger');
     assert.dom('.c-dropdown__item').exists('dropdown is shown');
@@ -119,10 +126,11 @@ module('Integration | Component | logo-dropdown', function(hooks) {
 
   test('it does not close dropdown on link click', async function(assert) {
     await render(hbs`
-    {{logo-dropdown
-      externalLinks=externalLinks
-      showShortcutBar=showShortcutBar
-    }}`);
+      {{logo-dropdown
+        externalLinks=externalLinks
+        showShortcutBar=showShortcutBar
+      }}
+    `);
 
     await click('.c-dropdown__trigger');
     assert.dom('.c-dropdown__item').exists('dropdown is shown');
