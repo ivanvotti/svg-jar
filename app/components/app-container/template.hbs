@@ -16,31 +16,10 @@
 
   <div class="c-content js-content {{if (not this.assets.length) 'c-content--empty'}}">
     {{#if (not this.assets.length)}}
-      <div class="c-placeholder">
-        {{#if @searchQuery}}
-          <div class="c-placeholder__image">
-            {{svg-jar "search-big"  class="c-icon c-icon--48x48px"}}
-          </div>
-        {{/if}}
-
-        <div class="c-placeholder__title">
-          {{#if @searchQuery}}
-            We couldn’t find any assets matching
-            <span class="c-placeholder__code">
-              {{@searchQuery}}
-            </span>
-          {{else}}
-            No assets found
-          {{/if}}
-
-          {{#if this.filterName}}
-            in
-            <span class="c-placeholder__code">
-              {{this.filterName}}
-            </span>
-          {{/if}}
-        </div>
-      </div>
+      {{content-placeholder
+          filterName=this.filterName
+          searchQuery=@searchQuery
+      }}
     {{else if @arrangeBy}}
       {{asset-groups
           assets=this.assets
