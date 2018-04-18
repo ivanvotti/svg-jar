@@ -1,7 +1,19 @@
 <div class="c-app-pane">
   {{#if @currentAsset}}
     <div class="c-app-pane__section">
-      {{pane-preview asset=@currentAsset}}
+      <div class="c-pane-preview">
+        {{svg @currentAsset.svg
+            class="c-pane-preview__item"
+            width=(multiply @currentAsset.width 2)
+            height=(multiply @currentAsset.height 2)
+        }}
+
+        {{svg @currentAsset.svg
+            class="c-pane-preview__item c-pane-preview__item--base"
+            width=@currentAsset.width
+            height=@currentAsset.height
+        }}
+      </div>
     </div>
 
     <div class="c-app-pane__section">
