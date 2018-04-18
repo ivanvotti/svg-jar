@@ -1,55 +1,59 @@
 <div class="c-app-pane">
   {{#if @currentAsset}}
-    <div class="c-app-pane__section">
-      <div class="c-pane-preview">
-        {{svg @currentAsset.svg
-            class="c-pane-preview__item"
-            width=(multiply @currentAsset.width 2)
-            height=(multiply @currentAsset.height 2)
-        }}
+    <div class="c-app-pane__section c-pane-preview">
+      {{svg @currentAsset.svg
+          class="c-pane-preview__item c-pane-preview__item--base test-pane-svg-normal"
+          width=@currentAsset.width
+          height=@currentAsset.height
+      }}
 
-        {{svg @currentAsset.svg
-            class="c-pane-preview__item c-pane-preview__item--base"
-            width=@currentAsset.width
-            height=@currentAsset.height
-        }}
-      </div>
+      {{svg @currentAsset.svg
+          class="c-pane-preview__item test-pane-svg-big"
+          width=(multiply @currentAsset.width 2)
+          height=(multiply @currentAsset.height 2)
+      }}
     </div>
 
     <div class="c-app-pane__section">
-      <div class="c-app-pane__title">
+      <div class="c-app-pane__title test-pane-copypasta-title">
         Copypasta
       </div>
 
-      <code class="c-app-pane__copypasta">
+      <code class="c-app-pane__copypasta test-pane-copypasta-code">
         {{@currentAsset.copypasta}}
       </code>
     </div>
 
     <div class="c-app-pane__section">
-      <div class="c-app-pane__title">
+      <div class="c-app-pane__title test-pane-details-title">
         Details
       </div>
 
-      {{pane-details
-          asset=@currentAsset
-          detailsItems=@detailsItems
-      }}
+      <div class="c-pane-details">
+        {{#each @detailsItems as |detailsItem|}}
+          {{pane-details-item
+              asset=@currentAsset
+              detailsItem=detailsItem
+          }}
+        {{/each}}
+      </div>
     </div>
 
     {{#if (not @currentAsset.svg.attrs.viewBox)}}
-      <div class="c-app-pane__section">
-        <div class="c-app-pane__title">
-          Errors
+      <div class="c-app-pane__section test-pane-warning">
+        <div class="c-app-pane__title test-pane-warning-title">
+          Warning
         </div>
 
-        The viewBox is not set. This SVG is not scalable!
+        <div class="test-pane-warning-text">
+          The SVG is not scalable as it has no "viewBox" attribute.
+        </div>
       </div>
     {{/if}}
 
     <div class="c-app-pane__section">
       <button
-        class="c-btn c-btn--tertiary c-btn--full"
+        class="c-btn c-btn--tertiary c-btn--full test-pane-download-button"
         {{action @downloadCurrentAsset}}
       >
         Download
