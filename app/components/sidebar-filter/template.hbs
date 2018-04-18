@@ -1,20 +1,20 @@
 {{#if @filter.items.length}}
-  <div class="c-sidebar-filter">
-    <div class="c-sidebar-filter__title">
+  <div class="c-sidebar-filter test-sidebar-filter">
+    <div class="c-sidebar-filter__title test-sidebar-filter-title">
       by {{@filter.name}}
     </div>
 
     {{#each @filter.items as |item|}}
       {{#link-to "index"
           (query-params filterBy=(concat @filter.key ":" item.name))
-          class="c-sidebar-filter__item"
+          class="c-sidebar-filter__item test-sidebar-filter-item"
           activeClass="is-active"
       }}
-        <span class="c-sidebar-filter__name">
+        <span class="c-sidebar-filter__name test-sidebar-filter-name">
           {{item.name}}
         </span>
 
-        <span class="c-sidebar-filter__count">
+        <span class="c-sidebar-filter__count test-sidebar-filter-count">
           {{item.count}}
         </span>
       {{/link-to}}

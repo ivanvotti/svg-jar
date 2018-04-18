@@ -20,16 +20,16 @@ module('Integration | Component | sidebar-filter', function(hooks) {
   test('it renders a filter with 2 items properly', async function(assert) {
     await render(hbs`{{sidebar-filter filter=filter}}`);
 
-    assert.dom('.c-sidebar-filter').exists({ count: 1 });
-    assert.dom('.c-sidebar-filter__title').hasText('by Directory');
-    assert.dom('.c-sidebar-filter__item').exists({ count: 2 });
+    assert.dom('.test-sidebar-filter').exists({ count: 1 });
+    assert.dom('.test-sidebar-filter-title').hasText('by Directory');
+    assert.dom('.test-sidebar-filter-item').exists({ count: 2 });
 
-    const [firstItem, secondItem] = this.element.querySelectorAll('.c-sidebar-filter__item');
+    const [firstItem, secondItem] = this.element.querySelectorAll('.test-sidebar-filter-item');
 
-    assert.dom('.c-sidebar-filter__name', firstItem).hasText('icons');
-    assert.dom('.c-sidebar-filter__count', firstItem).hasText('1');
+    assert.dom('.test-sidebar-filter-name', firstItem).hasText('icons');
+    assert.dom('.test-sidebar-filter-count', firstItem).hasText('1');
 
-    assert.dom('.c-sidebar-filter__name', secondItem).hasText('images');
-    assert.dom('.c-sidebar-filter__count', secondItem).hasText('2');
+    assert.dom('.test-sidebar-filter-name', secondItem).hasText('images');
+    assert.dom('.test-sidebar-filter-count', secondItem).hasText('2');
   });
 });

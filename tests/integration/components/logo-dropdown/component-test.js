@@ -23,9 +23,9 @@ module('Integration | Component | logo-dropdown', function(hooks) {
       }}
     `);
 
-    assert.dom('.c-dropdown__trigger').exists();
-    assert.dom('.c-dropdown__trigger [data-test-logo]').exists();
-    assert.dom('.c-dropdown__item').doesNotExist();
+    assert.dom('.test-logo-dropdown-trigger').exists();
+    assert.dom('.test-logo-dropdown-logo').exists();
+    assert.dom('.test-logo-dropdown-content').doesNotExist();
   });
 
   test('it shows dropdown on click', async function(assert) {
@@ -36,13 +36,14 @@ module('Integration | Component | logo-dropdown', function(hooks) {
       }}
     `);
 
-    assert.dom('.c-dropdown__item').doesNotExist('dropdown is hidden before click');
+    assert.dom('.test-logo-dropdown-content').doesNotExist('dropdown is hidden before click');
 
-    await click('.c-dropdown__trigger');
-    assert.dom('.c-dropdown__item').exists({ count: 3 }, 'dropdown is shown after click');
+    await click('.test-logo-dropdown-trigger');
+
+    assert.dom('.test-logo-dropdown-content').exists('dropdown is shown after click');
   });
 
-  test('it renders dropdown items properly', async function(assert) {
+  test('it renders dropdown content properly', async function(assert) {
     await render(hbs`
       {{logo-dropdown
         externalLinks=externalLinks
@@ -50,9 +51,13 @@ module('Integration | Component | logo-dropdown', function(hooks) {
       }}
     `);
 
-    await click('.c-dropdown__trigger');
-    const shortcutsToggle = this.element.querySelector('[data-test-shortcuts-toggle].c-dropdown__item');
-    const [firstLink, secondLink] = this.element.querySelectorAll('a.c-dropdown__item');
+    await click('.test-logo-dropdown-trigger');
+
+    assert.dom('.test-logo-dropdown-content .test-logo-dropdown-shortcuts-toggle').exists({ count: 1 });
+    assert.dom('.test-logo-dropdown-content a.test-logo-dropdown-link').exists({ count: 2 });
+
+    const shortcutsToggle = this.element.querySelector('.test-logo-dropdown-shortcuts-toggle');
+    const [firstLink, secondLink] = this.element.querySelectorAll('.test-logo-dropdown-link');
 
     assert.dom(shortcutsToggle).hasText('Shortcuts');
 
@@ -75,8 +80,8 @@ module('Integration | Component | logo-dropdown', function(hooks) {
       }}
     `);
 
-    await click('.c-dropdown__trigger');
-    await click('[data-test-shortcuts-toggle]');
+    await click('.test-logo-dropdown-trigger');
+    await click('.test-logo-dropdown-shortcuts-toggle');
   });
 
   test('it closes dropdown on shortcuts toggle click', async function(assert) {
@@ -87,11 +92,11 @@ module('Integration | Component | logo-dropdown', function(hooks) {
       }}
     `);
 
-    await click('.c-dropdown__trigger');
-    assert.dom('.c-dropdown__item').exists('dropdown is shown');
+    await click('.test-logo-dropdown-trigger');
+    assert.dom('.test-logo-dropdown-content').exists('dropdown is shown');
 
-    await click('[data-test-shortcuts-toggle]');
-    assert.dom('.c-dropdown__item').doesNotExist('dropdown is hidden');
+    await click('.test-logo-dropdown-shortcuts-toggle');
+    assert.dom('.test-logo-dropdown-content').doesNotExist('dropdown is hidden');
   });
 
   test('it closes dropdown on the second dropdown trigger click', async function(assert) {
@@ -102,11 +107,11 @@ module('Integration | Component | logo-dropdown', function(hooks) {
       }}
     `);
 
-    await click('.c-dropdown__trigger');
-    assert.dom('.c-dropdown__item').exists('dropdown is shown');
+    await click('.test-logo-dropdown-trigger');
+    assert.dom('.test-logo-dropdown-content').exists('dropdown is shown');
 
-    await click('.c-dropdown__trigger');
-    assert.dom('.c-dropdown__item').doesNotExist('dropdown is hidden');
+    await click('.test-logo-dropdown-trigger');
+    assert.dom('.test-logo-dropdown-content').doesNotExist('dropdown is hidden');
   });
 
   test('it closes dropdown on document click', async function(assert) {
@@ -117,11 +122,11 @@ module('Integration | Component | logo-dropdown', function(hooks) {
       }}
     `);
 
-    await click('.c-dropdown__trigger');
-    assert.dom('.c-dropdown__item').exists('dropdown is shown');
+    await click('.test-logo-dropdown-trigger');
+    assert.dom('.test-logo-dropdown-content').exists('dropdown is shown');
 
     await click(this.element.parentNode);
-    assert.dom('.c-dropdown__item').doesNotExist('dropdown is hidden');
+    assert.dom('.test-logo-dropdown-content').doesNotExist('dropdown is hidden');
   });
 
   test('it does not close dropdown on link click', async function(assert) {
@@ -132,10 +137,10 @@ module('Integration | Component | logo-dropdown', function(hooks) {
       }}
     `);
 
-    await click('.c-dropdown__trigger');
-    assert.dom('.c-dropdown__item').exists('dropdown is shown');
+    await click('.test-logo-dropdown-trigger');
+    assert.dom('.test-logo-dropdown-content').exists('dropdown is shown');
 
-    await click('a.c-dropdown__item');
-    assert.dom('.c-dropdown__item').exists('dropdown is still shown');
+    await click('.test-logo-dropdown-link');
+    assert.dom('.test-logo-dropdown-content').exists('dropdown is still shown');
   });
 });
