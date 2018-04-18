@@ -34,6 +34,9 @@ module('Integration | Component | app-sidebar', function(hooks) {
   });
 
   test('it renders sidebar and its children properly', async function(assert) {
+    const router = this.owner.lookup('router:main');
+    router.setupRouter();
+
     await render(hbs`
       {{app-sidebar
         sidebarFilters=filters
@@ -54,17 +57,21 @@ module('Integration | Component | app-sidebar', function(hooks) {
     const [secondFilter, thirdFilter] = this.element.querySelectorAll('.test-sidebar-filter');
 
     assert.dom('.test-sidebar-filter-title', defaultFilter).doesNotExist('default filter has no title');
-    assert.dom('.test-sidebar-filter-item', defaultFilter).exists({ count: 1 }, 'default filter has only one item');
+    assert.dom('.test-sidebar-filter-item', defaultFilter).exists({ count: 1 });
+    assert.dom('.test-sidebar-filter-item', defaultFilter).hasAttribute('href', '#/');
     assert.dom('.test-sidebar-filter-name', defaultFilter).hasText('All assets');
     assert.dom('.test-sidebar-filter-count', defaultFilter).doesNotExist('default filter has no counter');
 
     assert.dom('.test-sidebar-filter-title', secondFilter).hasText('by Directory');
     assert.dom('.test-sidebar-filter-item', secondFilter).exists({ count: 2 });
+    assert.dom('.test-sidebar-filter-item:nth-of-type(1)', secondFilter).hasAttribute('href', '#/?filterBy=fileDir%3Aicons');
     assert.dom('.test-sidebar-filter-item:nth-of-type(1) .test-sidebar-filter-name', secondFilter).hasText('icons');
+    assert.dom('.test-sidebar-filter-item:nth-of-type(2)', secondFilter).hasAttribute('href', '#/?filterBy=fileDir%3Aimages');
     assert.dom('.test-sidebar-filter-item:nth-of-type(2) .test-sidebar-filter-name', secondFilter).hasText('images');
 
     assert.dom('.test-sidebar-filter-title', thirdFilter).hasText('by Base size');
     assert.dom('.test-sidebar-filter-item', thirdFilter).exists({ count: 1 });
+    assert.dom('.test-sidebar-filter-item', thirdFilter).hasAttribute('href', '#/?filterBy=baseSize%3A24px');
     assert.dom('.test-sidebar-filter-name', thirdFilter).hasText('24px');
   });
 });

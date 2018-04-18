@@ -1,20 +1,22 @@
 {{#if @dropdownItems}}
   {{#basic-dropdown renderInPlace=true as |dropdown|}}
     {{#dropdown.trigger}}
-      <button class="c-dropdown__trigger">
+      <button class="c-dropdown__trigger test-query-dropdown-trigger">
         <div class="c-dropdown__trigger-inner">
-          <span>{{@buttonName}}</span>
+          <span class="test-query-dropdown-trigger-text">
+            {{@buttonName}}
+          </span>
           {{svg-jar "arrow-down" class="c-icon c-icon--16px c-dropdown__trigger-arrow"}}
         </div>
       </button>
     {{/dropdown.trigger}}
-    {{#dropdown.content class="c-dropdown__content"}}
-      <div {{action dropdown.actions.close}}>
+    {{#dropdown.content class="c-dropdown__content test-query-dropdown-content"}}
+      <div class="test-query-dropdown-items" {{action dropdown.actions.close}}>
         {{#each @dropdownItems as |dropdownItem|}}
           {{link-to dropdownItem.name
               "index"
               (query-pair @queryParamName dropdownItem.key)
-              class="c-dropdown__item"
+              class="c-dropdown__item test-query-dropdown-item"
           }}
         {{/each}}
 
@@ -23,7 +25,7 @@
         {{link-to "None"
             "index"
             (query-pair @queryParamName null)
-            class="c-dropdown__item"
+            class="c-dropdown__item test-query-dropdown-item"
         }}
       </div>
     {{/dropdown.content}}
