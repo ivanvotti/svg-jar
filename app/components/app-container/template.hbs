@@ -1,35 +1,17 @@
-{{#if @model.filters}}
-  {{app-sidebar
-      sidebarFilters=@model.filters
-      externalLinks=@model.links
-      showShortcutBar=@showShortcutBar
-  }}
-{{/if}}
+{{app-sidebar
+    sidebarFilters=@model.filters
+    externalLinks=@model.links
+    showShortcutBar=@showShortcutBar
+}}
 
-<div class="c-app-main">
-  {{content-header
-      arrangeDropdownItems=@model.arrangeBy
-      sortDropdownItems=@model.sortBy
-      searchQuery=@searchQuery
-      setSearchQuery=(action @setSearchQuery)
-  }}
-
-  <div class="c-content js-content {{if (not this.assets.length) 'c-content--empty'}}">
-    {{#if (not this.assets.length)}}
-      {{content-placeholder
-          filterName=this.filterName
-          searchQuery=@searchQuery
-      }}
-    {{else if @arrangeBy}}
-      {{asset-groups
-          assets=this.assets
-          arrangeBy=@arrangeBy
-      }}
-    {{else}}
-      {{asset-list assets=this.assets}}
-    {{/if}}
-  </div>
-</div>
+{{app-main
+    model=@model
+    arrangeBy=@arrangeBy
+    sortBy=@sortBy
+    filterBy=@filterBy
+    searchQuery=@searchQuery
+    setSearchQuery=@setSearchQuery
+}}
 
 {{app-pane
     currentAsset=this.currentAsset

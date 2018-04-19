@@ -18,7 +18,9 @@
     {{/link-to}}
   </div>
 
-  {{#each @sidebarFilters as |sidebarFilter|}}
-    {{sidebar-filter filter=sidebarFilter}}
-  {{/each}}
+  {{#if @sidebarFilters}}
+    {{#each @sidebarFilters as |sidebarFilter|}}
+      {{sidebar-filter filter=sidebarFilter}}
+    {{/each}}
+  {{/if}}
 </div>

@@ -1,0 +1,22 @@
+{{content-header
+    arrangeDropdownItems=@model.arrangeBy
+    sortDropdownItems=@model.sortBy
+    searchQuery=@searchQuery
+    setSearchQuery=(action @setSearchQuery)
+}}
+
+<div class="c-content js-content {{if (not this.assets.length) 'c-content--empty'}}">
+  {{#if (not this.assets.length)}}
+    {{content-placeholder
+        filterName=this.filterName
+        searchQuery=@searchQuery
+    }}
+  {{else if @arrangeBy}}
+    {{asset-groups
+        assets=this.assets
+        arrangeBy=@arrangeBy
+    }}
+  {{else}}
+    {{asset-list assets=this.assets}}
+  {{/if}}
+</div>
