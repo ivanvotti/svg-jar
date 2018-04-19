@@ -1,7 +1,7 @@
 {{svg-jar "search" class="c-search-bar__icon"}}
 
 {{input
-  class="c-search-bar__input js-search-bar-input"
+  class="c-search-bar__input js-search-bar-input test-search-bar-input"
   placeholder="Search assets..."
   value=@searchQuery
   enter=(action "onEnter")
@@ -9,7 +9,7 @@
 }}
 
 {{#if @searchQuery}}
-  <button class="c-search-bar__reset" {{action "resetQuery"}}>
+  <button class="c-search-bar__reset test-search-bar-reset" {{action "resetQuery"}}>
     ✕
   </button>
 {{/if}}

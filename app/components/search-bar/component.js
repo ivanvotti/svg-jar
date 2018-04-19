@@ -13,9 +13,9 @@ export default Component.extend({
       // Reset search query or blur if it's already empty.
       if (!this.searchQuery) {
         this._blurInput();
+      } else {
+        this._resetQuery();
       }
-
-      this._resetQuery();
     },
 
     resetQuery() {

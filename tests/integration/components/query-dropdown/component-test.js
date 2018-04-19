@@ -14,7 +14,7 @@ module('Integration | Component | query-dropdown', function(hooks) {
     ];
   });
 
-  test('it only renders dropdown triger initially', async function(assert) {
+  test('it only renders dropdown trigger initially', async function(assert) {
     await render(hbs`
       {{query-dropdown
         buttonName="Arrange by"

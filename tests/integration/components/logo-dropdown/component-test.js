@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, click } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import { spy } from 'sinon';
 
 module('Integration | Component | logo-dropdown', function(hooks) {
   setupRenderingTest(hooks);
@@ -15,7 +16,7 @@ module('Integration | Component | logo-dropdown', function(hooks) {
     this.showShortcutBar = () => null;
   });
 
-  test('it only renders dropdown triger & logo initially', async function(assert) {
+  test('it only renders dropdown trigger & logo initially', async function(assert) {
     await render(hbs`
       {{logo-dropdown
         externalLinks=externalLinks
@@ -69,9 +70,7 @@ module('Integration | Component | logo-dropdown', function(hooks) {
   });
 
   test('it calls showShortcutBar action on shortcuts toggle click', async function(assert) {
-    assert.expect(1);
-
-    this.showShortcutBar = () => assert.ok(true, 'showShortcutBar is called');
+    this.showShortcutBar = spy();
 
     await render(hbs`
       {{logo-dropdown
@@ -82,6 +81,7 @@ module('Integration | Component | logo-dropdown', function(hooks) {
 
     await click('.test-logo-dropdown-trigger');
     await click('.test-logo-dropdown-shortcuts-toggle');
+    assert.ok(this.showShortcutBar.calledOnce, 'showShortcutBar is called');
   });
 
   test('it closes dropdown on shortcuts toggle click', async function(assert) {

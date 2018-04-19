@@ -10,18 +10,28 @@ module.exports = function(defaults) {
   });
 
   app.import('node_modules/normalize.css/normalize.css');
+
   app.import('node_modules/velocity-animate/velocity.js', {
     using: [
       { transformation: 'amd', as: 'velocity' }
     ]
   });
+
   app.import('node_modules/velocity-animate/velocity.ui.js', {
     prepend: false,
     using: [
       { transformation: 'amd', as: 'velocity-ui' }
     ]
   });
+
   app.import('node_modules/file-saver/FileSaver.js');
+
+  app.import('node_modules/sinon/pkg/sinon.js', {
+    using: [
+      { transformation: 'amd', as: 'sinon' }
+    ],
+    type: 'test'
+  });
 
   return app.toTree();
 };

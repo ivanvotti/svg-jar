@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, click } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import { spy } from 'sinon';
 
 module('Integration | Component | app-pane', function(hooks) {
   setupRenderingTest(hooks);
@@ -127,9 +128,7 @@ module('Integration | Component | app-pane', function(hooks) {
   });
 
   test('it calls downloadCurrentAsset on "Download" click', async function(assert) {
-    assert.expect(1);
-
-    this.downloadCurrentAsset = () => assert.ok(true, 'downloadCurrentAsset is called');
+    this.downloadCurrentAsset = spy();
 
     await render(hbs`
       {{app-pane
@@ -140,5 +139,6 @@ module('Integration | Component | app-pane', function(hooks) {
     `);
 
     await click('.test-pane-download-button');
+    assert.ok(this.downloadCurrentAsset.calledOnce, 'downloadCurrentAsset is called');
   });
 });
