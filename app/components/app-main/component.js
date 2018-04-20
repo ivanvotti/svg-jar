@@ -2,7 +2,6 @@ import Component from '@ember/component';
 import { alias } from '@ember/object/computed';
 import { get, set, computed } from '@ember/object';
 import { run } from '@ember/runloop';
-import { inject as service } from '@ember/service';
 import Velocity from 'velocity';
 
 function doesMatch(target, query) {
@@ -14,7 +13,6 @@ function doesMatch(target, query) {
 }
 
 export default Component.extend({
-  assetSelector: service('asset-selector'),
   classNames: ['c-app-main'],
   classNameBindings: ['isContentScrolled'],
   model: null,
@@ -22,8 +20,6 @@ export default Component.extend({
   filterBy: null,
   searchQuery: null,
   isContentScrolled: false,
-
-  currentAsset: alias('assetSelector.currentAsset'),
   assets: alias('sortedAssets'),
 
   filterName: computed('filterBy', function() {
@@ -69,23 +65,26 @@ export default Component.extend({
   },
 
   _bindContentScrolling() {
+    // It's used to show the content header shadow
+    // whenever the content is scrolling.
+
     const scrollingTimeout = 10;
     const scrollingEl = this.element.querySelector('.js-content');
 
-    scrollingEl.addEventListener('scroll', () => (
-      run.debounce(this, this._onContentScrolled, scrollingTimeout)
-    ));
+    const eventHandler = () => (
+      set(this, 'isContentScrolled', scrollingEl.scrollTop !== 0)
+    );
+
+    this._onContentScrolled = () => {
+      run.debounce(this, eventHandler, scrollingTimeout);
+    };
+
+    scrollingEl.addEventListener('scroll', this._onContentScrolled);
   },
 
   _unbindContentScrolling() {
     const scrollingEl = this.element.querySelector('.js-content');
-    scrollingEl.removeEventListener('scroll');
-  },
-
-  _onContentScrolled() {
-    const scrollingEl = this.element.querySelector('.js-content');
-    const isContentScrolled = scrollingEl.scrollTop !== 0;
-    set(this, 'isContentScrolled', isContentScrolled);
+    scrollingEl.removeEventListener('scroll', this._onContentScrolled);
   },
 
   _animateAssetListItems() {
