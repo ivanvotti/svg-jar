@@ -1,7 +1,7 @@
-<div class="c-asset-list test-asset-list">
+<div class="c-asset-list" data-test-asset-list>
   {{#each @assets as |asset|}}
     <div class="js-asset-item">
-      {{asset-item asset=asset}}
+      {{asset-item asset=asset data-test-asset-item="true"}}
     </div>
   {{/each}}
 </div>

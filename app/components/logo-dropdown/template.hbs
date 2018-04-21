@@ -1,27 +1,31 @@
 {{#basic-dropdown renderInPlace=true as |dropdown|}}
   {{#dropdown.trigger}}
-    <button class="c-dropdown__trigger test-logo-dropdown-trigger">
+    <button class="c-dropdown__trigger" data-test-logo-dropdown-trigger>
       <div class="c-dropdown__trigger-inner">
-        {{svg-jar "logo" class="test-logo-dropdown-logo"}}
+        {{svg-jar "logo" data-test-logo-dropdown-logo="true"}}
         {{svg-jar "arrow-down" class="c-icon c-icon--16px c-dropdown__trigger-arrow"}}
       </div>
     </button>
   {{/dropdown.trigger}}
-  {{#dropdown.content class="c-dropdown__content test-logo-dropdown-content"}}
-    <div
-      class="c-dropdown__item test-logo-dropdown-shortcuts-toggle"
-      {{action (queue @showShortcutBar dropdown.actions.close)}}
-    >
-      Shortcuts
-    </div>
-
-    {{#each @externalLinks as |link|}}
-      <a href={{link.url}}
-        class="c-dropdown__item test-logo-dropdown-link"
-        target="blank"
+  {{#dropdown.content class="c-dropdown__content"}}
+    <div data-test-logo-dropdown-content>
+      <div
+        class="c-dropdown__item"
+        {{action (queue @showShortcutBar dropdown.actions.close)}}
+        data-test-logo-dropdown-shortcuts-toggle
       >
-        {{link.text}}
-      </a>
-    {{/each}}
+        Shortcuts
+      </div>
+
+      {{#each @externalLinks as |link|}}
+        <a href={{link.url}}
+          class="c-dropdown__item"
+          target="blank"
+          data-test-logo-dropdown-link
+        >
+          {{link.text}}
+        </a>
+      {{/each}}
+    </div>
   {{/dropdown.content}}
 {{/basic-dropdown}}

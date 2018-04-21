@@ -2,30 +2,32 @@
   {{#if @currentAsset}}
     <div class="c-app-pane__section c-pane-preview">
       {{svg @currentAsset.svg
-          class="c-pane-preview__item c-pane-preview__item--base test-pane-svg-normal"
+          class="c-pane-preview__item c-pane-preview__item--base"
           width=@currentAsset.width
           height=@currentAsset.height
+          data-test-pane-svg="normal"
       }}
 
       {{svg @currentAsset.svg
-          class="c-pane-preview__item test-pane-svg-big"
+          class="c-pane-preview__item"
           width=(multiply @currentAsset.width 2)
           height=(multiply @currentAsset.height 2)
+          data-test-pane-svg="big"
       }}
     </div>
 
     <div class="c-app-pane__section">
-      <div class="c-app-pane__title test-pane-copypasta-title">
+      <div class="c-app-pane__title" data-test-pane-copypasta-title>
         Copypasta
       </div>
 
-      <code class="c-app-pane__copypasta test-pane-copypasta-code">
+      <code class="c-app-pane__copypasta" data-test-pane-copypasta-code>
         {{@currentAsset.copypasta}}
       </code>
     </div>
 
     <div class="c-app-pane__section">
-      <div class="c-app-pane__title test-pane-details-title">
+      <div class="c-app-pane__title" data-test-pane-details-title>
         Details
       </div>
 
@@ -40,12 +42,12 @@
     </div>
 
     {{#if (not @currentAsset.svg.attrs.viewBox)}}
-      <div class="c-app-pane__section test-pane-warning">
-        <div class="c-app-pane__title test-pane-warning-title">
+      <div class="c-app-pane__section" data-test-pane-warning>
+        <div class="c-app-pane__title" data-test-pane-warning-title>
           Warning
         </div>
 
-        <div class="test-pane-warning-text">
+        <div data-test-pane-warning-text>
           The SVG is not scalable as it has no "viewBox" attribute.
         </div>
       </div>
@@ -53,8 +55,9 @@
 
     <div class="c-app-pane__section">
       <button
-        class="c-btn c-btn--tertiary c-btn--full test-pane-download-button"
+        class="c-btn c-btn--tertiary c-btn--full"
         {{action @downloadCurrentAsset}}
+        data-test-pane-download-button
       >
         Download
       </button>

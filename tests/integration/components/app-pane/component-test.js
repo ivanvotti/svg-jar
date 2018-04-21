@@ -49,16 +49,16 @@ module('Integration | Component | app-pane', function(hooks) {
       }}
     `);
 
-    assert.dom('[class*="test-pane-svg"]').exists({ count: 2 });
+    assert.dom('[data-test-pane-svg]').exists({ count: 2 });
 
     const expectedSVGContent = '<circle cx="12" cy="12" r="6" fill="red"></circle>';
-    const normalSVG = this.element.querySelector('.test-pane-svg-normal');
+    const normalSVG = this.element.querySelector('[data-test-pane-svg="normal"]');
 
     assert.dom(normalSVG).hasAttribute('width', '24');
     assert.dom(normalSVG).hasAttribute('height', '24');
     assert.equal(normalSVG.innerHTML, expectedSVGContent);
 
-    const bigSVG = this.element.querySelector('.test-pane-svg-big');
+    const bigSVG = this.element.querySelector('[data-test-pane-svg="big"]');
 
     assert.dom(bigSVG).hasAttribute('width', '48');
     assert.dom(bigSVG).hasAttribute('height', '48');
@@ -74,8 +74,8 @@ module('Integration | Component | app-pane', function(hooks) {
       }}
     `);
 
-    assert.dom('.test-pane-copypasta-title').hasText('Copypasta');
-    assert.dom('.test-pane-copypasta-code').hasText('{{svg-jar "circle"}}');
+    assert.dom('[data-test-pane-copypasta-title]').hasText('Copypasta');
+    assert.dom('[data-test-pane-copypasta-code]').hasText('{{svg-jar "circle"}}');
   });
 
   test('it renders asset details properly', async function(assert) {
@@ -87,16 +87,16 @@ module('Integration | Component | app-pane', function(hooks) {
       }}
     `);
 
-    assert.dom('.test-pane-details-title').hasText('Details');
-    assert.dom('.test-pane-details-item').exists({ count: 2 });
+    assert.dom('[data-test-pane-details-title]').hasText('Details');
+    assert.dom('[data-test-pane-details-item]').exists({ count: 2 });
 
-    const [firstItem, secondItem] = this.element.querySelectorAll('.test-pane-details-item');
+    const [firstItem, secondItem] = this.element.querySelectorAll('[data-test-pane-details-item]');
 
-    assert.dom('.test-pane-details-name', firstItem).hasText('File name');
-    assert.dom('.test-pane-details-value', firstItem).hasText('circle.svg');
+    assert.dom('[data-test-pane-details-name]', firstItem).hasText('File name');
+    assert.dom('[data-test-pane-details-value]', firstItem).hasText('circle.svg');
 
-    assert.dom('.test-pane-details-name', secondItem).hasText('Directory');
-    assert.dom('.test-pane-details-value', secondItem).hasText('images');
+    assert.dom('[data-test-pane-details-name]', secondItem).hasText('Directory');
+    assert.dom('[data-test-pane-details-value]', secondItem).hasText('images');
   });
 
   test('it shows warning if SVG has no viewBox', async function(assert) {
@@ -110,9 +110,10 @@ module('Integration | Component | app-pane', function(hooks) {
       }}
     `);
 
-    assert.dom('.test-pane-warning').exists({ count: 1 });
-    assert.dom('.test-pane-warning-title').hasText('Warning');
-    assert.dom('.test-pane-warning-text').hasText('The SVG is not scalable as it has no "viewBox" attribute.');
+    const expectedWarning = 'The SVG is not scalable as it has no "viewBox" attribute.';
+    assert.dom('[data-test-pane-warning]').exists({ count: 1 });
+    assert.dom('[data-test-pane-warning-title]').hasText('Warning');
+    assert.dom('[data-test-pane-warning-text]').hasText(expectedWarning);
   });
 
   test('it does not show warning if SVG has viewBox', async function(assert) {
@@ -124,7 +125,7 @@ module('Integration | Component | app-pane', function(hooks) {
       }}
     `);
 
-    assert.dom('.test-pane-warning').doesNotExist();
+    assert.dom('[data-test-pane-warning]').doesNotExist();
   });
 
   test('it calls downloadCurrentAsset on "Download" click', async function(assert) {
@@ -138,7 +139,7 @@ module('Integration | Component | app-pane', function(hooks) {
       }}
     `);
 
-    await click('.test-pane-download-button');
+    await click('[data-test-pane-download-button]');
     assert.ok(this.downloadCurrentAsset.calledOnce, 'downloadCurrentAsset is called');
   });
 });

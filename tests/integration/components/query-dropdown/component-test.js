@@ -23,9 +23,9 @@ module('Integration | Component | query-dropdown', function(hooks) {
       }}
     `);
 
-    assert.dom('.test-query-dropdown-trigger').exists();
-    assert.dom('.test-query-dropdown-trigger-text').hasText('Arrange by');
-    assert.dom('.test-query-dropdown-content').doesNotExist();
+    assert.dom('[data-test-query-dropdown-trigger]').exists();
+    assert.dom('[data-test-query-dropdown-trigger-text]').hasText('Arrange by');
+    assert.dom('[data-test-query-dropdown-content]').doesNotExist();
   });
 
   test('it shows dropdown on click', async function(assert) {
@@ -37,11 +37,11 @@ module('Integration | Component | query-dropdown', function(hooks) {
       }}
     `);
 
-    assert.dom('.test-query-dropdown-content').doesNotExist('dropdown is hidden before click');
+    assert.dom('[data-test-query-dropdown-content]').doesNotExist('dropdown is hidden before click');
 
-    await click('.test-query-dropdown-trigger');
+    await click('[data-test-query-dropdown-trigger]');
 
-    assert.dom('.test-query-dropdown-content').exists('dropdown is shown after click');
+    assert.dom('[data-test-query-dropdown-content]').exists('dropdown is shown after click');
   });
 
   test('it renders dropdown content properly', async function(assert) {
@@ -56,11 +56,11 @@ module('Integration | Component | query-dropdown', function(hooks) {
       }}
     `);
 
-    await click('.test-query-dropdown-trigger');
+    await click('[data-test-query-dropdown-trigger]');
 
-    assert.dom('.test-query-dropdown-content a.test-query-dropdown-item').exists({ count: 3 });
+    assert.dom('[data-test-query-dropdown-content] a[data-test-query-dropdown-item]').exists({ count: 3 });
 
-    const [firstLink, secondLink, thirdLink] = this.element.querySelectorAll('.test-query-dropdown-item');
+    const [firstLink, secondLink, thirdLink] = this.element.querySelectorAll('[data-test-query-dropdown-item]');
 
     assert.dom(firstLink).hasText('Directory');
     assert.dom(firstLink).hasAttribute('href', '#/?arrangeBy=fileDir');
@@ -81,11 +81,11 @@ module('Integration | Component | query-dropdown', function(hooks) {
       }}
     `);
 
-    await click('.test-query-dropdown-trigger');
-    assert.dom('.test-query-dropdown-content').exists('dropdown is shown');
+    await click('[data-test-query-dropdown-trigger]');
+    assert.dom('[data-test-query-dropdown-content]').exists('dropdown is shown');
 
-    await click('.test-query-dropdown-items');
-    assert.dom('.test-query-dropdown-content').doesNotExist('dropdown is hidden');
+    await click('[data-test-query-dropdown-content]');
+    assert.dom('[data-test-query-dropdown-content]').doesNotExist('dropdown is hidden');
   });
 
   test('it closes dropdown on the second dropdown trigger click', async function(assert) {
@@ -97,11 +97,11 @@ module('Integration | Component | query-dropdown', function(hooks) {
       }}
     `);
 
-    await click('.test-query-dropdown-trigger');
-    assert.dom('.test-query-dropdown-content').exists('dropdown is shown');
+    await click('[data-test-query-dropdown-trigger]');
+    assert.dom('[data-test-query-dropdown-content]').exists('dropdown is shown');
 
-    await click('.test-query-dropdown-trigger');
-    assert.dom('.test-query-dropdown-content').doesNotExist('dropdown is hidden');
+    await click('[data-test-query-dropdown-trigger]');
+    assert.dom('[data-test-query-dropdown-content]').doesNotExist('dropdown is hidden');
   });
 
   test('it closes dropdown on document click', async function(assert) {
@@ -113,10 +113,10 @@ module('Integration | Component | query-dropdown', function(hooks) {
       }}
     `);
 
-    await click('.test-query-dropdown-trigger');
-    assert.dom('.test-query-dropdown-content').exists('dropdown is shown');
+    await click('[data-test-query-dropdown-trigger]');
+    assert.dom('[data-test-query-dropdown-content]').exists('dropdown is shown');
 
     await click(this.element.parentNode);
-    assert.dom('.test-query-dropdown-content').doesNotExist('dropdown is hidden');
+    assert.dom('[data-test-query-dropdown-content]').doesNotExist('dropdown is hidden');
   });
 });

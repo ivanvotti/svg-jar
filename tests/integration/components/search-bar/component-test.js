@@ -23,8 +23,8 @@ module('Integration | Component | search-bar', function(hooks) {
       }}
     `);
 
-    assert.dom('.test-search-bar-input').hasValue('');
-    assert.dom('.test-search-bar-reset').doesNotExist();
+    assert.dom('[data-test-search-bar-input]').hasValue('');
+    assert.dom('[data-test-search-bar-reset]').doesNotExist();
   });
 
   test('it renders with defined query properly', async function(assert) {
@@ -35,8 +35,8 @@ module('Integration | Component | search-bar', function(hooks) {
       }}
     `);
 
-    assert.dom('.test-search-bar-input').hasValue('icon');
-    assert.dom('.test-search-bar-reset').exists();
+    assert.dom('[data-test-search-bar-input]').hasValue('icon');
+    assert.dom('[data-test-search-bar-reset]').exists();
   });
 
   test('it updates searchQuery on input', async function(assert) {
@@ -49,7 +49,7 @@ module('Integration | Component | search-bar', function(hooks) {
 
     assert.equal(this.searchQuery, 'icon');
 
-    await fillIn('.test-search-bar-input', 'new value');
+    await fillIn('[data-test-search-bar-input]', 'new value');
     assert.equal(this.searchQuery, 'new value');
   });
 
@@ -61,10 +61,10 @@ module('Integration | Component | search-bar', function(hooks) {
       }}
     `);
 
-    assert.dom('.test-search-bar-input').hasValue('icon');
+    assert.dom('[data-test-search-bar-input]').hasValue('icon');
 
     this.set('searchQuery', '');
-    assert.dom('.test-search-bar-input').hasValue('');
+    assert.dom('[data-test-search-bar-input]').hasValue('');
   });
 
   test('it blurs input on Enter', async function(assert) {
@@ -75,11 +75,11 @@ module('Integration | Component | search-bar', function(hooks) {
       }}
     `);
 
-    await click('.test-search-bar-input');
-    assert.dom('.test-search-bar-input').isFocused();
+    await click('[data-test-search-bar-input]');
+    assert.dom('[data-test-search-bar-input]').isFocused();
 
-    await triggerKeyEvent('.test-search-bar-input', 'keyup', ENTER);
-    assert.dom('.test-search-bar-input').isNotFocused();
+    await triggerKeyEvent('[data-test-search-bar-input]', 'keyup', ENTER);
+    assert.dom('[data-test-search-bar-input]').isNotFocused();
   });
 
   test('it blurs input on Escape when searchQuery is empty', async function(assert) {
@@ -90,11 +90,11 @@ module('Integration | Component | search-bar', function(hooks) {
       }}
     `);
 
-    await click('.test-search-bar-input');
-    assert.dom('.test-search-bar-input').isFocused();
+    await click('[data-test-search-bar-input]');
+    assert.dom('[data-test-search-bar-input]').isFocused();
 
-    await triggerKeyEvent('.test-search-bar-input', 'keyup', ESCAPE);
-    assert.dom('.test-search-bar-input').isNotFocused();
+    await triggerKeyEvent('[data-test-search-bar-input]', 'keyup', ESCAPE);
+    assert.dom('[data-test-search-bar-input]').isNotFocused();
     assert.ok(this.setSearchQuery.notCalled, 'setSearchQuery is not called');
   });
 
@@ -106,11 +106,11 @@ module('Integration | Component | search-bar', function(hooks) {
       }}
     `);
 
-    await click('.test-search-bar-input');
-    assert.dom('.test-search-bar-input').isFocused();
+    await click('[data-test-search-bar-input]');
+    assert.dom('[data-test-search-bar-input]').isFocused();
 
-    await triggerKeyEvent('.test-search-bar-input', 'keyup', ESCAPE);
-    assert.dom('.test-search-bar-input').isFocused('input is still in focus');
+    await triggerKeyEvent('[data-test-search-bar-input]', 'keyup', ESCAPE);
+    assert.dom('[data-test-search-bar-input]').isFocused('input is still in focus');
     assert.ok(this.setSearchQuery.calledOnce, 'setSearchQuery is called');
   });
 
@@ -122,7 +122,7 @@ module('Integration | Component | search-bar', function(hooks) {
       }}
     `);
 
-    await click('.test-search-bar-reset');
+    await click('[data-test-search-bar-reset]');
     assert.ok(this.setSearchQuery.calledOnce, 'setSearchQuery is called');
   });
 });

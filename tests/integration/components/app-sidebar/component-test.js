@@ -45,33 +45,34 @@ module('Integration | Component | app-sidebar', function(hooks) {
       }}
     `);
 
-    assert.dom('.test-logo-dropdown-trigger').exists({ count: 1 });
-    assert.dom('.test-logo-dropdown-content').doesNotExist('logo dropdown is not open initially');
+    assert.dom('[data-test-logo-dropdown-trigger]').exists({ count: 1 });
+    assert.dom('[data-test-logo-dropdown-content]').doesNotExist('logo dropdown is not open initially');
 
-    assert.dom('.test-sidebar-default-filter').exists({ count: 1 });
-    assert.dom('.test-sidebar-filter').exists({ count: 2 });
-    assert.dom('.test-sidebar-filter-title').exists({ count: 2 });
-    assert.dom('.test-sidebar-filter-item').exists({ count: 4 });
+    assert.dom('[data-test-sidebar-filter="default"]').exists({ count: 1 });
+    assert.dom('[data-test-sidebar-filter]').exists({ count: 3 });
+    assert.dom('[data-test-sidebar-filter-title]').exists({ count: 2 });
+    assert.dom('[data-test-sidebar-filter-item]').exists({ count: 4 });
 
-    const defaultFilter = this.element.querySelector('.test-sidebar-default-filter');
-    const [secondFilter, thirdFilter] = this.element.querySelectorAll('.test-sidebar-filter');
+    const defaultFilter = this.element.querySelector('[data-test-sidebar-filter="default"]');
+    const [secondFilter, thirdFilter] = this.element
+      .querySelectorAll('[data-test-sidebar-filter]:not([data-test-sidebar-filter="default"])');
 
-    assert.dom('.test-sidebar-filter-title', defaultFilter).doesNotExist('default filter has no title');
-    assert.dom('.test-sidebar-filter-item', defaultFilter).exists({ count: 1 });
-    assert.dom('.test-sidebar-filter-item', defaultFilter).hasAttribute('href', '#/');
-    assert.dom('.test-sidebar-filter-name', defaultFilter).hasText('All assets');
-    assert.dom('.test-sidebar-filter-count', defaultFilter).doesNotExist('default filter has no counter');
+    assert.dom('[data-test-sidebar-filter-title]', defaultFilter).doesNotExist('default filter has no title');
+    assert.dom('[data-test-sidebar-filter-item]', defaultFilter).exists({ count: 1 });
+    assert.dom('[data-test-sidebar-filter-item]', defaultFilter).hasAttribute('href', '#/');
+    assert.dom('[data-test-sidebar-filter-name]', defaultFilter).hasText('All assets');
+    assert.dom('[data-test-sidebar-filter-count]', defaultFilter).doesNotExist('default filter has no counter');
 
-    assert.dom('.test-sidebar-filter-title', secondFilter).hasText('by Directory');
-    assert.dom('.test-sidebar-filter-item', secondFilter).exists({ count: 2 });
-    assert.dom('.test-sidebar-filter-item:nth-of-type(1)', secondFilter).hasAttribute('href', '#/?filterBy=fileDir%3Aicons');
-    assert.dom('.test-sidebar-filter-item:nth-of-type(1) .test-sidebar-filter-name', secondFilter).hasText('icons');
-    assert.dom('.test-sidebar-filter-item:nth-of-type(2)', secondFilter).hasAttribute('href', '#/?filterBy=fileDir%3Aimages');
-    assert.dom('.test-sidebar-filter-item:nth-of-type(2) .test-sidebar-filter-name', secondFilter).hasText('images');
+    assert.dom('[data-test-sidebar-filter-title]', secondFilter).hasText('by Directory');
+    assert.dom('[data-test-sidebar-filter-item]', secondFilter).exists({ count: 2 });
+    assert.dom('[data-test-sidebar-filter-item="0"]', secondFilter).hasAttribute('href', '#/?filterBy=fileDir%3Aicons');
+    assert.dom('[data-test-sidebar-filter-item="0"] [data-test-sidebar-filter-name]', secondFilter).hasText('icons');
+    assert.dom('[data-test-sidebar-filter-item="1"]', secondFilter).hasAttribute('href', '#/?filterBy=fileDir%3Aimages');
+    assert.dom('[data-test-sidebar-filter-item="1"] [data-test-sidebar-filter-name]', secondFilter).hasText('images');
 
-    assert.dom('.test-sidebar-filter-title', thirdFilter).hasText('by Base size');
-    assert.dom('.test-sidebar-filter-item', thirdFilter).exists({ count: 1 });
-    assert.dom('.test-sidebar-filter-item', thirdFilter).hasAttribute('href', '#/?filterBy=baseSize%3A24px');
-    assert.dom('.test-sidebar-filter-name', thirdFilter).hasText('24px');
+    assert.dom('[data-test-sidebar-filter-title]', thirdFilter).hasText('by Base size');
+    assert.dom('[data-test-sidebar-filter-item]', thirdFilter).exists({ count: 1 });
+    assert.dom('[data-test-sidebar-filter-item]', thirdFilter).hasAttribute('href', '#/?filterBy=baseSize%3A24px');
+    assert.dom('[data-test-sidebar-filter-name]', thirdFilter).hasText('24px');
   });
 });

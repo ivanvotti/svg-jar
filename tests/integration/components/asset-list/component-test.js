@@ -30,7 +30,7 @@ module('Integration | Component | asset-list', function(hooks) {
 
   test('it renders items properly', async function(assert) {
     await render(hbs`{{asset-list assets=assets}}`);
-    assert.dom('.test-asset-item').exists({ count: 2 });
+    assert.dom('[data-test-asset-item]').exists({ count: 2 });
     assert.dom('svg.svg-1 circle').exists();
     assert.dom('svg.svg-2 circle').exists();
   });
@@ -42,7 +42,7 @@ module('Integration | Component | asset-list', function(hooks) {
 
   test('there is only one active item at a time', async function(assert) {
     await render(hbs`{{asset-list assets=assets}}`);
-    const [firstItem, secondItem] = this.element.querySelectorAll('.test-asset-item');
+    const [firstItem, secondItem] = this.element.querySelectorAll('[data-test-asset-item]');
 
     await click(firstItem);
     assert.dom('.is-active').exists({ count: 1 });

@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 
 export default Component.extend({
   assetSelector: service('asset-selector'),
-  classNames: ['c-asset-item test-asset-item'],
+  classNames: ['c-asset-item'],
   classNameBindings: ['isActive', 'isActive:js-active-asset'],
   asset: null,
 
