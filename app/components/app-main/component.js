@@ -26,7 +26,7 @@ export default Component.extend({
     return this.filterBy && this.filterBy.split(':')[1];
   }),
 
-  filteredAssets: computed('filterBy', function() {
+  filteredAssets: computed('filterBy', 'model.assets', function() {
     const assets = get(this, 'model.assets');
 
     return this.filterBy
