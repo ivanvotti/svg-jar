@@ -5,12 +5,13 @@ import { on } from '@ember/object/evented';
 import { alias } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
 import { EKMixin, EKOnInsertMixin, keyDown } from 'ember-keyboard';
-import copyToClipboard from 'svg-jar/utils/copy-to-clipboard';
 import makeSvg from 'svg-jar/utils/make-svg';
 import Velocity from 'velocity';
 
 export default Component.extend(EKMixin, EKOnInsertMixin, {
   assetSelector: service('asset-selector'),
+  clipboard: service('clipboard'),
+  fileSaver: service('file-saver'),
   classNames: ['c-app-container'],
   currentAsset: alias('assetSelector.currentAsset'),
 
@@ -30,7 +31,7 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
       return;
     }
 
-    if (copyToClipboard(this.currentAsset.copypasta)) {
+    if (this.clipboard.copy(this.currentAsset.copypasta)) {
       this._animateShortcutedAsset();
       event.preventDefault();
     } else {
@@ -43,7 +44,7 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
       return;
     }
 
-    if (copyToClipboard(makeSvg(this.currentAsset.svg))) {
+    if (this.clipboard.copy(makeSvg(this.currentAsset.svg))) {
       this._animateShortcutedAsset();
       event.preventDefault();
     } else {
@@ -52,19 +53,17 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   }),
 
   shortcutDownloadCurrent: on(keyDown('KeyD'), function(event) {
-    if (!this.currentAsset) {
-      return;
+    if (this.currentAsset) {
+      this.fileSaver.saveSVG(this.currentAsset.originalSvg, this.currentAsset.fileName);
+      this._animateShortcutedAsset();
+      event.preventDefault();
     }
-
-    this._downloadAsset(this.currentAsset);
-    this._animateShortcutedAsset();
-    event.preventDefault();
   }),
 
   actions: {
     downloadCurrentAsset() {
       if (this.currentAsset) {
-        this._downloadAsset(this.currentAsset);
+        this.fileSaver.saveSVG(this.currentAsset.originalSvg, this.currentAsset.fileName);
       }
     }
   },
@@ -75,11 +74,6 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
     if (activeAssetEl) {
       Velocity(activeAssetEl, 'callout.pulse', { duration: 300 });
     }
-  },
-
-  _downloadAsset(asset) {
-    const svgFile = new Blob([asset.originalSvg], { type: 'image/svg+xml' });
-    window.saveAs(svgFile, asset.fileName);
   },
 
   _showClipboardError() {

@@ -25,6 +25,7 @@ module.exports = function(defaults) {
   });
 
   app.import('node_modules/file-saver/FileSaver.js');
+  app.import('vendor/shims/file-saver.js');
 
   app.import('node_modules/sinon/pkg/sinon.js', {
     using: [
