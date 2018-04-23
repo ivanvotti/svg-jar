@@ -17,4 +17,3 @@ module('Unit | Service | file-saver', function(hooks) {
     assert.equal(filename, 'icon.svg');
   });
 });
-

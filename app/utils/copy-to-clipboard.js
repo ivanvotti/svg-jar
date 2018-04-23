@@ -1,4 +1,4 @@
-import selectElemText from './select-elem-text';
+import selectTextIn from './select-text-in';
 
 function copySelectedText() {
   try {
@@ -24,7 +24,7 @@ export default function copyToClipboard(text) {
     `${window.pageYOffset || document.documentElement.scrollTop}px`;
 
   document.body.appendChild(fakeElem);
-  selectElemText(fakeElem);
+  selectTextIn(fakeElem);
   const isSucceeded = copySelectedText();
   document.body.removeChild(fakeElem);
 

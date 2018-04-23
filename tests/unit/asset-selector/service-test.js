@@ -10,4 +10,3 @@ module('Unit | Service | asset-selector', function(hooks) {
     assert.ok(service);
   });
 });
-

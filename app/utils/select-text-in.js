@@ -1,4 +1,4 @@
-export default function selectElemText(elem) {
+export default function selectTextIn(elem) {
   let selectedText;
 
   if (elem.nodeName === 'INPUT' || elem.nodeName === 'TEXTAREA') {
