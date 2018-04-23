@@ -14,11 +14,13 @@
     "build": "ember build",
     "lint:js": "eslint ./*.js app config lib server tests",
     "start": "ember server",
-    "test": "npm run lint:js && COVERAGE=true ember test"
+    "test": "npm run lint:js && COVERAGE=true ember test",
+    "coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "devDependencies": {
     "@ember/optional-features": "^0.5.2",
     "broccoli-asset-rev": "^2.4.5",
+    "coveralls": "^3.0.0",
     "ember-basic-dropdown": "^1.0.0-beta.4",
     "ember-cli": "~3.1.2",
     "ember-cli-app-version": "^3.0.0",
