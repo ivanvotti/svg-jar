@@ -5,7 +5,7 @@ import config from '../config/environment';
 export default Route.extend({
   model() {
     return fetch(config.modelURL).then((response) => {
-      const isNotFoundError = response.status === 404;
+      let isNotFoundError = response.status === 404;
 
       if (response.ok) {
         return response.json();

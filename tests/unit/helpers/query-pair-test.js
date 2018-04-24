@@ -6,7 +6,7 @@ module('Unit | Helper | query-pair', function(hooks) {
   setupTest(hooks);
 
   test('it works', function(assert) {
-    const result = queryPair(['paramName', 'paramValue']);
+    let result = queryPair(['paramName', 'paramValue']);
 
     assert.deepEqual(result, {
       isQueryParams: true,

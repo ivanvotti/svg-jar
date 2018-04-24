@@ -51,14 +51,14 @@ module('Integration | Component | app-pane', function(hooks) {
 
     assert.dom('[data-test-pane-svg]').exists({ count: 2 });
 
-    const expectedSVGContent = '<circle cx="12" cy="12" r="6" fill="red"></circle>';
-    const normalSVG = this.element.querySelector('[data-test-pane-svg="normal"]');
+    let expectedSVGContent = '<circle cx="12" cy="12" r="6" fill="red"></circle>';
+    let normalSVG = this.element.querySelector('[data-test-pane-svg="normal"]');
 
     assert.dom(normalSVG).hasAttribute('width', '24');
     assert.dom(normalSVG).hasAttribute('height', '24');
     assert.equal(normalSVG.innerHTML, expectedSVGContent);
 
-    const bigSVG = this.element.querySelector('[data-test-pane-svg="big"]');
+    let bigSVG = this.element.querySelector('[data-test-pane-svg="big"]');
 
     assert.dom(bigSVG).hasAttribute('width', '48');
     assert.dom(bigSVG).hasAttribute('height', '48');
@@ -90,7 +90,7 @@ module('Integration | Component | app-pane', function(hooks) {
     assert.dom('[data-test-pane-details-title]').hasText('Details');
     assert.dom('[data-test-pane-details-item]').exists({ count: 2 });
 
-    const [firstItem, secondItem] = this.element.querySelectorAll('[data-test-pane-details-item]');
+    let [firstItem, secondItem] = this.element.querySelectorAll('[data-test-pane-details-item]');
 
     assert.dom('[data-test-pane-details-name]', firstItem).hasText('File name');
     assert.dom('[data-test-pane-details-value]', firstItem).hasText('circle.svg');
@@ -110,7 +110,7 @@ module('Integration | Component | app-pane', function(hooks) {
       }}
     `);
 
-    const expectedWarning = 'The SVG is not scalable as it has no "viewBox" attribute.';
+    let expectedWarning = 'The SVG is not scalable as it has no "viewBox" attribute.';
     assert.dom('[data-test-pane-warning]').exists({ count: 1 });
     assert.dom('[data-test-pane-warning-title]').hasText('Warning');
     assert.dom('[data-test-pane-warning-text]').hasText(expectedWarning);

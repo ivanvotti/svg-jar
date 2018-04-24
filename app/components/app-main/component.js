@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { alias } from '@ember/object/computed';
 import { get, set, computed } from '@ember/object';
 import { run } from '@ember/runloop';
-import Velocity from 'velocity';
+import velocity from 'velocity';
 
 function doesMatch(target, query) {
   if (!target) {
@@ -27,7 +27,7 @@ export default Component.extend({
   }),
 
   filteredAssets: computed('filterBy', 'model.assets', function() {
-    const assets = get(this, 'model.assets');
+    let assets = get(this, 'model.assets');
 
     return this.filterBy
       ? assets.filterBy(...this.filterBy.split(':'))
@@ -35,8 +35,8 @@ export default Component.extend({
   }),
 
   foundAssets: computed('filteredAssets', 'searchQuery', function() {
-    const { searchQuery, filteredAssets } = this;
-    const searchKeys = get(this, 'model.searchKeys');
+    let { searchQuery, filteredAssets } = this;
+    let searchKeys = get(this, 'model.searchKeys');
 
     if (searchQuery && searchQuery.length > 1 && searchKeys) {
       return filteredAssets.filter((asset) => (
@@ -68,10 +68,10 @@ export default Component.extend({
     // It's used to show the content header shadow
     // whenever the content is scrolling.
 
-    const scrollingTimeout = 10;
-    const scrollingEl = this.element.querySelector('.js-content');
+    let scrollingTimeout = 10;
+    let scrollingEl = this.element.querySelector('.js-content');
 
-    const eventHandler = () => (
+    let eventHandler = () => (
       set(this, 'isContentScrolled', scrollingEl.scrollTop !== 0)
     );
 
@@ -83,14 +83,14 @@ export default Component.extend({
   },
 
   _unbindContentScrolling() {
-    const scrollingEl = this.element.querySelector('.js-content');
+    let scrollingEl = this.element.querySelector('.js-content');
     scrollingEl.removeEventListener('scroll', this._onContentScrolled);
   },
 
   _animateAssetListItems() {
-    const assetItemEls = this.element.querySelectorAll('.js-asset-item');
+    let assetItemEls = this.element.querySelectorAll('.js-asset-item');
 
-    Velocity(assetItemEls, 'transition.expandIn', {
+    velocity(assetItemEls, 'transition.expandIn', {
       duration: 500,
 
       // Cleanup Velocity inline styles.

@@ -65,7 +65,7 @@ module('Integration | Component | app-main', function(hooks) {
   test('it renders all unsorted assets', async function(assert) {
     assert.dom('[data-test-svg-name]').exists({ count: 3 });
 
-    const [firstSVG, secondSVG, thirdSVG] = this.element.querySelectorAll('[data-test-svg-name]');
+    let [firstSVG, secondSVG, thirdSVG] = this.element.querySelectorAll('[data-test-svg-name]');
     assert.dom(firstSVG).hasAttribute('data-test-svg-name', 'icon circle');
     assert.dom(secondSVG).hasAttribute('data-test-svg-name', 'image square');
     assert.dom(thirdSVG).hasAttribute('data-test-svg-name', 'icon square');
@@ -74,7 +74,7 @@ module('Integration | Component | app-main', function(hooks) {
   test('it renders sorted assets', async function(assert) {
     this.set('sortBy', 'id');
 
-    const [firstSVG, secondSVG, thirdSVG] = this.element.querySelectorAll('[data-test-svg-name]');
+    let [firstSVG, secondSVG, thirdSVG] = this.element.querySelectorAll('[data-test-svg-name]');
     assert.dom(firstSVG).hasAttribute('data-test-svg-name', 'image square');
     assert.dom(secondSVG).hasAttribute('data-test-svg-name', 'icon square');
     assert.dom(thirdSVG).hasAttribute('data-test-svg-name', 'icon circle');
@@ -117,7 +117,7 @@ module('Integration | Component | app-main', function(hooks) {
     assert.dom('[data-test-svg-name]').exists({ count: 3 });
     assert.dom('[data-test-asset-group]').exists({ count: 2 });
 
-    const [firstGroup, secondGroup] = this.element.querySelectorAll('[data-test-asset-group]');
+    let [firstGroup, secondGroup] = this.element.querySelectorAll('[data-test-asset-group]');
 
     assert.dom('[data-test-asset-group-title]', firstGroup).hasText('icon');
     assert.dom('[data-test-svg-name="icon circle"]', firstGroup).exists();

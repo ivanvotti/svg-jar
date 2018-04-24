@@ -3,7 +3,7 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
-  const app = new EmberApp(defaults, {
+  let app = new EmberApp(defaults, {
     fingerprint: { enabled: false },
     sourcemaps: { enabled: false },
     vendorFiles: { 'jquery.js': null }

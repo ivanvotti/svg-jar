@@ -10,6 +10,6 @@ export function formatAttrs(attrs) {
 }
 
 export default function makeSvg(svg, customAttrs = {}) {
-  const svgAttrs = merge(copy(svg.attrs), customAttrs);
+  let svgAttrs = merge(copy(svg.attrs), customAttrs);
   return `<svg ${formatAttrs(svgAttrs)}>${svg.content}</svg>`;
 }

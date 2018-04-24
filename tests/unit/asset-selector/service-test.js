@@ -6,7 +6,7 @@ module('Unit | Service | asset-selector', function(hooks) {
 
   // Replace this with your real tests.
   test('it exists', function(assert) {
-    const service = this.owner.lookup('service:asset-selector');
+    let service = this.owner.lookup('service:asset-selector');
     assert.ok(service);
   });
 });

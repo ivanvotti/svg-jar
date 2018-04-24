@@ -6,7 +6,7 @@ import { alias } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
 import { EKMixin, EKOnInsertMixin, keyDown } from 'ember-keyboard';
 import makeSvg from 'svg-jar/utils/make-svg';
-import Velocity from 'velocity';
+import velocity from 'velocity';
 
 export default Component.extend(EKMixin, EKOnInsertMixin, {
   assetSelector: service('asset-selector'),
@@ -16,7 +16,7 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   currentAsset: alias('assetSelector.currentAsset'),
 
   shortcutFocusSearchBar: on(keyDown('Slash'), function(event) {
-    const searchInputEl = this.element.querySelector('.js-search-bar-input');
+    let searchInputEl = this.element.querySelector('.js-search-bar-input');
     searchInputEl.focus();
     event.preventDefault();
   }),
@@ -69,16 +69,16 @@ export default Component.extend(EKMixin, EKOnInsertMixin, {
   },
 
   _animateShortcutedAsset() {
-    const activeAssetEl = this.element.querySelector('.js-active-asset');
+    let activeAssetEl = this.element.querySelector('.js-active-asset');
 
     if (activeAssetEl) {
-      Velocity(activeAssetEl, 'callout.pulse', { duration: 300 });
+      velocity(activeAssetEl, 'callout.pulse', { duration: 300 });
     }
   },
 
   _showClipboardError() {
     // eslint-disable-next-line no-alert
-    window.alert("Your browser doesn't support copy to clipboard feature.\n" +
-      'Use the asset viewer with a modern browser, such as Chrome or Firefox.');
+    window.alert("Your browser doesn't support copy to clipboard feature.\n"
+      + 'Use the asset viewer with a modern browser, such as Chrome or Firefox.');
   }
 });

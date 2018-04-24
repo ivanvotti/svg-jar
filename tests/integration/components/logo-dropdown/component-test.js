@@ -57,8 +57,8 @@ module('Integration | Component | logo-dropdown', function(hooks) {
     assert.dom('[data-test-logo-dropdown-content] [data-test-logo-dropdown-shortcuts-toggle]').exists({ count: 1 });
     assert.dom('[data-test-logo-dropdown-content] a[data-test-logo-dropdown-link]').exists({ count: 2 });
 
-    const shortcutsToggle = this.element.querySelector('[data-test-logo-dropdown-shortcuts-toggle]');
-    const [firstLink, secondLink] = this.element.querySelectorAll('[data-test-logo-dropdown-link]');
+    let shortcutsToggle = this.element.querySelector('[data-test-logo-dropdown-shortcuts-toggle]');
+    let [firstLink, secondLink] = this.element.querySelectorAll('[data-test-logo-dropdown-link]');
 
     assert.dom(shortcutsToggle).hasText('Shortcuts');
 

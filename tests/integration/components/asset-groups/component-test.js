@@ -7,7 +7,7 @@ module('Integration | Component | asset-groups', function(hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function() {
-    const assets = [
+    let assets = [
       {
         svg: {
           content: '<circle cx="12" cy="12" r="6" fill="red" />',
@@ -64,7 +64,7 @@ module('Integration | Component | asset-groups', function(hooks) {
 
     assert.dom('[data-test-asset-group]').exists({ count: 2 });
 
-    const [firstGroup, secondGroup] = this.element.querySelectorAll('[data-test-asset-group]');
+    let [firstGroup, secondGroup] = this.element.querySelectorAll('[data-test-asset-group]');
 
     assert.dom('[data-test-asset-group-title]', firstGroup).hasText('firstGroup');
     assert.dom('[data-test-asset-group-count]', firstGroup).hasText('1 Items');
@@ -84,7 +84,7 @@ module('Integration | Component | asset-groups', function(hooks) {
 
     assert.dom('[data-test-asset-group]').exists({ count: 3 });
 
-    const [firstGroup, secondGroup, thirdGroup] = this.element.querySelectorAll('[data-test-asset-group]');
+    let [firstGroup, secondGroup, thirdGroup] = this.element.querySelectorAll('[data-test-asset-group]');
 
     assert.dom('[data-test-asset-group-title]', firstGroup).hasText('firstGroup');
     assert.dom('[data-test-asset-group-count]', firstGroup).hasText('1 Items');

@@ -5,7 +5,7 @@ module('Unit | Service | clipboard', function(hooks) {
   setupTest(hooks);
 
   test('it exists', function(assert) {
-    const service = this.owner.lookup('service:clipboard');
+    let service = this.owner.lookup('service:clipboard');
     assert.ok(service);
   });
 });

@@ -31,6 +31,7 @@ module.exports = {
     'prefer-rest-params': 'off',
     'no-underscore-dangle': 'off',
     'array-callback-return': 'off',
+    'prefer-const': 'off',
 
     // Optional ember rules
     'ember/alias-model-in-controller': 'off',

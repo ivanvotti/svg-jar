@@ -15,7 +15,7 @@ module('Unit | Utility | make-svg', function() {
   });
 
   test('it sets custom SVG attrs', function(assert) {
-    const customAttrs = { class: 'custom', 'data-custom': 'custom' };
+    let customAttrs = { class: 'custom', 'data-custom': 'custom' };
 
     assert.equal(
       makeSvg(ORIGINAL_SVG_DATA, customAttrs),
@@ -24,7 +24,7 @@ module('Unit | Utility | make-svg', function() {
   });
 
   test('it rewrites original attrs with custom ones', function(assert) {
-    const customAttrs = { height: '30', width: '36' };
+    let customAttrs = { height: '30', width: '36' };
 
     assert.equal(
       makeSvg(ORIGINAL_SVG_DATA, customAttrs),

@@ -44,7 +44,7 @@ module('Acceptance | global shortcuts', function(hooks) {
   });
 
   test('Enter works properly', async function(assert) {
-    const clipboardStub = this.owner.lookup('service:clipboard');
+    let clipboardStub = this.owner.lookup('service:clipboard');
     clipboardStub.set('copy', stub().returns(true));
 
     await triggerKeyDown('Enter');
@@ -56,7 +56,7 @@ module('Acceptance | global shortcuts', function(hooks) {
   });
 
   test('KeyS works properly', async function(assert) {
-    const clipboardStub = this.owner.lookup('service:clipboard');
+    let clipboardStub = this.owner.lookup('service:clipboard');
     clipboardStub.set('copy', stub().returns(true));
 
     await triggerKeyDown('KeyS');
@@ -68,7 +68,7 @@ module('Acceptance | global shortcuts', function(hooks) {
   });
 
   test('KeyD works properly', async function(assert) {
-    const fileSaverStub = this.owner.lookup('service:file-saver');
+    let fileSaverStub = this.owner.lookup('service:file-saver');
     fileSaverStub.set('saveSVG', stub());
 
     await triggerKeyDown('KeyD');

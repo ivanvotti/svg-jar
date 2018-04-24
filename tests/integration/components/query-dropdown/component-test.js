@@ -3,7 +3,6 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, click } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-
 module('Integration | Component | query-dropdown', function(hooks) {
   setupRenderingTest(hooks);
 
@@ -45,7 +44,7 @@ module('Integration | Component | query-dropdown', function(hooks) {
   });
 
   test('it renders dropdown content properly', async function(assert) {
-    const router = this.owner.lookup('router:main');
+    let router = this.owner.lookup('router:main');
     router.setupRouter();
 
     await render(hbs`
@@ -60,7 +59,7 @@ module('Integration | Component | query-dropdown', function(hooks) {
 
     assert.dom('[data-test-query-dropdown-content] a[data-test-query-dropdown-item]').exists({ count: 3 });
 
-    const [firstLink, secondLink, thirdLink] = this.element.querySelectorAll('[data-test-query-dropdown-item]');
+    let [firstLink, secondLink, thirdLink] = this.element.querySelectorAll('[data-test-query-dropdown-item]');
 
     assert.dom(firstLink).hasText('Directory');
     assert.dom(firstLink).hasAttribute('href', '#/?arrangeBy=fileDir');

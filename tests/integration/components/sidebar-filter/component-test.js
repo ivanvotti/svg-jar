@@ -18,7 +18,7 @@ module('Integration | Component | sidebar-filter', function(hooks) {
   });
 
   test('it renders a filter with 2 items properly', async function(assert) {
-    const router = this.owner.lookup('router:main');
+    let router = this.owner.lookup('router:main');
     router.setupRouter();
 
     await render(hbs`{{sidebar-filter filter=filter}}`);
@@ -27,7 +27,7 @@ module('Integration | Component | sidebar-filter', function(hooks) {
     assert.dom('[data-test-sidebar-filter-title]').hasText('by Directory');
     assert.dom('a[data-test-sidebar-filter-item]').exists({ count: 2 });
 
-    const [firstItem, secondItem] = this.element.querySelectorAll('[data-test-sidebar-filter-item]');
+    let [firstItem, secondItem] = this.element.querySelectorAll('[data-test-sidebar-filter-item]');
 
     assert.dom(firstItem).hasAttribute('href', '#/?filterBy=fileDir%3Aicons');
     assert.dom('[data-test-sidebar-filter-name]', firstItem).hasText('icons');

@@ -6,7 +6,7 @@ module('Integration | Util | select-text-in', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it works for textarea element', async function(assert) {
-    const targetElement = document.createElement('textarea');
+    let targetElement = document.createElement('textarea');
     targetElement.value = 'select me';
     document.body.appendChild(targetElement);
 
@@ -15,7 +15,7 @@ module('Integration | Util | select-text-in', function(hooks) {
   });
 
   test('it works for input element', async function(assert) {
-    const targetElement = document.createElement('input');
+    let targetElement = document.createElement('input');
     targetElement.value = 'select me';
     document.body.appendChild(targetElement);
 
@@ -24,7 +24,7 @@ module('Integration | Util | select-text-in', function(hooks) {
   });
 
   test('it works for div element', async function(assert) {
-    const targetElement = document.createElement('div');
+    let targetElement = document.createElement('div');
     targetElement.textContent = 'select me';
     document.body.appendChild(targetElement);
 

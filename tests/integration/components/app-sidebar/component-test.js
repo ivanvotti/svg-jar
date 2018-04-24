@@ -34,7 +34,7 @@ module('Integration | Component | app-sidebar', function(hooks) {
   });
 
   test('it renders sidebar and its children properly', async function(assert) {
-    const router = this.owner.lookup('router:main');
+    let router = this.owner.lookup('router:main');
     router.setupRouter();
 
     await render(hbs`
@@ -53,8 +53,8 @@ module('Integration | Component | app-sidebar', function(hooks) {
     assert.dom('[data-test-sidebar-filter-title]').exists({ count: 2 });
     assert.dom('[data-test-sidebar-filter-item]').exists({ count: 4 });
 
-    const defaultFilter = this.element.querySelector('[data-test-sidebar-filter="default"]');
-    const [secondFilter, thirdFilter] = this.element
+    let defaultFilter = this.element.querySelector('[data-test-sidebar-filter="default"]');
+    let [secondFilter, thirdFilter] = this.element
       .querySelectorAll('[data-test-sidebar-filter]:not([data-test-sidebar-filter="default"])');
 
     assert.dom('[data-test-sidebar-filter-title]', defaultFilter).doesNotExist('default filter has no title');

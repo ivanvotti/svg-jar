@@ -9,7 +9,7 @@ module('Integration | Component | asset-item', function(hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function() {
-    const asset = {
+    let asset = {
       svg: {
         content: '<circle cx="12" cy="12" r="6" fill="red" />',
         attrs: { viewBox: '0 0 24 24' }
@@ -22,8 +22,8 @@ module('Integration | Component | asset-item', function(hooks) {
 
   test('it renders correct SVG image', async function(assert) {
     await render(hbs`{{asset-item asset=asset data-test-asset-item="true"}}`);
-    const actualSVG = this.element.querySelector('svg').outerHTML;
-    const expectedSVG = '<svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="6" fill="red"></circle></svg>';
+    let actualSVG = this.element.querySelector('svg').outerHTML;
+    let expectedSVG = '<svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="6" fill="red"></circle></svg>';
 
     assert.equal(actualSVG, expectedSVG);
   });
@@ -53,7 +53,7 @@ module('Integration | Component | asset-item', function(hooks) {
   });
 
   test('it calls asset-selector#isCurrent on render', async function(assert) {
-    const isCurrent = spy();
+    let isCurrent = spy();
     stubService('asset-selector', { isCurrent });
     await render(hbs`{{asset-item asset=asset data-test-asset-item="true"}}`);
 
@@ -75,7 +75,7 @@ module('Integration | Component | asset-item', function(hooks) {
   });
 
   test('it calls setCurrentAsset on click', async function(assert) {
-    const setCurrentAsset = spy();
+    let setCurrentAsset = spy();
     stubService('asset-selector', { setCurrentAsset, isCurrent: () => false });
     await render(hbs`{{asset-item asset=asset data-test-asset-item="true"}}`);
     await click('[data-test-asset-item]');
@@ -84,7 +84,7 @@ module('Integration | Component | asset-item', function(hooks) {
   });
 
   test('it does not call setCurrentAsset on click when it is active', async function(assert) {
-    const setCurrentAsset = spy();
+    let setCurrentAsset = spy();
     stubService('asset-selector', { setCurrentAsset, isCurrent: () => true });
     await render(hbs`{{asset-item asset=asset data-test-asset-item="true"}}`);
     await click('[data-test-asset-item]');
