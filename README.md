@@ -1,5 +1,7 @@
 # SVGJar [![Build Status](https://travis-ci.org/ivanvotti/svg-jar.svg?branch=master)](https://travis-ci.org/ivanvotti/svg-jar) [![Coverage Status](https://coveralls.io/repos/github/ivanvotti/svg-jar/badge.svg?branch=master)](https://coveralls.io/github/ivanvotti/svg-jar?branch=master)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ivanvotti/svg-jar.svg)](https://greenkeeper.io/)
+
 An easy way to organize, search and use SVG assets in your project.
 
 It exclusively supports Ember.js at the moment.
