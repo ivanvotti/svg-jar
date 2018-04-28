@@ -3,15 +3,13 @@ language: node_js
 node_js:
   - "6"
 
-sudo: false
 dist: trusty
 
 addons:
   chrome: stable
 
 cache:
-  directories:
-    - $HOME/.npm
+  yarn: true
 
 env:
   global:
@@ -19,10 +17,19 @@ env:
     - JOBS=1
 
 before_install:
-  - npm config set spin false
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+  - yarn global add greenkeeper-lockfile@1
+
+install:
+  - yarn install --no-lockfile --non-interactive
+
+before_script:
+  - greenkeeper-lockfile-update
 
 script:
-  - npm test
+  - yarn test
 
-after_success:
-  - npm run coverage
+after_script:
+  - yarn run test:coverage
+  - greenkeeper-lockfile-upload
