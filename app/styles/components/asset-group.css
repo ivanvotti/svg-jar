@@ -7,21 +7,21 @@
 }
 
 .c-asset-group__header {
-  padding: 8px 14px;
+  padding: rem(8px) rem(14px);
   border-bottom: 1px solid #eee;
 }
 
 .c-asset-group__title {
-  font-size: 12px;
+  font-size: rem(12px);
   color: #777;
 }
 
 .c-asset-group__count {
-  font-size: 11px;
+  font-size: rem(11px);
   color: #999;
 
   &::before {
-    margin: 0 4px;
+    margin: 0 rem(4px);
     content: "–";
   }
 }

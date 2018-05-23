@@ -1,0 +1,9 @@
+/**
+  Styles are organized with slightly customized
+  ITCSS (from Harry Roberts) methodology with BEM.
+*/
+
+@import "settings";
+@import "base/_all";
+@import "components/_all";
+@import "utilities/_all";

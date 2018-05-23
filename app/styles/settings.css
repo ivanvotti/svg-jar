@@ -1,0 +1,60 @@
+:root {
+  /* Font colors */
+  --gray-light: #eee;
+  --gray-x-light: #f7f9fa;
+  --blue: #007ee5;
+  --blue-dark: #0071ce;
+  --blue-light: #cce6fa;
+  --blue-x-light: #f4faff;
+
+  /* Font weights */
+  --light: 300;
+  --book: 400;
+  --bold: 700;
+
+  /* Base styles */
+  --base-font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  --base-font-size: rem(16px);
+  --base-font-weight: 400;
+  --base-line-height: 1.2;
+  --base-text-color: #444;
+  --base-background-color: #fff;
+
+  /* Button styles */
+  --btn-padding-x: 1rem;
+  --btn-padding-y: 0.5rem;
+
+  --btn-small-padding-x: 0.8rem;
+  --btn-small-padding-y: 0.3rem;
+
+  --btn-big-padding-x: 1.5rem;
+  --btn-big-padding-y: 0.75rem;
+
+  --btn-primary-text: #fff;
+  --btn-primary-border: var(--blue);
+  --btn-primary-bg: var(--blue);
+  --btn-primary-bg-hover: var(--blue);
+  --btn-primary-bg-active: var(--blue-dark);
+
+  --btn-secondary-text: var(--blue);
+  --btn-secondary-border: var(--blue);
+  --btn-secondary-bg: linear-gradient(#fff, var(--blue-x-light));
+  --btn-secondary-bg-hover: var(--blue-x-light);
+  --btn-secondary-bg-active: linear-gradient(var(--blue-x-light), #e3f1fc);
+
+  --btn-tertiary-text: #999;
+  --btn-tertiary-text-hover: var(--blue);
+  --btn-tertiary-border: #ddd;
+  --btn-tertiary-border-hover: var(--blue);
+  --btn-tertiary-bg: linear-gradient(#fff, var(--gray-x-light));
+  --btn-tertiary-bg-hover: linear-gradient(#fff, var(--blue-x-light));
+  --btn-tertiary-bg-active: linear-gradient(var(--blue-x-light), #e3f1fc);
+
+  --btn-tertiary-text: #999;
+  --btn-tertiary-text-hover: var(--blue);
+  --btn-tertiary-border: #ddd;
+  --btn-tertiary-border-hover: var(--blue);
+  --btn-tertiary-bg: linear-gradient(#fff, var(--gray-x-light));
+  --btn-tertiary-bg-hover: linear-gradient(#fff, var(--blue-x-light));
+  --btn-tertiary-bg-active: linear-gradient(var(--blue-x-light), #e3f1fc);
+}

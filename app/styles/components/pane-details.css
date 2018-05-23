@@ -1,0 +1,30 @@
+.c-pane-details__item {
+  display: flex;
+  margin-bottom: rem(6px);
+  justify-content: space-between;
+}
+
+.c-pane-details__name {
+  margin-right: rem(6px);
+  flex-grow: 1;
+  flex-shrink: 0;
+  font-size: rem(12px);
+  color: #777;
+  text-transform: capitalize;
+
+  /* truncate */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.c-pane-details__value {
+  text-align: right;
+  font-size: rem(12px);
+  color: #999;
+
+  /* truncate */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

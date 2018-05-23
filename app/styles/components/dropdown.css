@@ -5,26 +5,29 @@
 
 .c-dropdown__content {
   position: absolute;
-  padding: 3px 0;
+  padding: rem(3px) 0;
   z-index: 9000;
-  max-width: 200px;
-  border-radius: 3px;
-  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25), 0 2px 9px 0 rgba(0, 0, 0, 0.2);
+  max-width: rem(200px);
+  border-radius: rem(3px);
+  box-shadow: 0 0 rem(1px) 0 rgba(0, 0, 0, 0.25), 0 rem(2px) rem(9px) 0 rgba(0, 0, 0, 0.2);
   background-color: white;
 }
 
 .c-dropdown__item {
-  @include text-truncate();
-
   display: block;
-  padding: 3px 22px;
+  padding: rem(3px) rem(22px);
   padding-left: 0;
   color: #373a3c;
-  font-size: 13px;
+  font-size: rem(13px);
   text-decoration: none;
   text-transform: capitalize;
   transition: background-color 0.1s ease-in-out;
   cursor: pointer;
+
+  /* truncate */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   &:hover,
   &:active {
@@ -36,9 +39,9 @@
   &::before {
     content: "";
     display: inline-block;
-    width: 22px;
+    width: rem(22px);
     text-align: center;
-    color: $color-blue;
+    color: var(--blue);
   }
 
   &.active::before {
@@ -47,15 +50,15 @@
 }
 
 .c-dropdown__divider {
-  height: 1px;
-  margin: 3px 0;
+  height: rem(1px);
+  margin: rem(3px) 0;
   overflow: hidden;
   background-color: #e5e5e5;
 }
 
 .c-dropdown__trigger {
   display: inline-block;
-  padding: 2px 8px;
+  padding: rem(2px) rem(8px);
   border: 0;
   background: none;
   color: #999;
@@ -65,7 +68,7 @@
 
   &:hover,
   .ember-basic-dropdown-trigger--below & {
-    color: $color-blue;
+    color: var(--blue);
   }
 }
 
@@ -76,10 +79,10 @@
 }
 
 .c-dropdown__trigger-arrow {
-  margin-left: 4px;
+  margin-left: rem(4px);
 }
 
 .c-dropdown__trigger-icon {
-  margin: 0 4px;
+  margin: 0 rem(4px);
   opacity: 0.8;
 }

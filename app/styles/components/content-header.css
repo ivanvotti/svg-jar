@@ -1,6 +1,6 @@
 .c-content-header {
   display: flex;
-  min-height: 50px;
+  min-height: rem(50px);
   flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
@@ -10,12 +10,12 @@
   transition: box-shadow 200ms ease-in-out;
 
   .is-content-scrolled & {
-    box-shadow: 0 3px 4px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 rem(3px) rem(4px) -rem(1px) rgba(0, 0, 0, 0.1);
   }
 }
 
 .c-content-header__section {
   display: flex;
-  padding: 0 12px;
+  padding: 0 rem(12px);
   align-items: center;
 }

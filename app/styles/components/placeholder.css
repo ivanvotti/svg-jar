@@ -8,23 +8,23 @@
 
 .c-placeholder__image {
   margin-top: -5%;
-  margin-bottom: 6px;
+  margin-bottom: rem(6px);
   color: #999;
 }
 
 .c-placeholder__title {
-  max-width: 300px;
-  font-size: 16px;
+  max-width: rem(300px);
+  font-size: rem(16px);
   text-align: center;
   color: #888;
 }
 
 .c-placeholder__code {
   display: inline-block;
-  padding: 0 8px;
+  padding: 0 rem(8px);
   white-space: nowrap;
-  font-size: 14px;
-  border-radius: 3px;
+  font-size: rem(14px);
+  border-radius: rem(3px);
   background-color: #eee;
   color: #777;
 }

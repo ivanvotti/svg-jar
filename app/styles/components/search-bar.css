@@ -1,15 +1,15 @@
 .c-search-bar {
   position: relative;
-  height: 30px;
-  width: 280px;
+  height: rem(30px);
+  width: rem(280px);
 }
 
 .c-search-bar__icon {
-  height: 16px;
-  width: 16px;
+  height: rem(16px);
+  width: rem(16px);
   position: absolute;
   top: 50%;
-  left: 8px;
+  left: rem(8px);
   transform: translateY(-50%);
   z-index: 150;
   fill: #999;
@@ -18,8 +18,8 @@
 .c-search-bar__input {
   width: 100%;
   height: 100%;
-  padding-left: 30px;
-  padding-right: 22px;
+  padding-left: rem(30px);
+  padding-right: rem(22px);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -27,32 +27,32 @@
   right: 0;
   color: #888;
   border: 1px solid #e5e5e5;
-  border-radius: 4px;
+  border-radius: rem(4px);
   box-shadow: none;
 
   &:focus {
     outline: 0;
     color: #444;
     border-color: #2598f9;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 rem(1px) rem(2px) rgba(0, 0, 0, 0.05);
   }
 }
 
 .c-search-bar__reset {
   margin: 0;
-  padding: 2px 9px;
+  padding: rem(2px) rem(9px);
   position: absolute;
   top: 50%;
   right: 0;
   transform: translateY(-50%);
   z-index: 150;
-  font-size: 11px;
+  font-size: rem(11px);
   border: 0;
   color: #aaa;
   background: none;
   cursor: pointer;
 
   &:hover {
-    color: $color-blue;
+    color: var(--blue);
   }
 }
