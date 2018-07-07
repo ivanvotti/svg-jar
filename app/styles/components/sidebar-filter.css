@@ -1,12 +1,12 @@
 .c-sidebar-filter {
-  margin-bottom: 18px;
-  padding: 0 12px;
+  margin-bottom: rem(18px);
+  padding: 0 rem(12px);
 }
 
 .c-sidebar-filter__title {
-  margin-bottom: 6px;
-  padding: 0 4px;
-  font-size: 10px;
+  margin-bottom: rem(6px);
+  padding: 0 rem(4px);
+  font-size: rem(10px);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -15,14 +15,14 @@
 
 .c-sidebar-filter__item {
   display: flex;
-  margin-bottom: 2px;
-  padding: 3px 6px;
+  margin-bottom: rem(2px);
+  padding: rem(3px) rem(6px);
   align-items: center;
-  border-radius: 4px;
-  font-size: 12px;
+  border-radius: rem(4px);
+  font-size: rem(12px);
   color: #70777b;
   transition: background-color 0.1s ease-in-out;
-  cursor: pointer;
+  text-decoration: none;
 
   &:hover {
     text-decoration: none;
@@ -37,9 +37,12 @@
 }
 
 .c-sidebar-filter__name {
-  @include text-truncate();
-
   flex-grow: 1;
+
+  /* truncate */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .c-sidebar-filter__count {

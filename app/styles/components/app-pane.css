@@ -1,7 +1,7 @@
 .c-app-pane {
   display: flex;
   flex-direction: column;
-  width: 264px;
+  width: rem(264px);
   flex-shrink: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -12,17 +12,16 @@
 
 .c-app-pane__section {
   flex-shrink: 0;
-  padding: 18px 16px;
-  border-bottom: 1px solid #eee;
+  padding: rem(18px) rem(16px);
 
-  &:last-child {
-    border-bottom: 0;
+  &:not(:last-child) {
+    border-bottom: 1px solid #eee;
   }
 }
 
 .c-app-pane__title {
-  margin-bottom: 8px;
-  font-size: 12px;
+  margin-bottom: rem(8px);
+  font-size: rem(12px);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: capitalize;
@@ -34,26 +33,12 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  font-size: 15px;
+  font-size: rem(15px);
   color: #888;
 }
 
-.c-app-pane__badge {
-  display: inline-block;
-  margin-right: 4px;
-  margin-bottom: 4px;
-  padding: 0 8px;
-  white-space: nowrap;
-  font-size: 11px;
-  border-radius: 3px;
-  background-color: #eee;
-
-  &:last-child {
-    margin-right: 0;
-  }
-}
-
 .c-app-pane__copypasta {
-  font-size: 12px;
+  font-family: monospace;
+  font-size: rem(12px);
   color: #666;
 }

@@ -1,0 +1,21 @@
+.c-icon {
+  fill: currentColor;
+
+  &--16x16 {
+    height: rem(16px);
+    width: rem(16px);
+    line-height: rem(16px);
+  }
+
+  &--19x137 {
+    height: rem(19px);
+    width: rem(137px);
+    line-height: rem(19px);
+  }
+
+  &--48x48 {
+    height: rem(48px);
+    width: rem(48px);
+    line-height: rem(48px);
+  }
+}

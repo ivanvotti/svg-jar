@@ -1,23 +1,28 @@
 .c-asset-item {
   display: flex;
-  height: 60px;
-  width: 60px;
-  margin: 6px;
+  height: rem(60px);
+  width: rem(60px);
+  margin: rem(6px);
   align-items: center;
   justify-content: center;
   background-color: #fafafa;
   border: 3px solid transparent;
-  border-radius: 4px;
+  border-radius: rem(4px);
   transition: background-color 0.1s ease-in-out;
   cursor: pointer;
   overflow: hidden;
 
   &:hover {
-    background-color: $color-gray-light;
+    background-color: var(--gray-light);
   }
 
   &.is-active {
-    border-color: $color-blue;
-    background-color: $color-gray-light;
+    border-color: var(--blue);
+    background-color: var(--gray-light);
+  }
+
+  svg {
+    min-height: 50%;
+    min-width: 50%;
   }
 }

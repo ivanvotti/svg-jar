@@ -1,5 +1,5 @@
 .c-app-sidebar {
-  width: 208px;
+  width: rem(208px);
   flex-shrink: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -10,7 +10,7 @@
 
 .c-app-sidebar__logo {
   display: flex;
-  height: 60px;
+  height: rem(60px);
   align-items: center;
   justify-content: center;
 }

@@ -1,0 +1,21 @@
+.c-pane-preview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
+
+.c-pane-preview__item {
+  max-height: rem(200px);
+  max-width: rem(200px);
+
+  &:not(:last-child) {
+    margin-right: rem(10px);
+    margin-bottom: rem(10px);
+  }
+
+  &--base {
+    max-height: rem(100px);
+    max-width: rem(100px);
+  }
+}
