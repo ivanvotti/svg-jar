@@ -44,7 +44,7 @@
     "ember-load-initializers": "^1.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-native-dom-helpers": "^0.6.2",
-    "ember-resolver": "^4.0.0",
+    "ember-resolver": "^5.0.0",
     "ember-source": "~3.2.2",
     "ember-svg-jar": "^1.1.1",
     "ember-test-selectors": "^1.0.0",
