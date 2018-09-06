@@ -56,7 +56,7 @@
     "loader.js": "^4.2.3",
     "narwin-pack": "^1.1.1",
     "postcss-functions": "^3.0.0",
-    "qunit-dom": "^0.7.0",
+    "qunit-dom": "^0.8.0",
     "sinon": "^6.0.1",
     "stylelint-config-standard": "^18.2.0",
     "velocity-animate": "^1.5.1"
