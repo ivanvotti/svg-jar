@@ -52,7 +52,7 @@
     "eslint-config-airbnb-base": "12.1.0",
     "eslint-plugin-ember": "^5.1.0",
     "eslint-plugin-import": "^2.7.0",
-    "file-saver": "^1.3.8",
+    "file-saver": "^2.0.0",
     "loader.js": "^4.2.3",
     "narwin-pack": "^1.1.1",
     "postcss-functions": "^3.0.0",
