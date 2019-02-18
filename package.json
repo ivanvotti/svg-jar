@@ -57,7 +57,7 @@
     "narwin-pack": "^1.1.1",
     "postcss-functions": "^3.0.0",
     "qunit-dom": "^0.7.0",
-    "sinon": "^6.0.1",
+    "sinon": "^7.2.4",
     "stylelint-config-standard": "^18.2.0",
     "velocity-animate": "^1.5.1"
   },
