@@ -1,5 +1,3 @@
-import { copy } from '@ember/object/internals';
-import { merge } from '@ember/polyfills';
 import { isNone } from '@ember/utils';
 
 export function formatAttrs(attrs) {
@@ -10,6 +8,6 @@ export function formatAttrs(attrs) {
 }
 
 export default function makeSvg(svg, customAttrs = {}) {
-  let svgAttrs = merge(copy(svg.attrs), customAttrs);
+  let svgAttrs = Object.assign({}, svg.attrs, customAttrs);
   return `<svg ${formatAttrs(svgAttrs)}>${svg.content}</svg>`;
 }

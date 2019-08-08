@@ -4,7 +4,7 @@ module.exports = {
   extends: 'recommended',
 
   rules: {
-    'triple-curlies': false,
-    'invalid-interactive': false
+    'no-triple-curlies': false,
+    'no-invalid-interactive': false
   }
 };

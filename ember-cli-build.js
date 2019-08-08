@@ -17,7 +17,6 @@ module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     fingerprint: { enabled: false },
     sourcemaps: { enabled: false },
-    vendorFiles: { 'jquery.js': null },
 
     postcssOptions: {
       compile: {

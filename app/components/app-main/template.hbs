@@ -5,7 +5,7 @@
     setSearchQuery=(action @setSearchQuery)
 }}
 
-<div class="c-content js-content {{if (not this.assets.length) 'c-content--empty'}}">
+<div class="c-content js-content {{if (not this.assets.length) "c-content--empty"}}">
   {{#if (not this.assets.length)}}
     {{content-placeholder
         filterName=this.filterName

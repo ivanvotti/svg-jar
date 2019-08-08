@@ -13,22 +13,26 @@
     {{#dropdown.content class="c-dropdown__content"}}
       <div {{action dropdown.actions.close}} data-test-query-dropdown-content>
         {{#each @dropdownItems as |dropdownItem|}}
-          {{link-to dropdownItem.name
-              "index"
-              (query-pair @queryParamName dropdownItem.key)
-              class="c-dropdown__item"
-              data-test-query-dropdown-item="true"
-          }}
+          <LinkTo
+            @route="index"
+            @query={{query-pair @queryParamName dropdownItem.key}}
+            class="c-dropdown__item"
+            data-test-query-dropdown-item="true"
+          >
+            {{dropdownItem.name}}
+          </LinkTo>
         {{/each}}
 
         <div class="c-dropdown__divider"></div>
 
-        {{link-to "None"
-            "index"
-            (query-pair @queryParamName null)
-            class="c-dropdown__item"
-            data-test-query-dropdown-item="true"
-        }}
+        <LinkTo
+          @route="index"
+          @query={{query-pair @queryParamName null}}
+          class="c-dropdown__item"
+          data-test-query-dropdown-item="true"
+        >
+          None
+        </LinkTo>
       </div>
     {{/dropdown.content}}
   {{/basic-dropdown}}

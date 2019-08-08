@@ -1,6 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click, triggerKeyEvent, fillIn } from '@ember/test-helpers';
+import {
+  render,
+  click,
+  triggerKeyEvent,
+  fillIn
+} from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { spy } from 'sinon';
 

@@ -9,7 +9,9 @@ export default Route.extend({
 
       if (response.ok) {
         return response.json();
-      } else if (isNotFoundError) {
+      }
+
+      if (isNotFoundError) {
         return { error: `Can't find asset viewer model at ${config.modelURL}` };
       }
 

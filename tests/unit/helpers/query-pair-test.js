@@ -7,10 +7,6 @@ module('Unit | Helper | query-pair', function(hooks) {
 
   test('it works', function(assert) {
     let result = queryPair(['paramName', 'paramValue']);
-
-    assert.deepEqual(result, {
-      isQueryParams: true,
-      values: { paramName: 'paramValue' }
-    });
+    assert.deepEqual(result, { paramName: 'paramValue' });
   });
 });

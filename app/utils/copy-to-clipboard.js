@@ -20,8 +20,7 @@ export default function copyToClipboard(text) {
   let isRightToLeft = document.documentElement.getAttribute('dir') === 'rtl';
   fakeElem.style.position = 'absolute';
   fakeElem.style[isRightToLeft ? 'right' : 'left'] = '-9999px';
-  fakeElem.style.top
-    = `${window.pageYOffset || document.documentElement.scrollTop}px`;
+  fakeElem.style.top = `${window.pageYOffset || document.documentElement.scrollTop}px`;
 
   document.body.appendChild(fakeElem);
   selectTextIn(fakeElem);

@@ -7,16 +7,17 @@
   </div>
 
   <div class="c-sidebar-filter" data-test-sidebar-filter="default">
-    {{#link-to "index"
-        (query-pair "filterBy" null)
-        class="c-sidebar-filter__item"
-        activeClass="is-active"
-        data-test-sidebar-filter-item="true"
-    }}
+    <LinkTo
+      @route="index"
+      @query={{query-pair "filterBy" null}}
+      @activeClass="is-active"
+      class="c-sidebar-filter__item"
+      data-test-sidebar-filter-item="true"
+    >
       <span class="c-sidebar-filter__name" data-test-sidebar-filter-name>
         All assets
       </span>
-    {{/link-to}}
+    </LinkTo>
   </div>
 
   {{#if @sidebarFilters}}
